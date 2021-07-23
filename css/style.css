@@ -7,6 +7,10 @@
           filter: grayscale(100%);
 }
 
+button .btn-outline-secondary {
+  cursor: help;
+}
+
 .img-brand-card {
   width: 25%;
 }
@@ -17,6 +21,11 @@
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
   left: 0;
+}
+
+.img-wrapper :hover {
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
 }
 
 :hover > .img-b {

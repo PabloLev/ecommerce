@@ -4,6 +4,39 @@
 [...document.querySelectorAll('[data-bs-toggle="popover"]')].forEach(el => new bootstrap.Popover(el));
 
 
+// // Selector de talles Agregar clase active
+// const articleImgs = document.querySelectorAll('.btn-outline-primary');
+// articleImgs.addEventListener("click", function() {
+//     this.classList.toggle('active');
+// });
+
+// document.querySelectorAll('.este').addEventListener('click', event => {
+//     //handle click
+//     alert("click");
+//     this.classList.toggle('active');
+// });
+
+// document.addEventListener("DOMContentLoaded", function(event) { // <-- add this wrapper
+    var element = document.querySelectorAll('.btn-outline-primary');
+    if (element) {
+        element.forEach(function(el, key){
+            el.addEventListener('click', function () {  
+                el.classList.toggle("active");
+                element.forEach(function(ell, els){
+                    if(key !== els) {
+                        ell.classList.remove('active');
+                    }
+                    console.log(els);
+                });
+            });
+        });
+    }
+// });
+    
+
+
+
+
 document.getElementById("runScript").addEventListener("click", function() {
     //MANEJO Y VENTA DE CALZADOS: Se calcula monto a pagar y se actualiza el stock de la tienda.
     //CLASE CONSTRUCTORA Calzado CREADORA DE OBJETOS (los llamaremos calzadoX)

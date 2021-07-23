@@ -1,10 +1,15 @@
+
 .navbar {
     min-height: 6rem;
 }
 .out-stock{
     filter: grayscale(100%);
 }
-
+button{
+    .btn-outline-secondary{
+        cursor: help;
+    }
+}
 .img-brand-card{
     width: 25%;
 }
@@ -15,6 +20,11 @@
     left: 0;
 }
 .img-wrapper{
+    img{
+
+    }:hover{
+        cursor: zoom-in;
+    }
 
 }:hover > .img-b{
     visibility: initial;
