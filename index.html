@@ -17,7 +17,7 @@
 <body>
     <!-- HEADER -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
             <div class="container">
                 <a class="navbar-brand" href="#">BIG-STORE</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,20 +45,60 @@
                         <button class="btn btn-outline-light" type="submit"><i class="fas fa-search"></i></button>
                     </form>
                     <button type="button" class="btn btn-primary ms-3">
-
                         <i class="fas fa-shopping-cart"><span class="badge">0</span></i>
                     </button>
+                    <button id="runScript" type="button" class="btn btn-outline-primary m-1 text-white">Run script</button>
                 </div>
             </div>
         </nav>
     </header>
     <!-- END HEADER -->
+    <section id="hero">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item item1 active">
+                    <!-- <img src="img/hero/slider 1.gif" class="d-block w-100" alt="..."> -->
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide label</h5>
+                        <p>Some representative placeholder content for the first slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item item2">
+                    <!-- <img src="img/hero/2.webp" class="d-block w-100" alt="..."> -->
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Second slide label</h5>
+                        <p>Some representative placeholder content for the second slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item item3">
+                    <!-- <img src="img/hero/3.webp" class="d-block w-100" alt="..."> -->
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Third slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
     <!-- MAIN -->
     <main>
         <!-- Acá se van a cargar los productos a mostrar -->
         
         <section id="productsCatalog" class="container"> 
-            <button id="runScript" type="button" class="btn btn-outline-primary m-1">Run script</button>
+            
             <div class="row"> 
                 <div class="card col-12 col-sm-6 col-md-4 col-lg-3 text-center border-0 p-3">
                     
@@ -70,6 +110,11 @@
                         <img src="img/brands/Topper_100x70.svg" class="img-brand-card" alt="Topper_100x70">
                         <h6 class="card-title text-uppercase">X-force 456J</h6>
                         <p class="card-text fs-4 text-dark">$1500</p>
+                        <!-- <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
+                            <button id="este" type="button" class="este btn btn-outline-primary m-1"></button>
+                            <button type="button" class="este btn btn-outline-primary m-1"></button>
+                            <button type="button" class="btn btn-outline-primary m-1"></button>
+                        </div> -->
                         <p class="card-text mb-1 text-dark">Talles</p>
                         <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
                             <button id="este" type="button" class="este btn btn-outline-primary m-1">38</button>

@@ -1,5 +1,28 @@
+body {
+  margin-top: 6rem;
+}
+
 .navbar {
   min-height: 6rem;
+}
+
+.carousel .carousel-inner .carousel-item {
+  min-height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.carousel .carousel-inner .item1 {
+  background-image: url("../img/hero/1.webp");
+}
+
+.carousel .carousel-inner .item2 {
+  background-image: url("../img/hero/2.webp");
+}
+
+.carousel .carousel-inner .item3 {
+  background-image: url("../img/hero/3.webp");
 }
 
 .out-stock {
