@@ -1,6 +1,10 @@
+// ENABLE Tooltip
+[...document.querySelectorAll('[data-bs-toggle="tooltip"]')].forEach(el => new bootstrap.Tooltip(el));
+// ENABLE popover
+[...document.querySelectorAll('[data-bs-toggle="popover"]')].forEach(el => new bootstrap.Popover(el));
+
+
 document.getElementById("runScript").addEventListener("click", function() {
-
-
     //MANEJO Y VENTA DE CALZADOS: Se calcula monto a pagar y se actualiza el stock de la tienda.
     //CLASE CONSTRUCTORA Calzado CREADORA DE OBJETOS (los llamaremos calzadoX)
     class Calzado{

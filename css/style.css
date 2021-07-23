@@ -8,22 +8,22 @@
 }
 
 .img-brand-card {
-  width: 30%;
+  width: 25%;
 }
 
 .img-b {
   visibility: hidden;
   opacity: 0;
-  -webkit-transition: visibility 0s 0.3s,opacity 0.3s;
-  transition: visibility 0s 0.3s,opacity 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
   left: 0;
 }
 
 :hover > .img-b {
   visibility: initial;
   opacity: 1;
-  -webkit-transition: visibility 0s 0.3s,opacity 0.3s;
-  transition: visibility 0s 0.3s,opacity 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .btn-add-cart {
