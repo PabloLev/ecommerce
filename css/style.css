@@ -1,0 +1,14 @@
+.navbar {
+  min-height: 6rem;
+}
+
+.img-brand-card {
+  width: 30%;
+}
+
+.btn-add-cart {
+  top: 20%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+/*# sourceMappingURL=style.css.map */
