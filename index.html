@@ -12,9 +12,7 @@
     <!-- FONTAWSOME -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 
-    <!-- MAIN JS -->
-    <script defer src="js/main.js"></script>
-    <!-- END SCRIPTS -->
+    
 </head>
 <body>
     <!-- HEADER -->
@@ -58,12 +56,13 @@
     <!-- MAIN -->
     <main>
         <!-- Acá se van a cargar los productos a mostrar -->
+        
         <section id="productsCatalog" class="container"> 
+            <button id="runScript" type="button" class="btn btn-outline-primary m-1">Run script</button>
             <div class="row"> 
                 <div class="card col-12 col-sm-6 col-md-4 col-lg-3 text-center border-0 p-3">
                     <a href="#" class="text-decoration-none">
-                        
-                        <img src="img/hombres/001.060040001_1_460_460_1534555803_f16.webp" class="card-img-top p-1" alt="...">
+                        <img src="img/hombres/topper/topper_1a.webp" class="card-img-top p-1" alt="...">
                         <div class="card-body">
                             <img src="img/brands/Topper_100x70.svg" class="img-brand-card" alt="Topper_100x70">
                             <h6 class="card-title text-uppercase">X-force 456J</h6>
@@ -71,10 +70,10 @@
                             <p class="card-text mb-1 text-dark">Talles</p>
                             <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
                                 <button type="button" class="btn btn-outline-primary m-1">38</button>
-                                <button type="button" class="btn btn-outline-secondary m-1">39</button>
+                                <button type="button" class="btn btn-outline-secondary m-1 disabled">39</button>
                                 <button type="button" class="btn btn-outline-primary m-1">40</button>
                                 <button type="button" class="btn btn-outline-primary m-1">41</button>
-                                <button type="button" class="btn btn-outline-secondary m-1">42</button>
+                                <button type="button" class="btn btn-outline-secondary m-1 disabled">42</button>
                             </div>
                             <button type="button" class="btn container-fluid btn-primary">Add to cart<i class="fas fa-plus ms-3"></i></button>
                         </div>
@@ -82,15 +81,84 @@
                 </div>
                 <div class="card col-12 col-sm-6 col-md-4 col-lg-3 text-center border-0 p-3">
                     <a href="#" class="text-decoration-none">
-                        
-                        <img src="img/hombres/001.196120001_1_460_460_1534555806_fa8.webp" class="card-img-top p-1" alt="...">
+                        <img src="img/hombres/topper/topper_2a.webp" class="card-img-top p-1" alt="...">
                         <div class="card-body">
                             <img src="img/brands/Topper_100x70.svg" class="img-brand-card" alt="Topper_100x70">
                             <h6 class="card-title text-uppercase">X-force 456J</h6>
                             <p class="card-text fs-4 text-dark">$1500</p>
                             <p class="card-text mb-1 text-dark">Talles</p>
                             <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
-                                <button type="button" class="btn btn-outline-secondary m-1">39</button>
+                                <button type="button" class="btn btn-outline-secondary m-1 disabled">39</button>
+                                <button type="button" class="btn btn-outline-primary m-1">40</button>
+                            </div>
+                            <button type="button" class="btn container-fluid btn-primary">Add to cart<i class="fas fa-plus ms-3"></i></button>
+                        </div>
+                    </a>
+                </div>
+                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 text-center border-0 p-3  out-stock">
+                    <a href="#" class="text-decoration-none">
+                        <img src="img/hombres/topper/topper_3a.webp" class="card-img-top p-1" alt="...">
+                        <div class="card-body">
+                            <img src="img/brands/Topper_100x70.svg" class="img-brand-card" alt="Topper_100x70">
+                            <h6 class="card-title text-uppercase">X-force 456J</h6>
+                            <p class="card-text fs-4 text-dark">$1500</p>
+                            <p class="card-text mb-1 text-dark">Talles</p>
+                            <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
+                                <button type="button" class="btn btn-outline-secondary m-1 disabled">39</button>
+                                <button type="button" class="btn btn-outline-primary m-1 disabled">40</button>
+                                <button type="button" class="btn btn-outline-primary m-1 disabled">41</button>
+                                <button type="button" class="btn btn-outline-secondary m-1 disabled">42</button>
+                            </div>
+                            <button type="button" class="btn container-fluid btn-primary disabled">Out of stck</button>
+                        </div>
+                    </a>
+                </div>
+                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 text-center border-0 p-3">
+                    <a href="#" class="text-decoration-none">
+                        <img src="img/hombres/topper/topper_4a.webp" class="card-img-top p-1" alt="...">
+                        <div class="card-body">
+                            <img src="img/brands/Topper_100x70.svg" class="img-brand-card" alt="Topper_100x70">
+                            <h6 class="card-title text-uppercase">X-force 456J</h6>
+                            <p class="card-text fs-4 text-dark">$1500</p>
+                            <p class="card-text mb-1 text-dark">Talles</p>
+                            <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
+                                <button type="button" class="btn btn-outline-secondary m-1 disabled">39</button>
+                                <button type="button" class="btn btn-outline-primary m-1">40</button>
+                                <button type="button" class="btn btn-outline-primary m-1">41</button>
+                            </div>
+                            <button type="button" class="btn container-fluid btn-primary">Add to cart<i class="fas fa-plus ms-3"></i></button>
+                        </div>
+                    </a>
+                </div>
+                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 text-center border-0 p-3">
+                    <a href="#" class="text-decoration-none">
+                        <img src="img/hombres/adidas/adidas_1a.webp" class="card-img-top p-1" alt="...">
+                        <div class="card-body">
+                            <img src="img/brands/adidas_100x70.svg" class="img-brand-card" alt="Topper_100x70">
+                            <h6 class="card-title text-uppercase">X-force 456J</h6>
+                            <p class="card-text fs-4 text-dark">$1500</p>
+                            <p class="card-text mb-1 text-dark">Talles</p>
+                            <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
+                                <button type="button" class="btn btn-outline-primary m-1">38</button>
+                                <button type="button" class="btn btn-outline-secondary m-1 disabled">39</button>
+                                <button type="button" class="btn btn-outline-primary m-1">40</button>
+                                <button type="button" class="btn btn-outline-primary m-1">41</button>
+                                <button type="button" class="btn btn-outline-secondary m-1 disabled">42</button>
+                            </div>
+                            <button type="button" class="btn container-fluid btn-primary">Add to cart<i class="fas fa-plus ms-3"></i></button>
+                        </div>
+                    </a>
+                </div>
+                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 text-center border-0 p-3">
+                    <a href="#" class="text-decoration-none">
+                        <img src="img/hombres/adidas/adidas_2a.webp" class="card-img-top p-1" alt="...">
+                        <div class="card-body">
+                            <img src="img/brands/adidas_100x70.svg" class="img-brand-card" alt="Topper_100x70">
+                            <h6 class="card-title text-uppercase">X-force 456J</h6>
+                            <p class="card-text fs-4 text-dark">$1500</p>
+                            <p class="card-text mb-1 text-dark">Talles</p>
+                            <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
+                                <button type="button" class="btn btn-outline-secondary m-1 disabled">39</button>
                                 <button type="button" class="btn btn-outline-primary m-1">40</button>
                             </div>
                             <button type="button" class="btn container-fluid btn-primary">Add to cart<i class="fas fa-plus ms-3"></i></button>
@@ -99,18 +167,16 @@
                 </div>
                 <div class="card col-12 col-sm-6 col-md-4 col-lg-3 text-center border-0 p-3">
                     <a href="#" class="text-decoration-none">
-                        
-                        <img src="img/hombres/001.233010001_1_460_460_1621622902_47b.webp" class="card-img-top p-1" alt="...">
+                        <img src="img/hombres/adidas/adidas_3a.webp" class="card-img-top p-1" alt="...">
                         <div class="card-body">
-                            <img src="img/brands/Topper_100x70.svg" class="img-brand-card" alt="Topper_100x70">
+                            <img src="img/brands/adidas_100x70.svg" class="img-brand-card" alt="Topper_100x70">
                             <h6 class="card-title text-uppercase">X-force 456J</h6>
                             <p class="card-text fs-4 text-dark">$1500</p>
                             <p class="card-text mb-1 text-dark">Talles</p>
                             <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
-                                <button type="button" class="btn btn-outline-secondary m-1">39</button>
+                                <button type="button" class="btn btn-outline-secondary m-1 disabled">39</button>
                                 <button type="button" class="btn btn-outline-primary m-1">40</button>
                                 <button type="button" class="btn btn-outline-primary m-1">41</button>
-                                <button type="button" class="btn btn-outline-secondary m-1">42</button>
                             </div>
                             <button type="button" class="btn container-fluid btn-primary">Add to cart<i class="fas fa-plus ms-3"></i></button>
                         </div>
@@ -118,15 +184,14 @@
                 </div>
                 <div class="card col-12 col-sm-6 col-md-4 col-lg-3 text-center border-0 p-3">
                     <a href="#" class="text-decoration-none">
-                        
-                        <img src="img/hombres/001.253670006_1_460_460_1580918150_b84.webp" class="card-img-top p-1" alt="...">
+                        <img src="img/hombres/adidas/adidas_4a.webp" class="card-img-top p-1" alt="...">
                         <div class="card-body">
-                            <img src="img/brands/Topper_100x70.svg" class="img-brand-card" alt="Topper_100x70">
+                            <img src="img/brands/adidas_100x70.svg" class="img-brand-card" alt="Topper_100x70">
                             <h6 class="card-title text-uppercase">X-force 456J</h6>
                             <p class="card-text fs-4 text-dark">$1500</p>
                             <p class="card-text mb-1 text-dark">Talles</p>
                             <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
-                                <button type="button" class="btn btn-outline-secondary m-1">39</button>
+                                <button type="button" class="btn btn-outline-secondary m-1 disabled">39</button>
                                 <button type="button" class="btn btn-outline-primary m-1">40</button>
                                 <button type="button" class="btn btn-outline-primary m-1">41</button>
                             </div>
@@ -134,7 +199,7 @@
                         </div>
                     </a>
                 </div>
-
+            </div> <!-- END ROW -->
             <!-- PAGINACION -->
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
@@ -224,17 +289,26 @@
         
                     <!--Grid column-->
                     <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase">ATENCIÓN AL CLIENTE</h5>
+                        <h5 class="text-uppercase">DESTACADOS</h5>
             
                         <ul class="list-unstyled mb-0">
                             <li>
-                                <span class="text-white">Mon to Fri from 9:00 to 17:00</span>
+                                <span class="text-white">Nosotros</span>
                             </li>
                             <li>
-                                <span class="text-white">Whatsapp 099-123-456</span>
+                                <span class="text-white">Cómo comprar</span>
                             </li>
                             <li>
-                                <span class="text-white">Mail hello@bigstore.com</span>
+                                <span class="text-white">Envíos</span>
+                            </li>
+                            <li>
+                                <span class="text-white">Cómo realizar un cambio</span>
+                            </li>
+                            <li>
+                                <span class="text-white">Devoluciones</span>
+                            </li>
+                            <li>
+                                <span class="text-white">Preguntas Frecuentes</span>
                             </li>
                         </ul>
                     </div>
@@ -242,17 +316,14 @@
             
                     <!--Grid column-->
                     <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase">ATENCIÓN AL CLIENTE</h5>
+                        <h5 class="text-uppercase">AVISOS LEGALES</h5>
             
                         <ul class="list-unstyled mb-0">
                             <li>
-                                <span class="text-white">Mon to Fri from 9:00 to 17:00</span>
+                                <span class="text-white">Términos y condiciones</span>
                             </li>
                             <li>
-                                <span class="text-white">Whatsapp 099-123-456</span>
-                            </li>
-                            <li>
-                                <span class="text-white">Mail hello@bigstore.com</span>
+                                <span class="text-white">Privacidad</span>
                             </li>
                         </ul>
                     </div>
@@ -287,6 +358,9 @@
     <!-- BOOTSTRAP 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <!-- MAIN JS -->
+    <script defer src="js/main.js"></script>
+    <!-- END SCRIPTS -->
     
 </body>
 </html>

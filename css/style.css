@@ -2,6 +2,11 @@
   min-height: 6rem;
 }
 
+.out-stock {
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+
 .img-brand-card {
   width: 30%;
 }
