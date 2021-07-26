@@ -94,4 +94,17 @@ button .btn-outline-secondary {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
+
+.mainbox {
+  width: 10%;
+  min-width: 300px;
+  border: 1px solid #b4b4b4;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin: 1rem 0;
+}
 /*# sourceMappingURL=style.css.map */
