@@ -36,7 +36,7 @@ products.push(new Product(4, "calzado", "mujer", "Topper", "lover", "light-grey"
 products.push(new Product(5, "calzado", "hombre", "Adidas", "infinity", "black", 40, 5100, 1));
 products.push(new Product(6, "calzado", "hombre", "Adidas", "js", "black", 41, 3100, 5));
 products.push(new Product(7, "calzado", "hombre", "Adidas", "angular", "black", 38, 2100, 10));
-products.push(new Product(8, "calzado", "hombre", "Adidas", "rougue", "black", 39, 4100, 1));
+products.push(new Product(8, "calzado", "hombre", "Adidas", "rougue", "black", 39, 4200, 1));
 
 
 console.log(products);
@@ -72,11 +72,14 @@ function buy(){
                 case 1:
                     idSelected = parseInt(prompt(
                         `Seleccione un modelo de la lista ingresando su id:
-        id=1 | New Balnce - ninja  |  TALLE 40
-        id=2 | New Balnce - ninja  |  TALLE39
-        id=3 | New Balance - cebra  |  TALLE 41
-        id=4 | Puma - gacele  |  TALLE 38
-        id=5 | Nike - infinity  |  TALLE 40`));
+        id=1 | Topper - Classic  |  TALLE 40
+        id=2 | Topper - Rainbow  |  TALLE39
+        id=3 | Topper - Cebra  |  TALLE 41
+        id=4 | Topper - Lover  |  TALLE 38
+        id=5 | Adidas - Infinity  |  TALLE 40
+        id=6 | Adidas - JS  |  TALLE 40
+        id=7 | Adidas - Angular  |  TALLE39
+        id=8 | Adidas - Rougue  |  TALLE 41`));
                     userEntry = idSelected;
                     break;
                 case 2:
@@ -101,13 +104,16 @@ function buy(){
     //USUARIO id y CANTIDAD (**********NO LO ACTUALICÉ Y NO COINCIDE CON LOS PRODUCTOS, PREFERÍ NO PERDER TIEMPO EN ESO, SE VA A SACAR CUANDO HAYA INTERACCION CON EL DOM**********)
     let idSelected = parseInt(prompt(
         `Seleccione un modelo de la lista ingresando su id:
-        id=1 | Topper - force  |  TALLE 40
-        id=2 | New Balnce - ninja  |  TALLE39
-        id=3 | New Balance - cebra  |  TALLE 41
-        id=4 | Puma - gacele  |  TALLE 38
-        id=5 | Nike - infinity  |  TALLE 40`));
+        id=1 | Topper - Classic  |  TALLE 40
+        id=2 | Topper - Rainbow  |  TALLE39
+        id=3 | Topper - Cebra  |  TALLE 41
+        id=4 | Topper - Lover  |  TALLE 38
+        id=5 | Adidas - Infinity  |  TALLE 40
+        id=6 | Adidas - JS  |  TALLE 40
+        id=7 | Adidas - Angular  |  TALLE39
+        id=8 | Adidas - Rougue  |  TALLE 41`));
 
-    validation(idSelected, 5, 1); //Llamo a la funcion para validar los datos del usuario
+    validation(idSelected, 8, 1); //Llamo a la funcion para validar los datos del usuario
 
     // let buyObject = eval("calzado" + idSelected); //SELECCION DINAMICA (Selecciono objeto seleccionado por usuario)
     let buyObject = products[idSelected-1]; //SELECCION DINAMICA (Selecciono objeto seleccionado por usuario)
