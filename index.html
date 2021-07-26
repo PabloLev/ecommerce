@@ -58,7 +58,7 @@
                     </div>
                     <button id="buy" type="button" class="btn btn-outline-primary m-1 text-white">Buy</button>
                     <!-- Click on Modal Button -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalForm">Sign In</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="fas fa-user"></i></button>
 
                 </div>
             </div>
@@ -471,7 +471,7 @@
                     <form>
                         <div class="mb-3">
                             <label class="form-label">Email Address</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" />
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Email Address" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Password</label>
@@ -489,7 +489,54 @@
                                 <button type="submit" class="btn btn-primary">Log in with <i class="fab fa-facebook-f"></i></button>
                                 <button type="submit" class="btn btn-danger">Log in with <i class="fab fa-google-plus-g"></i></button>
                             </div>
-                            <p class="">Not yet account <a href="#">Sign Up</a></p>
+                            <p class="">Not yet account <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalFormRegister">Sign Up</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL -->
+    <!-- Modal -->
+    <div class="modal fade" id="modalFormRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+                    <button type="button" class="btn text-white" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Name" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email Address</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Confirm Password" />
+                        </div>
+                        <button type="submit" class="btn btn-primary float-end">Submit</button>
+                        <div class="mb-4 form-check">
+                            <!-- <input type="checkbox" class="form-check-input" id="rememberMe" />
+                            <label class="form-check-label" for="rememberMe">Remember me</label> -->
+                            
+                            
+                        </div>
+                        <div class="modal-footer d-block ps-0">
+                            <div class="mb-3 ms-0">
+                                <p class="">Register with other methods</a></p>
+                                <button type="submit" class="btn btn-primary">Register with <i class="fab fa-facebook-f"></i></button>
+                                <button type="submit" class="btn btn-danger">Register with <i class="fab fa-google-plus-g"></i></button>
+                            </div>
+                            <p class="">Have an account? <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalForm">Sign In here</a></p>
                         </div>
                     </form>
                 </div>
