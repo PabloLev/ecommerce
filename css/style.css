@@ -2,6 +2,10 @@ body {
   margin-top: 4rem;
 }
 
+.bg-black {
+  background-color: #131313;
+}
+
 .navbar {
   min-height: 4rem;
 }
