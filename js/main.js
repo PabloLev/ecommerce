@@ -129,8 +129,11 @@ document.getElementById("runScript").addEventListener("click", function() {
         let totalSinDescuento = sold();
         //END CALCULO
         //USUARIO DESCUENTO
-        let cuponDescuento = prompt("Otorgamos descuentos de hasta el 50% de su valor de compra. ¿Cuál es el % de desuento de su cupón?");
-        validation(cuponDescuento, 50, 3); //Llamo a la funcion para validar los datos del usuario
+        let cuponDescuento = prompt("Otorgamos descuentos de hasta el 50% de su valor de compra. ¿Cuál es el % de descuento de su cupón?");
+        if (cuponDescuento != 0){
+            validation(cuponDescuento, 50, 3); //Llamo a la funcion para validar los datos del usuario
+        }
+        
         //END USUARIO
         //CALCULO (Se hacen diferentes cálculos)
         let pagoConDescuento;
