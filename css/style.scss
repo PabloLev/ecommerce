@@ -88,6 +88,9 @@ button{
     // padding: 0.25rem 0.45rem;
     // font-size: 0.9rem;;
 }
+.btn-check:focus+.btn, .btn:focus {
+    box-shadow: none;
+}
 .btn-add-cart{
     top: 20%;
     transform: translate(-50%, -50%);
