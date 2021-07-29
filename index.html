@@ -118,187 +118,11 @@
     <main>
         <!-- Acá se van a cargar los productos a mostrar -->
         
-        <section id="productsCatalog" class="container"> 
-            <div class="row"> 
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 text-center border-0 p-3">
-                    
-                    <a href="#" class="img-wrapper position-relative p-1" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content="More info">
-                        <img src="img/hombres/topper/1_topper_classic_black_a.webp" class="card-img-top" alt="...">
-                        <img src="img/hombres/topper/1_topper_classic_black_b.webp" class="img-b card-img-top position-absolute p-1" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <img src="img/brands/Topper_100x70.svg" class="img-brand-card" alt="Topper_100x70">
-                        <h6 class="card-title text-uppercase">Classic</h6>
-                        <p class="card-text fs-4 text-dark">$1800</p>
-                        <!-- <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
-                            <button id="este" type="button" class="este btn btn-outline-primary m-1"></button>
-                            <button type="button" class="este btn btn-outline-primary m-1"></button>
-                            <button type="button" class="btn btn-outline-primary m-1"></button>
-                        </div> -->
-                        <p class="card-text mb-1 text-dark">Talles</p>
-                        <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
-                            <button id="este" type="button" class="este btn btn-outline-primary m-1">38</button>
-                            <span data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="NO STOCK. Expected on 23/08/21">
-                                <button type="button" class="btn btn-outline-secondary m-1" disabled>39</button>
-                            </span>
-                            <button type="button" class="este btn btn-outline-primary m-1">40</button>
-                            <button type="button" class="btn btn-outline-primary m-1">41</button>
-                        </div>
-                        <button type="button" class="btn container-fluid btn-primary py-2">Add to cart<i class="fas fa-plus ms-3"></i></button>
-                    </div>
-                </div>
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 text-center border-0 p-3">
-                    <a href="#" class="img-wrapper position-relative p-1" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content="More info">
-                        <img src="img/hombres/topper/2_topper_rainbow_multi_a.webp" class="card-img-top" alt="...">
-                        <img src="img/hombres/topper/2_topper_rainbow_multi_b.webp" class="img-b card-img-top position-absolute p-1" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <img src="img/brands/Topper_100x70.svg" class="img-brand-card" alt="Topper_100x70">
-                        <h6 class="card-title text-uppercase">Rainbow</h6>
-                        <p class="card-text fs-4 text-dark">$1500</p>
-                        <p class="card-text mb-1 text-dark">Talles</p>
-                        <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
-                            <span data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="NO STOCK. Expected on 01/09/21">
-                                <button type="button" class="btn btn-outline-secondary m-1" disabled>39</button>
-                            </span>
-                            <button type="button" class="btn btn-outline-primary m-1">40</button>
-                        </div>
-                        <button type="button" class="btn container-fluid btn-primary py-2">Add to cart<i class="fas fa-plus ms-3"></i></button>
-                    </div>
-                </div>
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 text-center border-0 p-3">
-                    <a href="#" class="img-wrapper position-relative p-1" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content="More info">
-                        <img src="img/hombres/topper/3_topper_cebra_black_red_a.webp" class="card-img-top" alt="...">
-                        <img src="img/hombres/topper/3_topper_cebra_black_red_b.webp" class="img-b card-img-top position-absolute p-1" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <img src="img/brands/Topper_100x70.svg" class="img-brand-card" alt="Topper_100x70">
-                        <h6 class="card-title text-uppercase">Cebra</h6>
-                        <p class="card-text fs-4 text-dark">$2800</p>
-                        <p class="card-text mb-1 text-dark">Talles</p>
-                        <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
-                            <span data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="NO STOCK. Expected on 23/08/21">
-                                <button type="button" class="btn btn-outline-secondary m-1" disabled>39</button>
-                            </span>
-                            <span data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="NO STOCK. Expected on 23/08/21">
-                                <button type="button" class="btn btn-outline-secondary m-1" disabled>40</button>
-                            </span>
-                            <span data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="NO STOCK. Expected on 23/08/21">
-                                <button type="button" class="btn btn-outline-secondary m-1" disabled>41</button>
-                            </span>
-                            <span data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="NO STOCK. Expected on 23/08/21">
-                                <button type="button" class="btn btn-outline-secondary m-1" disabled>42</button>
-                            </span>
-                        </div>
-                        <button type="button" class="btn container-fluid btn-primary py-2 disabled out-stock">Out of stock</button>
-                    </div>
-                </div>
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 text-center border-0 p-3">
-                    <a href="#" class="img-wrapper position-relative p-1" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content="More info">
-                        <img src="img/hombres/topper/4_topper_gacele_light-grey_a.webp" class="card-img-top" alt="...">
-                        <img src="img/hombres/topper/4_topper_gacele_light-grey_b.webp" class="img-b card-img-top position-absolute p-1" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <img src="img/brands/Topper_100x70.svg" class="img-brand-card" alt="Topper_100x70">
-                        <h6 class="card-title text-uppercase">Lover</h6>
-                        <p class="card-text fs-4 text-dark">$3100</p>
-                        <p class="card-text mb-1 text-dark">Talles</p>
-                        <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
-                            <span data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="NO STOCK. Expected on 12/10/21">
-                                <button type="button" class="btn btn-outline-secondary m-1" disabled>39</button>
-                            </span>
-                            <button type="button" class="btn btn-outline-primary m-1">40</button>
-                            <button type="button" class="btn btn-outline-primary m-1">41</button>
-                        </div>
-                        <button type="button" class="btn container-fluid btn-primary py-2">Add to cart<i class="fas fa-plus ms-3"></i></button>
-                    </div>
-                </div>
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 text-center border-0 p-3">
-
-                    <a href="#" class="img-wrapper position-relative p-1" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content="More info">
-                        <img src="img/hombres/adidas/adidas_1a.webp" class="card-img-top" alt="...">
-                        <img src="img/hombres/adidas/adidas_1b.webp" class="img-b card-img-top position-absolute p-1" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <img src="img/brands/adidas_100x70.svg" class="img-brand-card" alt="Topper_100x70">
-                        <h6 class="card-title text-uppercase">infinity</h6>
-                        <p class="card-text fs-4 text-dark">$5100</p>
-                        <p class="card-text mb-1 text-dark">Talles</p>
-                        <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
-                            <span data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="NO STOCK. NotExpected">
-                                <button type="button" class="btn btn-outline-secondary m-1" disabled>39</button>
-                            </span>
-                            <button type="button" class="btn btn-outline-primary m-1">40</button>
-                            <button type="button" class="btn btn-outline-primary m-1">41</button>
-                            <span data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="NO STOCK. NotExpected">
-                                <button type="button" class="btn btn-outline-secondary m-1" disabled>41</button>
-                            </span>
-                        </div>
-                        <button type="button" class="btn container-fluid btn-primary py-2">Add to cart<i class="fas fa-plus ms-3"></i></button>
-                    </div>
-
-                </div>
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 text-center border-0 p-3">
-
-                    <a href="#" class="img-wrapper position-relative p-1" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content="More info">
-                        <img src="img/hombres/adidas/adidas_2a.webp" class="card-img-top" alt="...">
-                        <img src="img/hombres/adidas/adidas_2b.webp" class="img-b card-img-top position-absolute p-1" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <img src="img/brands/adidas_100x70.svg" class="img-brand-card" alt="Topper_100x70">
-                        <h6 class="card-title text-uppercase">js</h6>
-                        <p class="card-text fs-4 text-dark">$3100</p>
-                        <p class="card-text mb-1 text-dark">Talles</p>
-                        <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
-
-                            <button type="button" class="btn btn-outline-primary m-1">40</button>
-                        </div>
-                        <button type="button" class="btn container-fluid btn-primary py-2">Add to cart<i class="fas fa-plus ms-3"></i></button>
-                    </div>
-
-                </div>
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 text-center border-0 p-3">
-                    
-                    <a href="#" class="img-wrapper position-relative p-1" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content="More info">
-                        <img src="img/hombres/adidas/adidas_3a.webp" class="card-img-top" alt="...">
-                        <img src="img/hombres/adidas/adidas_3b.webp" class="img-b card-img-top position-absolute p-1" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <img src="img/brands/adidas_100x70.svg" class="img-brand-card" alt="Topper_100x70">
-                        <h6 class="card-title text-uppercase">angular</h6>
-                        <p class="card-text fs-4 text-dark">$2100</p>
-                        <p class="card-text mb-1 text-dark">Talles</p>
-                        <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
-                            <span data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="NO STOCK. Expected on 12/10/21">
-                                <button type="button" class="btn btn-outline-secondary m-1" disabled>39</button>
-                            </span>
-                            <button type="button" class="btn btn-outline-primary m-1">40</button>
-                            <button type="button" class="btn btn-outline-primary m-1">41</button>
-                        </div>
-                        <button type="button" class="btn container-fluid btn-primary py-2">Add to cart<i class="fas fa-plus ms-3"></i></button>
-                    </div>
-                    
-                </div>
-                <div class="card col-12 col-sm-6 col-md-4 col-lg-3 text-center border-0 p-3">
-                    <a href="#" class="img-wrapper position-relative p-1" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content="More info">
-                        <img src="img/hombres/adidas/adidas_4a.webp" class="card-img-top" alt="...">
-                        <img src="img/hombres/adidas/adidas_4b.webp" class="img-b card-img-top position-absolute p-1" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <img src="img/brands/adidas_100x70.svg" class="img-brand-card" alt="Topper_100x70">
-                        <h6 class="card-title text-uppercase">Rougue</h6>
-                        <p class="card-text fs-4 text-dark">$4200</p>
-                        <p class="card-text mb-1 text-dark">Talles</p>
-                        <div class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
-                            <span data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="NO STOCK. NotExpected">
-                                <button type="button" class="btn btn-outline-secondary m-1" disabled>41</button>
-                            </span>
-                            <button type="button" class="btn btn-outline-primary m-1">40</button>
-                            <button type="button" class="btn btn-outline-primary m-1">41</button>
-                        </div>
-                        <button type="button" class="btn container-fluid btn-primary py-2">Add to cart<i class="fas fa-plus ms-3"></i></button>
-                    </div>
-                </div>
+        <section class="container"> 
+            <div  id="productsCatalog" class="row"> 
+                
+                <!-- SE AGREGA POR JS TEMPLATE -->
+                
             </div> <!-- END ROW -->
             <!-- PAGINACION -->
             <nav aria-label="Page navigation example">
@@ -449,7 +273,7 @@
             <!-- Copyright -->
             <div class="text-center p-3 bg-black">
                 © 2021 Copyright:
-            <a class="text-primary text-decoration-none" href="https://www.coderhouse.com.uy/" target="_blank">PL - Coderhouse</a>
+            <a class="text-primary text-decoration-none" href="https://www.coderhouse.com.uy/" target="_blank" rel="noopener">PL - Coderhouse</a>
         </div>
             <!-- Copyright -->
     </footer>
@@ -464,18 +288,18 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
+                    <h5 class="modal-title" id="exampleModalLabel1">Sign In</h5>
                     <button type="button" class="btn text-white" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
                             <label class="form-label">Email Address</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Email Address" />
+                            <input type="text" class="form-control" id="username1" name="username" placeholder="Email Address" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
+                            <input type="password" class="form-control" id="password1" name="password" placeholder="Password" />
                             <p class="m-2"><a href="#">Forget password?</a></p>
                         </div>
                         <div class="mb-4 form-check">
@@ -502,26 +326,26 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+                    <h5 class="modal-title" id="exampleModalLabelRegister">Register</h5>
                     <button type="button" class="btn text-white" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
                             <label class="form-label">Your Name</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Name" />
+                            <input type="text" class="form-control" id="nameRegister" name="username" placeholder="Name" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Email Address</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" />
+                            <input type="text" class="form-control" id="usernameRegister" name="username" placeholder="Username" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
+                            <input type="password" class="form-control" id="passwordRegister" name="password" placeholder="Password" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Confirm Password" />
+                            <input type="password" class="form-control" id="passwordConfirm" name="password" placeholder="Confirm Password" />
                         </div>
                         <button type="submit" class="btn btn-primary float-end">Submit</button>
                         <div class="mb-4 form-check">
@@ -543,6 +367,30 @@
             </div>
         </div>
     </div>
+    <!-- TEMPLATE -->
+    <template id="templateProduct">
+        <div class="card col-12 col-sm-6 col-md-4 col-lg-3 text-center border-0 p-3">
+            <a href="#" class="img-wrapper position-relative p-1" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content="More info">
+                <img src="img/hombres/adidas/adidas_4a.webp" class="img-a card-img-top" alt="...">
+                <img src="img/hombres/adidas/adidas_4b.webp" class="img-b card-img-top position-absolute p-1" alt="...">
+            </a>
+            <div class="card-body">
+                <img src="img/brands/ADIDAS" class="img-brand-card" alt="Topper_100x70">
+                <h6 class="card-title text-uppercase">Rougue</h6>
+                <p class="price card-text fs-4 text-dark">$4200</p>
+                <p class="card-text mb-1 text-dark">Talles</p>
+                <div id="sizes" class="btn-group mb-3" role="group" aria-label="Basic radio toggle button group">
+                    <!-- <span data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="NO STOCK. NotExpected">
+                        <button type="button" class="btn btn-outline-secondary m-1" disabled>41</button>
+                    </span> -->
+                    <!-- <button type="button" class="btn1 btn btn-outline-secondary m-1" disabled></button>
+                    <button type="button" class="btn2 btn btn-outline-primary m-1"></button>
+                    <button type="button" class="btn3 btn btn-outline-primary m-1"></button> -->
+                </div>
+                <button type="button" class="cart btn container-fluid btn-primary py-2">Add to cart<i class="fas fa-plus ms-3"></i></button>
+            </div>
+        </div>
+    </template>
     <!-- END MODAL -->
     <!-- END FOOTER -->
     <!-- SCRIPTS -->
