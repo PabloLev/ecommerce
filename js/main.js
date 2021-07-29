@@ -57,7 +57,7 @@ class Product{
 const products = []; //Creo el array;
 products.push(new Product(1, 'calzado', 'hombres', 'Topper', 'classic', 'black', 1800, [{'size': 34, 'stock': 2},{'size': 35, 'stock': 0},{'size':36, 'stock':1}, {'size': 37, 'stock': 2}]));
 products.push(new Product(2, 'calzado', 'hombres', 'Topper', 'rainbow', 'multi', 1500, [{'size': 37, 'stock': 4},{'size': 40, 'stock': 5},{'size':42, 'stock':1}]));
-products.push(new Product(3, 'calzado', 'hombres', 'Topper', 'cebra', 'black_red', 2800, [{'size': 37, 'stock': 30},{'size': 3 , 'stock': 335},{'size':42, 'stock':0}]));
+products.push(new Product(3, 'calzado', 'hombres', 'Topper', 'cebra', 'black_red', 2800, [{'size': 37, 'stock': 30},{'size': 30 , 'stock': 335},{'size':42, 'stock':0}]));
 products.push(new Product(4, 'calzado', 'hombres', 'Topper', 'lover', 'light-grey', 3100, [{'size': 10, 'stock': 3}]));
 products.push(new Product(5, 'calzado', 'hombres', 'Adidas', 'infinity', 'black', 5100, [{'size': 15, 'stock': 0}]));
 products.push(new Product(6, 'calzado', 'hombres', 'Adidas', 'js', 'black', 3100, [{'size': 39, 'stock': 0},{'size': 40, 'stock': 5},{'size':41, 'stock':1}]));
@@ -80,7 +80,7 @@ products.forEach( product => {
     templateProduct.querySelector('.card-title').textContent = product.model;
     templateProduct.querySelector('.price').textContent = '$'+product.price;
     //LIMPIO PARA NO REPOBLAR
-    let empty = templateProduct.querySelector('.btn-group');
+    let empty = templateProduct.querySelector('.dropdown-menu');
     while (empty.firstChild) {
         empty.removeChild(empty.firstChild);
     }
@@ -90,7 +90,7 @@ products.forEach( product => {
     
     
     product.sizeStock.forEach(element => { // RECORRO EL ARRAY sizeStock
-        const addBtns = templateProduct.querySelector('.btn-group');
+        const addBtns = templateProduct.querySelector('.dropdown-menu');
         //CREO EL BOTÓN DE TALLES CON SUS CLASES Y LE AGREGO EL VALOR
         const button = document.createElement('button');
         button.classList.add('btn', 'btn-outline-primary', 'm-1');
@@ -112,7 +112,7 @@ products.forEach( product => {
 productsCatalog.appendChild(fragment);
 // END TEMPLATE LOAD
 
-let cart = document.querySelectorAll('.card-body .btn-group .btn');
+let cart = document.querySelectorAll('.dropdown-menu .btn');
 cart.forEach(element => {element.addEventListener('click', function() {
     let pressedBtn=parseInt(element.textContent);
     alert(pressedBtn);
