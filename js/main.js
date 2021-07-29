@@ -55,7 +55,7 @@ class Product{
 
 //BASE DE DATOS SIMULADA en array de objetos productos.
 const products = []; //Creo el array;
-products.push(new Product(1, 'calzado', 'hombres', 'Topper', 'classic', 'black', 1800, [{'size': 34, 'stock': 2},{'size': 35, 'stock': 0},{'size':36, 'stock':1}]));
+products.push(new Product(1, 'calzado', 'hombres', 'Topper', 'classic', 'black', 1800, [{'size': 34, 'stock': 2},{'size': 35, 'stock': 0},{'size':36, 'stock':1}, {'size': 37, 'stock': 2}]));
 products.push(new Product(2, 'calzado', 'hombres', 'Topper', 'rainbow', 'multi', 1500, [{'size': 37, 'stock': 4},{'size': 40, 'stock': 5},{'size':42, 'stock':1}]));
 products.push(new Product(3, 'calzado', 'hombres', 'Topper', 'cebra', 'black_red', 2800, [{'size': 37, 'stock': 30},{'size': 3 , 'stock': 335},{'size':42, 'stock':0}]));
 products.push(new Product(4, 'calzado', 'hombres', 'Topper', 'lover', 'light-grey', 3100, [{'size': 10, 'stock': 3}]));
@@ -99,9 +99,9 @@ products.forEach( product => {
     fragment.appendChild(clone);
 });
 productsCatalog.appendChild(fragment);
-// END TEMPLATE
+// END TEMPLATE LOAD
 
-let cart = document.querySelectorAll('.btn-group .btn');
+let cart = document.querySelectorAll('.card-body .btn-group .btn');
 cart.forEach(element => {element.addEventListener('click', function() {
     let pressedBtn=parseInt(element.textContent);
     alert(pressedBtn);

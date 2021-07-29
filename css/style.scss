@@ -78,6 +78,16 @@ button{
     opacity: 1;
     transition: all 0.3s;
 }
+.btn-group, .btn-group-vertical {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.btn-group-vertical>.btn, .btn-group>.btn {
+    flex: inherit;
+    // padding: 0.25rem 0.45rem;
+    // font-size: 0.9rem;;
+}
 .btn-add-cart{
     top: 20%;
     transform: translate(-50%, -50%);

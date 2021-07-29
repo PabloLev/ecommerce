@@ -89,6 +89,23 @@ button .btn-outline-secondary {
   transition: all 0.3s;
 }
 
+.btn-group, .btn-group-vertical {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.btn-group-vertical > .btn, .btn-group > .btn {
+  -webkit-box-flex: inherit;
+      -ms-flex: inherit;
+          flex: inherit;
+}
+
 .btn-add-cart {
   top: 20%;
   -webkit-transform: translate(-50%, -50%);
