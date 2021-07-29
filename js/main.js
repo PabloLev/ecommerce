@@ -79,11 +79,20 @@ products.forEach( product => {
     templateProduct.querySelector('.img-brand-card').src='img/brands/' + product.brand + '.svg';
     templateProduct.querySelector('.card-title').textContent = product.model;
     templateProduct.querySelector('.price').textContent = '$'+product.price;
-    templateProduct.querySelector('.btn-group').innerHTML = ''; //LIMPIO PARA NO REPOBLAR
+    //LIMPIO PARA NO REPOBLAR
+    let empty = templateProduct.querySelector('.btn-group');
+    while (empty.firstChild) {
+        empty.removeChild(empty.firstChild);
+    }
+    // templateProduct.querySelector('.btn-group').innerHTML = ''; //LIMPIO PARA NO REPOBLAR (METODO CON innerHTML tratar de no usarlo)
+    //END LIMPIO PARA NO REPOBLAR
+
+    
     
     product.sizeStock.forEach(element => { // RECORRO EL ARRAY sizeStock
         const addBtns = templateProduct.querySelector('.btn-group');
-        let button=document.createElement('button'); //CREO EL BOTÓN DE TALLES
+        //CREO EL BOTÓN DE TALLES CON SUS CLASES Y LE AGREGO EL VALOR
+        const button = document.createElement('button');
         button.classList.add('btn', 'btn-outline-primary', 'm-1');
         button.textContent = element.size; //AGREGO EL VALOR AL BOTÓN
         if (element.stock === 0){
@@ -93,6 +102,8 @@ products.forEach( product => {
         }else{
             addBtns.appendChild(button);
         }
+        // templateProduct.querySelector('.btn').textContent = element.size;
+        // console.log(button);
     });
 
     const clone = templateProduct.cloneNode(true);
