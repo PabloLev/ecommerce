@@ -106,6 +106,20 @@ button .btn-outline-secondary {
           flex: inherit;
 }
 
+.dropdown-menu {
+  border: none;
+}
+
+.dropdown-menu.show {
+  display: -ms-grid;
+  display: grid;
+  width: 100%;
+  -webkit-transform: translate(0, 40px) !important;
+          transform: translate(0, 40px) !important;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
 .btn-check:focus + .btn, .btn:focus {
   -webkit-box-shadow: none;
           box-shadow: none;

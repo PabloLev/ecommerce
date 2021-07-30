@@ -88,6 +88,17 @@ button{
     // padding: 0.25rem 0.45rem;
     // font-size: 0.9rem;;
 }
+.dropdown-menu {
+    border: none;
+}
+.dropdown-menu.show {
+    display: grid;
+    // position: inherit !important;
+    width: 100%;
+    transform: translate(0, 40px) !important;
+    transition: all 0.3s;
+
+}
 .btn-check:focus+.btn, .btn:focus {
     box-shadow: none;
 }

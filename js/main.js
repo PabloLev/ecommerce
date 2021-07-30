@@ -93,7 +93,7 @@ products.forEach( product => {
         const addBtns = templateProduct.querySelector('.dropdown-menu');
         //CREO EL BOTÓN DE TALLES CON SUS CLASES Y LE AGREGO EL VALOR
         const button = document.createElement('button');
-        button.classList.add('btn', 'btn-outline-primary', 'm-1');
+        button.classList.add('btn', 'btn-outline-primary', 'm-1', 'p-0');
         button.textContent = element.size; //AGREGO EL VALOR AL BOTÓN
         if (element.stock === 0){
             button.classList.add('btn-outline-secondary');
