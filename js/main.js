@@ -46,7 +46,6 @@ class Product{
             if(sum <= 0){ //CHEQUEO STOCK
                 product.inStock = false;
             }
-            // console.log(product.id+ "= "+ sum);  
         });
     }
 }
@@ -79,6 +78,7 @@ products.forEach( product => {
     templateProduct.querySelector('.img-brand-card').src='img/brands/' + product.brand + '.svg';
     templateProduct.querySelector('.card-title').textContent = product.model;
     templateProduct.querySelector('.price').textContent = '$'+product.price;
+
     //LIMPIO PARA NO REPOBLAR
     let empty = templateProduct.querySelector('.dropdown-menu');
     while (empty.firstChild) {
@@ -86,24 +86,22 @@ products.forEach( product => {
     }
     // templateProduct.querySelector('.btn-group').innerHTML = ''; //LIMPIO PARA NO REPOBLAR (METODO CON innerHTML tratar de no usarlo)
     //END LIMPIO PARA NO REPOBLAR
-
-    
-    
     product.sizeStock.forEach(element => { // RECORRO EL ARRAY sizeStock
-        const addBtns = templateProduct.querySelector('.dropdown-menu');
+        const dropdownSize = templateProduct.querySelector('.dropdown-menu');
         //CREO EL BOTÓN DE TALLES CON SUS CLASES Y LE AGREGO EL VALOR
-        const button = document.createElement('button');
-        button.classList.add('btn', 'btn-outline-primary', 'm-1', 'p-0');
-        button.textContent = element.size; //AGREGO EL VALOR AL BOTÓN
+        const sizeBtn = document.createElement('button');
+        sizeBtn.dataset.id = product.id;
+        sizeBtn.classList.add('btn', 'btn-outline-primary', 'm-1', 'p-0');
+        sizeBtn.textContent = element.size; //AGREGO EL VALOR AL BOTÓN
         if (element.stock === 0){
-            button.classList.add('btn-outline-secondary');
-            button.disabled = true;
-            addBtns.appendChild(button);
+            sizeBtn.classList.add('btn-outline-secondary');
+            sizeBtn.disabled = true;
+            dropdownSize.appendChild(sizeBtn);
         }else{
-            addBtns.appendChild(button);
+            dropdownSize.appendChild(sizeBtn);
         }
         // templateProduct.querySelector('.btn').textContent = element.size;
-        // console.log(button);
+        // console.log(sizeBtn);
     });
 
     const clone = templateProduct.cloneNode(true);
@@ -112,10 +110,14 @@ products.forEach( product => {
 productsCatalog.appendChild(fragment);
 // END TEMPLATE LOAD
 
+// CLICK EN BOTTON
 let cart = document.querySelectorAll('.dropdown-menu .btn');
 cart.forEach(element => {element.addEventListener('click', function() {
     let pressedBtn=parseInt(element.textContent);
-    alert(pressedBtn);
+    let pressedId = element.getAttribute('data-id');
+    console.log('Size selected: ' + pressedBtn + '\nID of product: ' + pressedId);
+
+
 })});
 // products[1].fixStock()
 //****FILTROS****
