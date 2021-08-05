@@ -49,10 +49,10 @@ const products = [];
 
 
 products.push(new Product(1, 'calzado', 'hombres', 'Topper', 'classic', 'black', 1800, [{'size': 34, 'stock': 2},{'size': 35, 'stock': 0},{'size':36, 'stock':1}, {'size': 37, 'stock': 2}]));
-// products.push(new Product(1, 'calzado', 'hombres', 'Topper', 'classic', 'black', 1800, 34, 2));
-// products.push(new Product(1, 'calzado', 'hombres', 'Topper', 'classic', 'black', 1800, 35, 0));
-// products.push(new Product(1, 'calzado', 'hombres', 'Topper', 'classic', 'black', 1800, 36, 1));
-// products.push(new Product(1, 'calzado', 'hombres', 'Topper', 'classic', 'black', 1800, 37, 2));
+products.push(new Product(1, 'calzado', 'hombres', 'Topper', 'classic', 'black', 1800, 34, 2));
+products.push(new Product(1, 'calzado', 'hombres', 'Topper', 'classic', 'black', 1800, 35, 0));
+products.push(new Product(1, 'calzado', 'hombres', 'Topper', 'classic', 'black', 1800, 36, 1));
+products.push(new Product(1, 'calzado', 'hombres', 'Topper', 'classic', 'black', 1800, 37, 2));
 products.push(new Product(2, 'calzado', 'hombres', 'Topper', 'rainbow', 'multi', 1500, [{'size': 37, 'stock': 4},{'size': 40, 'stock': 5},{'size':99, 'stock':1}]));
 products.push(new Product(3, 'calzado', 'hombres', 'Topper', 'cebra', 'black_red', 2800, [{'size': 37, 'stock': 30},{'size': 30 , 'stock': 335},{'size':42, 'stock':0}]));
 products.push(new Product(4, 'calzado', 'hombres', 'Topper', 'lover', 'light-grey', 3100, [{'size': 10, 'stock': 3}]));
@@ -61,12 +61,6 @@ products.push(new Product(6, 'calzado', 'hombres', 'Adidas', 'js', 'black', 3100
 products.push(new Product(7, 'calzado', 'hombres', 'Adidas', 'angular', 'black', 2100, [{'size': 35, 'stock': 3},{'size': 40, 'stock': 5}]));
 products.push(new Product(8, 'calzado', 'hombres', 'Adidas', 'rougue', 'black', 4200, [{'size': 16, 'stock': 9}]));
 
-
-products.forEach( product => {
-    product.sizeStock.forEach(element => { // RECORRO EL ARRAY sizeStock
-        
-    }); 
-});
 
 // console.log(products[0].sizeStock[0].stock);
 // console.log('------SCRIPT INICIALIZADO------- AHORA PUEDE ORDENAR MEDIANTE SORT O COMPRAR MEDIANTE BUY');
