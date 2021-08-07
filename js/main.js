@@ -16,9 +16,6 @@ class Product{
         this.promotion = false;
     }
     //METODO que modifica PROPIEDADES CANTIDAD Y STOCK DEL OBJETO
-    test(){
-        console.log("test");
-    }
     fixStock(id, sizeSelected) {
         let restaStock = products[id-1].sizeStock.find((el)=>el.size == sizeSelected);
         if ( restaStock.stock > 0){
@@ -26,45 +23,31 @@ class Product{
             console.log(restaStock);
             let cartIconNum = document.querySelector('.fa-shopping-cart span');
             cartIconNum.textContent = parseInt(cartIconNum.textContent) + 1;
+            let removeActive = document.querySelector('.dropdown-menu .active');
+            if(cartIconNum.classList.contains("active")){
+                removeActive.classList.remove("active");
+            }
+            
+            removeActive.classList.remove("btn-outline-primary");
+            removeActive.classList.add("btn-outline-secondary");
+            removeActive.disabled = true;
+
+            // AGREGAR CLASS DISABLE O DISABLE AL BUTTON Y ELIMINAR CLASE ACTIVE;
         }else{
             // products[id-1].inStock = false;
             console.log("No stock of size: " + restaStock.size);
         }
-        
-        // if (products[id-1].sizeStock.find((el)=>el.size == sizeSelected )){
-        //     console.log("aleluya");
-        //     let restaStock = products[id-1].sizeStock.find((el)=>el.size) == sizeSelected
-        // };
-
-        //TENGO QUE ARREGLAR ESTO CON FIND, PARA QUE DESCUENTE SOLO DEL TALLE QUE SE COMPRO. DETECTO CUAL FUE CON FIND Y LE HAGO LA RESTA POR INDEX DEL ARRAY
-        // for(product in products){
-        //     if (products[id-1].sizeStock.find((el)=>el.size == sizeSelected )){
-        //         console.log("aleluya");
-        //     };
-
-        // }
+        // VALIDAR QUE LA SUMATORIA DE LOS STOCK SEA CERO Y AHÍ PONER INSTOCK EN false;
         // products.forEach( product => { 
         //     product.sizeStock.forEach(element => { 
-        //         if (element.stock == 0){
-        //             element.stock=0;
-        //         }else{
-        //             element.stock = element.stock -1;
+        //         let sum = element.stock;
+        //         sum = sum + element.stock;
+        //         if(sum == 0){
+        //             console.log("CEROOOOOO");
         //         }
-                
         //     });
         // });
-        // products.forEach( product => {
-            
-        //     let sum = 0;
-        //     product.sizeStock.forEach(element => { 
-
-        //         sum += element.stock; 
-                
-        //     });
-        //     if(sum <= 0){
-        //         product.inStock = false;
-        //     }
-        // });
+        
     }
 }
 //END CLASE CONSTRUCTORA Producto
@@ -113,13 +96,14 @@ products.forEach( product => {
         //CREO EL BOTÓN DE TALLES CON SUS CLASES Y LE AGREGO EL VALOR
         const sizeBtn = document.createElement('button');
         sizeBtn.dataset.id = product.id;
-        sizeBtn.classList.add('btn', 'btn-outline-primary', 'm-1', 'p-0');
+        sizeBtn.classList.add('btn', 'm-1', 'p-0');
         sizeBtn.textContent = element.size;
         if (element.stock === 0){
             sizeBtn.classList.add('btn-outline-secondary');
             sizeBtn.disabled = true;
             dropdownSize.appendChild(sizeBtn);
         }else{
+            sizeBtn.classList.add('btn-outline-primary');
             dropdownSize.appendChild(sizeBtn);
         }
     });
