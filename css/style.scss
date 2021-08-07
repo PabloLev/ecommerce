@@ -88,10 +88,10 @@ button{
     // padding: 0.25rem 0.45rem;
     // font-size: 0.9rem;;
 }
-.dropdown-menu {
+.card-body .dropdown-menu {
     border: none;
 }
-.dropdown-menu.show {
+.card-body  .dropdown-menu.show {
     display: grid;
     // position: inherit !important;
     width: 100%;

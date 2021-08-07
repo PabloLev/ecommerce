@@ -106,11 +106,11 @@ button .btn-outline-secondary {
           flex: inherit;
 }
 
-.dropdown-menu {
+.card-body .dropdown-menu {
   border: none;
 }
 
-.dropdown-menu.show {
+.card-body .dropdown-menu.show {
   display: -ms-grid;
   display: grid;
   width: 100%;

@@ -16,30 +16,53 @@ class Product{
         this.promotion = false;
     }
     //METODO que modifica PROPIEDADES CANTIDAD Y STOCK DEL OBJETO
-    fixStock() {
-        //TENGO QUE ARREGLAR ESTO CON FIND, PARA QUE DESCUENTE SOLO DEL TALLE QUE SE COMPRO. DETECTO CUAL FUE CON FIND Y LE HAGO LA RESTA POR INDEX DEL ARRAY
-        products.forEach( product => { 
-            product.sizeStock.forEach(element => { 
-                if (element.stock == 0){
-                    element.stock=0;
-                }else{
-                    element.stock = element.stock -1;
-                }
-                
-            });
-        });
-        products.forEach( product => {
-            
-            let sum = 0;
-            product.sizeStock.forEach(element => { 
+    test(){
+        console.log("test");
+    }
+    fixStock(id, sizeSelected) {
+        let restaStock = products[id-1].sizeStock.find((el)=>el.size == sizeSelected);
+        if ( restaStock.stock > 0){
+            restaStock.stock = restaStock.stock - 1;
+            console.log(restaStock);
+        }else{
+            // products[id-1].inStock = false;
+            console.log("No stock of size: " + restaStock.size);
+        }
+        
+        // if (products[id-1].sizeStock.find((el)=>el.size == sizeSelected )){
+        //     console.log("aleluya");
+        //     let restaStock = products[id-1].sizeStock.find((el)=>el.size) == sizeSelected
+        // };
 
-                sum += element.stock; 
+        //TENGO QUE ARREGLAR ESTO CON FIND, PARA QUE DESCUENTE SOLO DEL TALLE QUE SE COMPRO. DETECTO CUAL FUE CON FIND Y LE HAGO LA RESTA POR INDEX DEL ARRAY
+        // for(product in products){
+        //     if (products[id-1].sizeStock.find((el)=>el.size == sizeSelected )){
+        //         console.log("aleluya");
+        //     };
+
+        // }
+        // products.forEach( product => { 
+        //     product.sizeStock.forEach(element => { 
+        //         if (element.stock == 0){
+        //             element.stock=0;
+        //         }else{
+        //             element.stock = element.stock -1;
+        //         }
                 
-            });
-            if(sum <= 0){
-                product.inStock = false;
-            }
-        });
+        //     });
+        // });
+        // products.forEach( product => {
+            
+        //     let sum = 0;
+        //     product.sizeStock.forEach(element => { 
+
+        //         sum += element.stock; 
+                
+        //     });
+        //     if(sum <= 0){
+        //         product.inStock = false;
+        //     }
+        // });
     }
 }
 //END CLASE CONSTRUCTORA Producto
@@ -49,10 +72,6 @@ const products = [];
 
 
 products.push(new Product(1, 'calzado', 'hombres', 'Topper', 'classic', 'black', 1800, [{'size': 34, 'stock': 2},{'size': 35, 'stock': 0},{'size':36, 'stock':1}, {'size': 37, 'stock': 2}]));
-// products.push(new Product(1, 'calzado', 'hombres', 'Topper', 'classic', 'black', 1800, 34, 2));
-// products.push(new Product(1, 'calzado', 'hombres', 'Topper', 'classic', 'black', 1800, 35, 0));
-// products.push(new Product(1, 'calzado', 'hombres', 'Topper', 'classic', 'black', 1800, 36, 1));
-// products.push(new Product(1, 'calzado', 'hombres', 'Topper', 'classic', 'black', 1800, 37, 2));
 products.push(new Product(2, 'calzado', 'hombres', 'Topper', 'rainbow', 'multi', 1500, [{'size': 37, 'stock': 4},{'size': 40, 'stock': 5},{'size':99, 'stock':1}]));
 products.push(new Product(3, 'calzado', 'hombres', 'Topper', 'cebra', 'black_red', 2800, [{'size': 37, 'stock': 30},{'size': 30 , 'stock': 335},{'size':42, 'stock':0}]));
 products.push(new Product(4, 'calzado', 'hombres', 'Topper', 'lover', 'light-grey', 3100, [{'size': 10, 'stock': 3}]));
@@ -113,16 +132,39 @@ productsCatalog.appendChild(fragment);
 
 // END TEMPLATE LOAD
 
-
+// function fixStock(id, sizeSelected) {
+//     //TENGO QUE ARREGLAR ESTO CON FIND, PARA QUE DESCUENTE SOLO DEL TALLE QUE SE COMPRO. DETECTO CUAL FUE CON FIND Y LE HAGO LA RESTA POR INDEX DEL ARRAY
+//     let restaStock = products[id-1].sizeStock.find((el)=>el.size == sizeSelected);
+//     if ( restaStock.stock > 0){
+//         restaStock.stock = restaStock.stock - 1;
+//         console.log(restaStock);
+//     }else{
+//         // products[id-1].inStock = false;
+//         console.log("No stock of size: " + restaStock.size);
+//     }
+// }
 
 
 
 // CLICK EN BOTTON SIZE
-let cart = document.querySelectorAll('.dropdown-menu .btn');
-cart.forEach(element => {element.addEventListener('click', function() {
-    let pressedBtn=parseInt(element.textContent);
-    let pressedId = element.getAttribute('data-id');
+const selectedSize = document.querySelectorAll('.dropdown-menu .btn');
+let pressedBtn = 0;
+let pressedId;
+selectedSize.forEach(element => {element.addEventListener('click', function() {
+    pressedBtn=parseInt(element.textContent);
+    pressedId = element.getAttribute('data-id');
     console.log('Size selected: ' + pressedBtn + '\nID of product: ' + pressedId);
+})});
+// CLICK EN BOTTON ADD CARRITO
+const addCart = document.querySelectorAll('.card-body .cart');
+addCart.forEach(element => {element.addEventListener('click', function() {
+    if(pressedBtn == 0){
+        console.log("Seleccione talle");
+    }else{
+        products[pressedId-1].fixStock(pressedId, pressedBtn);
+        let cartIconNum = document.querySelector('.fa-shopping-cart span');
+        cartIconNum.textContent = parseInt(cartIconNum.textContent) + 1;
+    }
 })});
 
 
