@@ -24,6 +24,8 @@ class Product{
         if ( restaStock.stock > 0){
             restaStock.stock = restaStock.stock - 1;
             console.log(restaStock);
+            let cartIconNum = document.querySelector('.fa-shopping-cart span');
+            cartIconNum.textContent = parseInt(cartIconNum.textContent) + 1;
         }else{
             // products[id-1].inStock = false;
             console.log("No stock of size: " + restaStock.size);
@@ -162,8 +164,6 @@ addCart.forEach(element => {element.addEventListener('click', function() {
         console.log("Seleccione talle");
     }else{
         products[pressedId-1].fixStock(pressedId, pressedBtn);
-        let cartIconNum = document.querySelector('.fa-shopping-cart span');
-        cartIconNum.textContent = parseInt(cartIconNum.textContent) + 1;
     }
 })});
 
