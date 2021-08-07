@@ -24,18 +24,15 @@ class Product{
             let cartIconNum = document.querySelector('.fa-shopping-cart span');
             cartIconNum.textContent = parseInt(cartIconNum.textContent) + 1;
             let removeActive = document.querySelector('.dropdown-menu .active');
-            if(cartIconNum.classList.contains("active")){
-                removeActive.classList.remove("active");
+            if(cartIconNum.classList.contains('active')){
+                removeActive.classList.remove('active');
             }
-            
-            removeActive.classList.remove("btn-outline-primary");
-            removeActive.classList.add("btn-outline-secondary");
+            removeActive.classList.remove('btn-outline-primary');
+            removeActive.classList.add('btn-outline-secondary');
             removeActive.disabled = true;
-
-            // AGREGAR CLASS DISABLE O DISABLE AL BUTTON Y ELIMINAR CLASE ACTIVE;
         }else{
             // products[id-1].inStock = false;
-            console.log("No stock of size: " + restaStock.size);
+            console.log('No stock of size: ' + restaStock.size);
         }
         // VALIDAR QUE LA SUMATORIA DE LOS STOCK SEA CERO Y AHÍ PONER INSTOCK EN false;
         // products.forEach( product => { 
@@ -43,7 +40,7 @@ class Product{
         //         let sum = element.stock;
         //         sum = sum + element.stock;
         //         if(sum == 0){
-        //             console.log("CEROOOOOO");
+        //             console.log('CEROOOOOO');
         //         }
         //     });
         // });
@@ -126,7 +123,7 @@ productsCatalog.appendChild(fragment);
 //         console.log(restaStock);
 //     }else{
 //         // products[id-1].inStock = false;
-//         console.log("No stock of size: " + restaStock.size);
+//         console.log('No stock of size: ' + restaStock.size);
 //     }
 // }
 
@@ -145,7 +142,7 @@ selectedSize.forEach(element => {element.addEventListener('click', function() {
 const addCart = document.querySelectorAll('.card-body .cart');
 addCart.forEach(element => {element.addEventListener('click', function() {
     if(pressedBtn == 0){
-        console.log("Seleccione talle");
+        console.log('Seleccione talle');
     }else{
         products[pressedId-1].fixStock(pressedId, pressedBtn);
     }
