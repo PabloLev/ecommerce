@@ -109,26 +109,6 @@ products.forEach( product => {
 });
 productsCatalog.appendChild(fragment);
 
-
-
-
-
-// END TEMPLATE LOAD
-
-// function fixStock(id, sizeSelected) {
-//     //TENGO QUE ARREGLAR ESTO CON FIND, PARA QUE DESCUENTE SOLO DEL TALLE QUE SE COMPRO. DETECTO CUAL FUE CON FIND Y LE HAGO LA RESTA POR INDEX DEL ARRAY
-//     let restaStock = products[id-1].sizeStock.find((el)=>el.size == sizeSelected);
-//     if ( restaStock.stock > 0){
-//         restaStock.stock = restaStock.stock - 1;
-//         console.log(restaStock);
-//     }else{
-//         // products[id-1].inStock = false;
-//         console.log('No stock of size: ' + restaStock.size);
-//     }
-// }
-
-
-
 // CLICK EN BOTTON SIZE
 const selectedSize = document.querySelectorAll('.dropdown-menu .btn');
 let pressedBtn = 0;
@@ -147,10 +127,6 @@ addCart.forEach(element => {element.addEventListener('click', function() {
         products[pressedId-1].fixStock(pressedId, pressedBtn);
     }
 })});
-
-
-
-
 
 //****FILTROS****
 //ORDENAR POR PRECIO DESCENDENTE
@@ -172,12 +148,6 @@ function priceRange(){
     priceRanges = products.filter( a => a.price > lowRange && a.price < highRange);
 };
 //****END FILTROS****
-
-
-
-
-
-
 
 //FUNCION QUE VALIDA LAS ENTRADAS DEL USUARIO
 function validation(userEntry, maxRange, foo){
@@ -214,11 +184,6 @@ function validation(userEntry, maxRange, foo){
     }
     return true;
 };
-
-
-
-
-
 
 // Funcion comprar, hacer de nuevo, más modular dividiendo en varias funciones
 function buy(){
@@ -287,13 +252,6 @@ function buy(){
     // console.log(buyObject);
     console.log(products);
 }
-
-
-
-
-
-
-
 
 // EVENTOS
 //***SORT****
