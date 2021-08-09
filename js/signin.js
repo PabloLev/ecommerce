@@ -1,6 +1,6 @@
 const newUserEmail = document.getElementById('useremail1'),
     newPassword = document.getElementById('password1');
-
+let finalUser = JSON.parse(localStorage.getItem('users'));
 
 let signIn = document.getElementById("signInBtn");
 signIn.addEventListener("click", () => {
