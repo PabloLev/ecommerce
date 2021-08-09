@@ -185,73 +185,73 @@ function validation(userEntry, maxRange, foo){
     return true;
 };
 
-// Funcion comprar, hacer de nuevo, más modular dividiendo en varias funciones
-function buy(){
-    //USUARIO id y CANTIDAD (**********NO LO ACTUALICÉ Y NO COINCIDE CON LOS PRODUCTOS, PREFERÍ NO PERDER TIEMPO EN ESO, SE VA A SACAR CUANDO HAYA INTERACCION CON EL DOM**********)
-    let idSelected = parseInt(prompt(
-        `Seleccione un modelo de la lista ingresando su id:
-        id=1 | Topper - Classic  |  TALLE 40
-        id=2 | Topper - Rainbow  |  TALLE39
-        id=3 | Topper - Cebra  |  TALLE 41
-        id=4 | Topper - Lover  |  TALLE 38
-        id=5 | Adidas - Infinity  |  TALLE 40
-        id=6 | Adidas - JS  |  TALLE 40
-        id=7 | Adidas - Angular  |  TALLE39
-        id=8 | Adidas - Rougue  |  TALLE 41`));
+// // Funcion comprar, hacer de nuevo, más modular dividiendo en varias funciones
+// function buy(){
+//     //USUARIO id y CANTIDAD (**********NO LO ACTUALICÉ Y NO COINCIDE CON LOS PRODUCTOS, PREFERÍ NO PERDER TIEMPO EN ESO, SE VA A SACAR CUANDO HAYA INTERACCION CON EL DOM**********)
+//     let idSelected = parseInt(prompt(
+//         `Seleccione un modelo de la lista ingresando su id:
+//         id=1 | Topper - Classic  |  TALLE 40
+//         id=2 | Topper - Rainbow  |  TALLE39
+//         id=3 | Topper - Cebra  |  TALLE 41
+//         id=4 | Topper - Lover  |  TALLE 38
+//         id=5 | Adidas - Infinity  |  TALLE 40
+//         id=6 | Adidas - JS  |  TALLE 40
+//         id=7 | Adidas - Angular  |  TALLE39
+//         id=8 | Adidas - Rougue  |  TALLE 41`));
 
-    validation(idSelected, 8, 1); 
+//     validation(idSelected, 8, 1); 
 
-    let buyObject = products[idSelected-1]; 
-    let buyStock = parseInt(prompt('¿Cuántos pares lleva?'));
-    validation(buyStock, buyObject.stock, 2); 
-    //END USUARIO
+//     let buyObject = products[idSelected-1]; 
+//     let buyStock = parseInt(prompt('¿Cuántos pares lleva?'));
+//     validation(buyStock, buyObject.stock, 2); 
+//     //END USUARIO
 
-    //CALCULO (Se hacen diferentes cálculos)
-    //FUNCION VENTA (calculo precio con iva teniendo en cuenta la cantidad de compra, bajo el stock la cantidad de compra, admito venta si la compra es menor o igual al stock y si además hay stock)
-    function sold(){ 
-        for (var i = 0; i < buyStock; i++) {
-            buyObject.fixStock(); 
-        }
+//     //CALCULO (Se hacen diferentes cálculos)
+//     //FUNCION VENTA (calculo precio con iva teniendo en cuenta la cantidad de compra, bajo el stock la cantidad de compra, admito venta si la compra es menor o igual al stock y si además hay stock)
+//     function sold(){ 
+//         for (var i = 0; i < buyStock; i++) {
+//             buyObject.fixStock(); 
+//         }
         
-        let montoTotal = buyObject.price * buyStock * 1.22; 
-        return montoTotal;
-    };
-    let totalNoCupon = sold();
-    //END CALCULO
+//         let montoTotal = buyObject.price * buyStock * 1.22; 
+//         return montoTotal;
+//     };
+//     let totalNoCupon = sold();
+//     //END CALCULO
 
-    //USUARIO DESCUENTO
-    let saleCupon = prompt('Otorgamos descuentos de hasta el 50% de su valor de compra. ¿Cuál es el % de descuento de su cupón?');
-    if (saleCupon != 0){
-        validation(saleCupon, 50, 3);
-    }
+//     //USUARIO DESCUENTO
+//     let saleCupon = prompt('Otorgamos descuentos de hasta el 50% de su valor de compra. ¿Cuál es el % de descuento de su cupón?');
+//     if (saleCupon != 0){
+//         validation(saleCupon, 50, 3);
+//     }
     
-    //END USUARIO
-    //CALCULO (Se hacen diferentes cálculos)
-    let payWithSale;
-    let dues;
-    function pago(){
-        //DESCUENTO
-        saleCupon = (100 - parseInt(saleCupon))/100;
-        payWithSale = totalNoCupon * saleCupon;
-        //USUARIO CUOTAS
-        dues = prompt('Debe pagar $' + Math.round(payWithSale) +'. Ingrese la cantidad de cuotas. El máximo de dues es 10');
-        validation(dues, 10, 4);
-        let totalPay, duesPay;
-        //END USUARIO
+//     //END USUARIO
+//     //CALCULO (Se hacen diferentes cálculos)
+//     let payWithSale;
+//     let dues;
+//     function pago(){
+//         //DESCUENTO
+//         saleCupon = (100 - parseInt(saleCupon))/100;
+//         payWithSale = totalNoCupon * saleCupon;
+//         //USUARIO CUOTAS
+//         dues = prompt('Debe pagar $' + Math.round(payWithSale) +'. Ingrese la cantidad de cuotas. El máximo de dues es 10');
+//         validation(dues, 10, 4);
+//         let totalPay, duesPay;
+//         //END USUARIO
 
-        //Devuelvo valores en array
-        return [totalPay, dues, duesPay] = [(totalNoCupon * saleCupon), dues, ((totalNoCupon * saleCupon)/dues)]
-    };
-    let aPagar = pago();
-    //END CALCULO
-    //INFO PARA EL USUARIO
-    let recip = 'USTED ESTÁ COMPRANDO: \nCalzado: ' + buyObject.brand + ' - ' + buyObject.model + '\nCantidad: ' + buyStock  + '\n-------------\nSu descuento es del: ' + Math.round((100-(saleCupon*100))) + '%\n-------------\nDebe pagar: $' + Math.round(aPagar[0]) + '\ndues: ' + aPagar[1] + '\nPago Mensual: $' + Math.round(aPagar[2]);
-    // alert(recip);
-    console.log(recip)
-    //Muestra como quedo el objeto modificado luego de la compra por consola ya que este valor es relevante solo para la tienda.
-    // console.log(buyObject);
-    console.log(products);
-}
+//         //Devuelvo valores en array
+//         return [totalPay, dues, duesPay] = [(totalNoCupon * saleCupon), dues, ((totalNoCupon * saleCupon)/dues)]
+//     };
+//     let aPagar = pago();
+//     //END CALCULO
+//     //INFO PARA EL USUARIO
+//     let recip = 'USTED ESTÁ COMPRANDO: \nCalzado: ' + buyObject.brand + ' - ' + buyObject.model + '\nCantidad: ' + buyStock  + '\n-------------\nSu descuento es del: ' + Math.round((100-(saleCupon*100))) + '%\n-------------\nDebe pagar: $' + Math.round(aPagar[0]) + '\ndues: ' + aPagar[1] + '\nPago Mensual: $' + Math.round(aPagar[2]);
+//     // alert(recip);
+//     console.log(recip)
+//     //Muestra como quedo el objeto modificado luego de la compra por consola ya que este valor es relevante solo para la tienda.
+//     // console.log(buyObject);
+//     console.log(products);
+// }
 
 // EVENTOS
 //***SORT****
@@ -271,7 +271,7 @@ document.getElementById('priceRange').addEventListener('click', function() {
 });
 //****END RANGE****
 //****BOTON BUY****
-document.getElementById('buy').addEventListener('click', function() {
-    buy();
-});
+// document.getElementById('buy').addEventListener('click', function() {
+//     buy();
+// });
 //****END BOTON BUY****
