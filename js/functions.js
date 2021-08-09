@@ -24,35 +24,33 @@ export function selectSize(){
 export function addCart(){
     const addCart = document.querySelectorAll('.card-body .cart');
     addCart.forEach(element => {element.addEventListener('click', function() {
-        if(pressedBtn === undefined){
+        if(pressedBtn === undefined || pressedId != element.getAttribute('data-id')){
             console.log('Seleccione un talle');
         }else{
-            console.log('id' + pressedId +" - " + pressedBtn);
             // products[pressedId-1].fixStock(pressedId, pressedBtn);
             fixStock(pressedId, pressedBtn);
         }
     })});
 }
-
+//Arreglo stock
 export function fixStock(id, sizeSelected) {
-    console.log(id);
     let restaStock = products[id-1].sizeStock.find((el)=>el.size == sizeSelected);
-
     if ( restaStock.stock > 0){
         restaStock.stock = restaStock.stock - 1;
+        let removeActive = document.querySelector('.dropdown-menu .active');
         let cartIconNum = document.querySelector('.fa-shopping-cart span');
         cartIconNum.textContent = parseInt(cartIconNum.textContent) + 1;
-        let removeActive = document.querySelector('.dropdown-menu .active');
-        if(cartIconNum.classList.contains('active')){
+        if(restaStock.stock == 0){
             removeActive.classList.remove('active');
+            removeActive.classList.remove('btn-outline-primary');
+            removeActive.classList.add('btn-outline-secondary');
+            removeActive.disabled = true;
         }
-        removeActive.classList.remove('btn-outline-primary');
-        removeActive.classList.add('btn-outline-secondary');
-        removeActive.disabled = true;
         console.log(restaStock);
         console.log(products[id-1]);
     }else{
-        // products[id-1].inStock = false;
+        // products[id-1].inStock = false;s
+        
         console.log('No stock of size: ' + restaStock.size);
     }
 }

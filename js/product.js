@@ -1,3 +1,4 @@
+//CONSTRUCTOR PRODUCTS - CREADORA DE OBJETOS 
 export class Product{
     constructor (id, category, gender, brand, model, color, price, sizeStock){
         this.id = id;

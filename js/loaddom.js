@@ -1,5 +1,4 @@
 import {products} from "./product.js";
-import {fixStock} from "./functions.js";
 // CARGANDO EL DOM con FRAGMENT y el TEMPLATE DE HTML
 export function loadDOM(){
     const productsCatalog = document.getElementById('productsCatalog');
@@ -11,6 +10,7 @@ export function loadDOM(){
         templateProduct.querySelector('.img-brand-card').src='img/brands/' + product.brand + '.svg';
         templateProduct.querySelector('.card-title').textContent = product.model;
         templateProduct.querySelector('.price').textContent = '$'+product.price;
+        templateProduct.querySelector('.card-body .cart').dataset.id=product.id;
         //LIMPIO PARA NO REPOBLAR
         let empty = templateProduct.querySelector('.dropdown-menu');
         while (empty.firstChild) {
