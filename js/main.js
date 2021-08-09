@@ -5,7 +5,7 @@ import { selectSize, addCart } from "./functions.js";
 
 function obtainData(){
     const xhttp = new XMLHttpRequest();
-    xhttp.open('GET', '../assets/products.json', true);
+    xhttp.open('GET', './assets/products.json', true);
     xhttp.send();
     xhttp.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
