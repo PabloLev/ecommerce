@@ -1,7 +1,7 @@
 const newUserEmail = document.getElementById('useremail1'),
     newPassword = document.getElementById('password1');
     finalUser = JSON.parse(localStorage.getItem('users'));
-
+console.log(finalUser);
 let signIn = document.getElementById("signInBtn");
 signIn.addEventListener("click", () => {
     const filArr = finalUser.filter(user =>
