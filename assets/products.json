@@ -1,0 +1,84 @@
+[
+    {
+        "id": 1,
+        "category": "footwear",
+        "gender": "man",
+        "brand": "Topper",
+        "model": "classic",
+        "color": "black",
+        "price": 1800,
+        "sizeStock": [{"size": 34, "stock": 0}, {"size": 35, "stock": 3}, {"size": 36, "stock": 5}]
+    },
+    {
+        "id": 2,
+        "category": "footwear",
+        "gender": "man",
+        "brand": "Topper",
+        "model": "rainbow",
+        "color": "multi",
+        "price": 1500,
+        "sizeStock": [{"size": 39, "stock": 1},{"size": 40, "stock": 5},{"size":41, "stock":1}]
+    },
+    {
+        "id": 3,
+        "category": "footwear",
+        "gender": "man",
+        "brand": "Topper",
+        "model": "cebra",
+        "color": "black_red",
+        "price": 2800,
+        "sizeStock": [{"size": 37, "stock": 4}]
+    },
+    {
+        "id": 4,
+        "category": "footwear",
+        "gender": "man",
+        "brand": "Topper",
+        "model": "lover",
+        "color": "light-grey",
+        "price": 3100,
+        "sizeStock": [{"size": 37, "stock": 4},{"size": 38, "stock": 0}, {"size": 39, "stock": 4}, {"size": 40, "stock": 5},{"size":41, "stock":1}]
+    },
+    {
+        "id": 5,
+        "category": "footwear",
+        "gender": "man",
+        "brand": "Adidas",
+        "model": "infinity",
+        "color": "black",
+        "price": 5100,
+        "sizeStock": [{"size": 37, "stock": 4},{"size": 40, "stock": 5},{"size":99, "stock":1}]
+    },
+    {
+        "id": 6,
+        "category": "footwear",
+        "gender": "man",
+        "brand": "Adidas",
+        "model": "js",
+        "color": "black",
+        "price": 3100,
+        "sizeStock": [{"size": 37, "stock": 4},{"size": 40, "stock": 5},{"size":99, "stock":1}]
+    },
+    {
+        "id": 7,
+        "category": "footwear",
+        "gender": "man",
+        "brand": "Adidas",
+        "model": "angular",
+        "color": "black",
+        "price": 2100,
+        "sizeStock": [{"size": 37, "stock": 4},{"size": 40, "stock": 5},{"size":99, "stock":1}]
+    },
+    {
+        "id": 8,
+        "category": "footwear",
+        "gender": "man",
+        "brand": "Adidas",
+        "model": "rougue",
+        "color": "black",
+        "price": 4200,
+        "sizeStock": [{"size": 37, "stock": 4},{"size": 40, "stock": 5},{"size":99, "stock":1}]
+    }
+]
+
+
