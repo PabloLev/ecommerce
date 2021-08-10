@@ -14,14 +14,18 @@
 //     toggleClass.classList.toggle('closeSidebar');
 // }
 
-let closeSidebar = document.getElementById('closeSidebar');
-let cartIcon = document.getElementById('cartIcon');
-let toggleClass = document.getElementById('sidebar');
-let toggleClass2 = document.getElementById('sidebarOverlay');
 
-cartIcon.addEventListener('click', toggleSidebar);
+//ADD SIDEBAR
+let toggleClass = document.getElementById('sidebar');
+let closeSidebar = document.getElementById('closeSidebar');
 closeSidebar.addEventListener('click', toggleSidebar);
+let cartIcon = document.getElementById('cartIcon');
+cartIcon.addEventListener('click', toggleSidebar);
+let toggleClass2 = document.getElementById('sidebarOverlay');
 toggleClass2.addEventListener('click', toggleSidebar);
+let filterBtn = document.getElementById('filterBtn');
+filterBtn.addEventListener('click', toggleSidebar);
+
 function toggleSidebar(e) {
     e.preventDefault();
     toggleClass.classList.toggle('sidebar-off');

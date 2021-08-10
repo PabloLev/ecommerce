@@ -16,7 +16,7 @@
         "brand": "Topper",
         "model": "rainbow",
         "color": "multi",
-        "price": 1500,
+        "price": 3500,
         "sizeStock": [{"size": 39, "stock": 1},{"size": 40, "stock": 5},{"size":41, "stock":1}]
     },
     {
@@ -26,7 +26,7 @@
         "brand": "Topper",
         "model": "cebra",
         "color": "black_red",
-        "price": 2800,
+        "price": 4800,
         "sizeStock": [{"size": 37, "stock": 4}]
     },
     {

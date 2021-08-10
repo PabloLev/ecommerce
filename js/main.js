@@ -23,6 +23,12 @@ function obtainData(){
 obtainData();
 
 //****FILTROS****
+//ORDENAR POR ID
+function sortRecomended(){ 
+    console.log('ORDENADO POR RECOMENDADOS');
+    products.sort((a, b) => a.id - b.id)
+    obtainDataAjax(products);
+};
 //ORDENAR POR PRECIO DESCENDENTE
 function sortDescending(){ 
     console.log('PRECIO MÁS ALTO PRIMERO AJAX');
@@ -49,6 +55,10 @@ function priceRange(){
 //****END FILTROS****
 // EVENTOS
 //***SORT****
+document.getElementById('sortRecomended').addEventListener('click', function() {
+    sortRecomended();
+    console.log(products);
+});
 document.getElementById('sortDescending').addEventListener('click', function() {
     sortDescending();
     console.log(products);
@@ -60,6 +70,7 @@ document.getElementById('sortAscending').addEventListener('click', function() {
 //****END SORT****
 //****RANGE****
 document.getElementById('priceRange').addEventListener('click', function() {
+    console.log(priceRanges);
     priceRange();
     // console.log(priceRanges);
 });

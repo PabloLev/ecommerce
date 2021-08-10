@@ -33,6 +33,7 @@ export function addCart(){
     })});
 }
 //Arreglo stock
+let sum = 0;
 export function fixStock(id, sizeSelected) {
     let findProduct = products.find((el)=>el.id == id)
     console.log(findProduct);
@@ -41,8 +42,10 @@ export function fixStock(id, sizeSelected) {
     if ( restaStock.stock > 0){
         restaStock.stock = restaStock.stock - 1;
         let removeActive = document.querySelector('.dropdown-menu .active');
-        let cartIconNum = document.querySelector('.fa-shopping-cart span');
-        cartIconNum.textContent = parseInt(cartIconNum.textContent) + 1;
+        let cartIconNum = document.querySelector('.fa-shopping-cart .badge');
+        
+        sum = sum + 1;
+        cartIconNum.textContent = sum;
         if(restaStock.stock == 0){
             removeActive.classList.remove('active');
             removeActive.classList.remove('btn-outline-primary');
@@ -56,4 +59,7 @@ export function fixStock(id, sizeSelected) {
         
         console.log('No stock of size: ' + restaStock.size);
     }
+}
+function addToCart(){
+
 }

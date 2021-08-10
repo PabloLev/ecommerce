@@ -27,11 +27,42 @@ body{
 .no-scroll{
     overflow: hidden;
 }
+// SORT BTN
+.form-select{
+    color: white;
+}:focus{
+    box-shadow: none !important;
+}
+.divider{
+    // border-left: 1px solid rgb(80, 80, 80);
+    border-right: 1px solid rgb(119, 119, 119);
+    padding-right: 2rem;
+}
+.index{
+    z-index: 10;
+    padding-top: 3.5rem;
+}
+// .banner {
+//     background-color: #d3ff00;
+//     top: 0;
+//     // padding: 1.0rem;
+//     letter-spacing: 2px; 
+// }
+// marquee {
+//     background-color: #ddd;
+//     margin: 0 auto;
+//     overflow: hidden;
+//     white-space: nowrap;
+// }
 .bg-black{
     background-color: rgb(19, 19, 19);
 }
 .navbar {
     min-height: 4rem;
+}
+.btn .badge{
+    top: inherit;
+    transform: translateX(-0.25rem);
 }
 .carousel-caption{
     top: 50%;
@@ -146,3 +177,38 @@ button{
 .form-group{
     margin: 1rem 0;
 }
+
+
+
+
+
+
+// MARQUESINA
+.slider {
+    top: 0;
+    padding: 0.3rem;
+    background-color: #bbff00;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.-fast {
+    // height: 14vh;
+    overflow: hidden;
+    white-space: nowrap;
+
+    div {
+        display: inline-block;
+        animation: slide-linear 30s linear infinite;
+    }
+}
+
+@keyframes slide-linear {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+

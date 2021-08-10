@@ -36,12 +36,37 @@ body {
   overflow: hidden;
 }
 
+.form-select {
+  color: white;
+}
+
+:focus {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.divider {
+  border-right: 1px solid #777777;
+  padding-right: 2rem;
+}
+
+.index {
+  z-index: 10;
+  padding-top: 3.5rem;
+}
+
 .bg-black {
   background-color: #131313;
 }
 
 .navbar {
   min-height: 4rem;
+}
+
+.btn .badge {
+  top: inherit;
+  -webkit-transform: translateX(-0.25rem);
+          transform: translateX(-0.25rem);
 }
 
 .carousel-caption {
@@ -176,5 +201,47 @@ button .btn-outline-secondary {
 
 .form-group {
   margin: 1rem 0;
+}
+
+.slider {
+  top: 0;
+  padding: 0.3rem;
+  background-color: #bbff00;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.-fast {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.-fast div {
+  display: inline-block;
+  -webkit-animation: slide-linear 30s linear infinite;
+          animation: slide-linear 30s linear infinite;
+}
+
+@-webkit-keyframes slide-linear {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-linear {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+  }
 }
 /*# sourceMappingURL=style.css.map */
