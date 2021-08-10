@@ -2,6 +2,33 @@
 body{
     margin-top: 4rem;
 }
+.pointer{
+    cursor: pointer;
+}
+.transition{
+    transition: 0.3s all;
+}
+.sidebar{
+    width: 35%;
+}
+.sidebar-off{
+    transform: translateX(-100%);
+    margin: 0;
+    padding: 0;
+    visibility: hidden;
+    transition: 0.3s all;
+}
+.opacity-at-25{
+    opacity: 0.5;
+}
+.overlay-off{
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s all;
+}
+.no-scroll{
+    overflow: hidden;
+}
 .bg-black{
     background-color: rgb(19, 19, 19);
 }
