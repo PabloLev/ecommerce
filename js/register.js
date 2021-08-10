@@ -39,8 +39,6 @@ function addUser(e){
 };
 document.getElementById('registerForm').addEventListener('submit', addUser);
 
-
-
 const newUserEmail = document.getElementById('useremail1'),
     newPassword = document.getElementById('password1');
 // SIGNIN

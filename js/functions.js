@@ -34,7 +34,10 @@ export function addCart(){
 }
 //Arreglo stock
 export function fixStock(id, sizeSelected) {
-    let restaStock = products[id-1].sizeStock.find((el)=>el.size == sizeSelected);
+    let findProduct = products.find((el)=>el.id == id)
+    console.log(findProduct);
+    // let restaStock = products[id-1].sizeStock.find((el)=>el.size == sizeSelected);
+    let restaStock = findProduct.sizeStock.find((el)=>el.size == sizeSelected);
     if ( restaStock.stock > 0){
         restaStock.stock = restaStock.stock - 1;
         let removeActive = document.querySelector('.dropdown-menu .active');
@@ -47,7 +50,7 @@ export function fixStock(id, sizeSelected) {
             removeActive.disabled = true;
         }
         console.log(restaStock);
-        console.log(products[id-1]);
+        // console.log(products[id-1]);
     }else{
         // products[id-1].inStock = false;s
         
