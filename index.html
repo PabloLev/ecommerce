@@ -67,11 +67,31 @@
     </header>
     <!-- END HEADER -->
     <div id="sidebarOverlay" class="bg-dark min-vh-100 fixed-top m-0 transition overlay-off opacity-at-25"></div>
-    <div id="sidebar" class="col-auto col-sm-9 col-md-6 col-xl-4 shadow fixed-top transition sidebar-off" data-show = "on">
+    <div id="sidebar" class="col-auto col-sm-9 col-md-6 col-xl-4 shadow fixed-top transition sidebar-off overflow-auto vh-100" data-show = "on">
             <div class=" px-sm-2 px-0 bg-light">
                 <div class="d-flex flex-column align-items-center px-3 pt-2 text-white min-vh-100">
+
+                    <div class="p-2 text-dark">
+                        <h4 class="text-uppercase">Your shopping cart</h4>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between align-items-center bg-white p-2 mt-4 px-3 rounded text-dark col-12 shadow-sm">
+                        <div class="mr-1"><img class="rounded" src="/img/man/topper/1_topper_classic_black_a.webp" width="70"></div>
+                        <div class="d-flex flex-column align-items-center product-details">
+                            <span class=""><strong>Topper - Classic</strong></span>
+                            <span class=""><strong>Size: 38</strong></span>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                            <span class="text-dark pointer"><strong>-</strong></span>
+                            <span class="text-dark mt-1 ms-3 me-3"><strong>2</strong></span>
+                            <span class="text-dark pointer"><strong>+</strong></span>
+                        </div>
+                        <div>
+                            <span class="text-dark"><strong>$2050</strong></span>
+                        </div>
+                        <div class="d-flex align-items-center pointer"><i class="fa fa-trash mb-1 text-dark"></i></div>
+                    </div>
                     
-                    <button type="button" class="align-middle btn btn-primary py-2">Finalizar Compra</button>
+                    <button type="button" class="align-middle btn btn-primary py-2 mt-4">Finalizar Compra</button>
                     <div id="closeSidebar" class="pointer p-3 mb-3 text-dark">
                         <i class="fas fa-chevron-left pe-3"></i>
                         <span>Continuar comprando</span>
