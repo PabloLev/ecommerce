@@ -124,7 +124,8 @@ button{
 }
 .img-wrapper{
     img{
-
+        width: 100%;
+        height: auto;
     }:hover{
         cursor: zoom-in;
     }
@@ -191,6 +192,9 @@ button{
     overflow: hidden;
     position: relative;
     width: 100%;
+    img{
+        width: 3.3rem;
+    }
 }
 .-fast {
     // height: 14vh;

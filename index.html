@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Test your website with the free SEO check from Seobility and get tips for a better search engine optimization.">
     <title>Ecommerce - tienda de calzados - Levin</title>
     <!-- BOOTSTRAP 5 -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-    <link defer href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <!-- WEB STYLE -->
     <link rel="stylesheet" href="css/style.css"> 
     <!-- FONTAWSOME -->
@@ -43,9 +44,9 @@
                     </ul>
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-light" type="submit"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-outline-light" type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
                     </form>
-                    <button id="cartIcon" type="button" class="btn btn-primary ms-3 me-1">
+                    <button id="cartIcon" type="button" class="btn btn-primary ms-3 me-1" aria-label="Cart">
                         <i class="fas fa-shopping-cart"><span class="badge position-absolute"></span></i>
                     </button>
                     <!-- SORT FILTER-->
@@ -59,7 +60,7 @@
                     </div> -->
                     <!-- <button id="buy" type="button" class="btn btn-outline-primary m-1 text-white">Buy</button> -->
                     <!-- Click on Modal Button -->
-                    <button id="userBtn" type="button" class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#modalForm"><i class="fas fa-user"></i><span></span></button>
+                    <button id="userBtn" type="button" class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#modalForm" aria-label="User"><i class="fas fa-user"></i><span></span></button>
 
                 </div>
             </div>
@@ -151,69 +152,44 @@
     <!-- MAIN -->
     <main>
         <div class="sticky-top index pb-2 bg-white border-bottom">
-            <!-- <marquee class="banner position-absolute" direction="left" scrollamount="10">
-                <img class="me-5 ms-5" src="./img/brands/TOPPER.svg" width="50">
-                <img class="me-5 ms-5" src="./img/brands/ADIDAS.svg" width="50">
-                <img class="me-5 ms-5" src="./img/brands/TOPPER.svg" width="50">
-                <img class="me-5 ms-5" src="./img/brands/ADIDAS.svg" width="50">
-                <img class="me-5 ms-5" src="./img/brands/TOPPER.svg" width="50">
-                <img class="me-5 ms-5" src="./img/brands/ADIDAS.svg" width="50">
-                <img class="me-5 ms-5" src="./img/brands/TOPPER.svg" width="50">
-                <img class="me-5 ms-5" src="./img/brands/ADIDAS.svg" width="50">
-                <img class="me-5 ms-5" src="./img/brands/TOPPER.svg" width="50">
-                <img class="me-5 ms-5" src="./img/brands/ADIDAS.svg" width="50">
-                <img class="me-5 ms-5" src="./img/brands/TOPPER.svg" width="50">
-                <img class="me-5 ms-5" src="./img/brands/ADIDAS.svg" width="50">
-                <strong>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque accusantium tenetur.
-                </strong>
-
-            </marquee> -->
 
             <div class="slider -fast position-absolute">
                 <div>
-                    <img class="me-5 ms-5" src="./img/brands/ADIDAS.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/BOTTERO.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/BRANCH.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/CLARKS.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/CONVERSE.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/CROCS.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/DISNEY.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/FILA.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/MISSCAROL.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/NEWBALANCE.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/NORTHSAILS.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/PUMA.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/PUSH.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/REEBOK.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/TOPPER.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/UMBRO.svg" width="50">
+                    <img class="me-5 ms-5" src="./img/brands/ADIDAS.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/BOTTERO.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/BRANCH.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/CLARKS.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/CONVERSE.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/CROCS.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/DISNEY.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/FILA.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/MISSCAROL.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/NEWBALANCE.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/NORTHSAILS.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/PUMA.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/PUSH.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/REEBOK.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/TOPPER.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/UMBRO.svg" alt="...">
                 </div>
                 <div>
-                    <img class="me-5 ms-5" src="./img/brands/ADIDAS.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/BOTTERO.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/BRANCH.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/CLARKS.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/CONVERSE.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/CROCS.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/DISNEY.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/FILA.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/MISSCAROL.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/NEWBALANCE.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/NORTHSAILS.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/PUMA.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/PUSH.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/REEBOK.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/TOPPER.svg" width="50">
-                    <img class="me-5 ms-5" src="./img/brands/UMBRO.svg" width="50">
+                    <img class="me-5 ms-5" src="./img/brands/ADIDAS.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/BOTTERO.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/BRANCH.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/CLARKS.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/CONVERSE.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/CROCS.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/DISNEY.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/FILA.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/MISSCAROL.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/NEWBALANCE.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/NORTHSAILS.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/PUMA.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/PUSH.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/REEBOK.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/TOPPER.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/UMBRO.svg" alt="...">
                 </div>
-
-                <!-- <div>BUY BUY BUY BUY BUY BUY BUY BUY BUY BUY BUY
-
-                </div>
-                <div>BUY BUY BUY BUY BUY BUY BUY BUY BUY BUY BUY
-
-                </div> -->
             </div>
             <div class="container d-flex justify-content-end align-items-center">
                 
@@ -370,9 +346,9 @@
                         <h5 class="text-uppercase">REDES</h5>
             
                         <!-- Facebook -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com" role="button" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
                 <!-- Instagram -->
-                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com" role="button" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
                     </div>
                     <!--Grid column-->
                 </div>
@@ -482,18 +458,18 @@
     </div>
     <!-- TEMPLATE -->
     <template id="templateProduct">
-        <div class="card col-6 col-md-4 col-lg-3 text-center border-0 p-3">
+        <article class="card col-6 col-md-4 col-lg-3 text-center border-0 p-3">
             <div class="img-wrapper position-relative p-1" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content="More info">
                 <img src="img/hombres/adidas/adidas_4a.webp" class="img-a card-img-top" alt="...">
                 <img src="img/hombres/adidas/adidas_4b.webp" class="img-b card-img-top position-absolute p-1" alt="...">
             </div>
             <div class="card-body">
                 <img src="img/brands/ADIDAS" class="img-brand-card" alt="Topper_100x70">
-                <h6 class="card-title text-uppercase"></h6>
+                <p class="card-title text-uppercase fw-bold"></p>
                 <p class="price card-text fs-4 text-dark"></p>
                 
                 <div class="dropdown">
-                    <button class="btn dropdown-toggle mb-4" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn dropdown-toggle mb-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Chose Size
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">     
@@ -502,7 +478,7 @@
         
                 <button type="button" class="cart btn container-fluid btn-primary py-2">Add to cart<i class="fas fa-plus ms-3"></i></button>
             </div>
-        </div>
+        </article>
     </template>
     <!-- END MODAL -->
     <!-- END FOOTER -->

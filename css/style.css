@@ -136,6 +136,11 @@ button .btn-outline-secondary {
   left: 0;
 }
 
+.img-wrapper img {
+  width: 100%;
+  height: auto;
+}
+
 .img-wrapper :hover {
   cursor: -webkit-zoom-in;
   cursor: zoom-in;
@@ -210,6 +215,10 @@ button .btn-outline-secondary {
   overflow: hidden;
   position: relative;
   width: 100%;
+}
+
+.slider img {
+  width: 3.3rem;
 }
 
 .-fast {
