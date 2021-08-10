@@ -3,6 +3,7 @@ let userName = document.getElementById("nameRegister"),
     userPassword = document.getElementById("passwordRegister"),
     userPasswordConfirm = document.getElementById("passwordConfirm"),
     finalUser = JSON.parse(localStorage.getItem('users'));
+// REGISTER
 function addUser(e){
     e.preventDefault();
     if (userPassword.value !== userPasswordConfirm.value) {
@@ -12,22 +13,25 @@ function addUser(e){
             alert("Please complete all fields");
             return false;
         }
-        let userInfo = { //Agrego los valores al objeto userInfo
+        let userInfo = { 
             userName: userName.value,
             userEmail: userEmail.value,
-            userPassword: userPassword.value
+            userPassword: userPassword.value,
+            userLoged: true
         }
-        let theUsers=[]; //Creo el array que contiene los objetos userInfo
+        let theUsers=[]; 
         if(localStorage.getItem('users') == null){
             console.log("Users estaba vacio");
             theUsers.push(userInfo);
-            localStorage.setItem('users', JSON.stringify(theUsers)) //Guardo key: users, value: theUsers
+            localStorage.setItem('users', JSON.stringify(theUsers)); 
+            logedIconName(userInfo.userName);
         }else{
             console.log("Ya hay usuarios creados");
             console.log(theUsers);
-            theUsers = JSON.parse(localStorage.getItem('users')); //levanto el array de objetos guardado
-            theUsers.push(userInfo); //Guardo el nuevo elemento
-            localStorage.setItem('users', JSON.stringify(theUsers)) //lo vuelvo a guardar
+            theUsers = JSON.parse(localStorage.getItem('users')); 
+            theUsers.push(userInfo); 
+            localStorage.setItem('users', JSON.stringify(theUsers));
+            logedIconName(userInfo.userName);
         }
         console.log(theUsers);
         alert(userInfo.userName + " te has registrado correctamente!!!");
@@ -37,7 +41,34 @@ document.getElementById('registerForm').addEventListener('submit', addUser);
 
 
 
+const newUserEmail = document.getElementById('useremail1'),
+    newPassword = document.getElementById('password1');
+// SIGNIN
+let signIn = document.getElementById("signInBtn");
+signIn.addEventListener("click", () => {
+    // console.log(finalUser);
+    if(finalUser === null){
+        alert('Create an user please')
+    }else{
+        const filArr = finalUser.filter(user =>
+            user.userEmail == newUserEmail.value && user.userPassword == newPassword.value)
+        let nameIcon = filArr[0].userName;
+        if(filArr.length > 0){
+            alert ("Welcome " + nameIcon.toUpperCase() + ", you are now logged in")
+            logedIconName(nameIcon);
+        } else {
+            alert('username or password incorrect')
+        }
+    }
+    
+})
 
+// NOMBRE AL ICONO USUARIO
+function logedIconName(name){
+    let userBtn = document.querySelector('#userBtn span');
+    userBtn.classList.add('p-3');
+    userBtn.textContent = name.toUpperCase();
+}
 
 
 
