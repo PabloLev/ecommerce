@@ -52,8 +52,9 @@ signIn.addEventListener("click", () => {
     }else{
         const filArr = finalUser.filter(user =>
             user.userEmail == newUserEmail.value && user.userPassword == newPassword.value)
-        let nameIcon = filArr[0].userName;
+        
         if(filArr.length > 0){
+            let nameIcon = filArr[0].userName;
             alert ("Welcome " + nameIcon.toUpperCase() + ", you are now logged in")
             logedIconName(nameIcon);
         } else {
