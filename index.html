@@ -18,33 +18,37 @@
 </head>
 <body>
     <!-- HEADER -->
+    
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
+        <div class="banner bg-info p-2 text d-flex justify-content-center align-items-center text-light text-uppercase"> 
+            <span>Tu pedido en tu casa en 24hs</span>
+        </div>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary zindex-tooltip">
             <div class="container">
-                <a class="navbar-brand" href="#">BIG-STORE</a>
+                <a class="navbar-brand me-5" href="#"><strong>BIG-STORE</strong></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Man</a>
+                            <a class="nav-link active text-uppercase" aria-current="page" href="#">Man</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Woman</a>
+                            <a class="nav-link text-uppercase" href="#">Woman</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">kids</a>
+                            <a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">kids</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Girls</a></li>
+                                <li><a class="dropdown-item text-uppercase" href="#">Girls</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Boys</a></li>
+                                <li><a class="dropdown-item text-uppercase" href="#">Boys</a></li>
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-light" type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
+                    <form class="d-flex search col-4">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-mark border-straight" type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
                     </form>
                     <button id="cartIcon" type="button" class="btn btn-primary ms-3 me-1" aria-label="Cart">
                         <i class="fas fa-shopping-cart"><span class="badge position-absolute"></span></i>
@@ -65,10 +69,14 @@
                 </div>
             </div>
         </nav>
+        <div class="bg-mark p-2 text d-flex justify-content-center align-items-center text-gray"> 
+            <span>Las mejores marcas a precios increíbles</span>
+        </div>
     </header>
+    
     <!-- END HEADER -->
-    <div id="sidebarOverlay" class="bg-dark min-vh-100 fixed-top m-0 transition overlay-off opacity-at-25"></div>
-    <div id="sidebar" class="col-auto col-sm-9 col-md-6 col-xl-4 shadow fixed-top transition sidebar-off overflow-auto vh-100" data-show = "on">
+    <div id="sidebarOverlay" class="bg-dark min-vh-100 fixed-top m-0 transition overlay-off opacity-at-25 zindex-tooltip"></div>
+    <div id="sidebar" class="col-auto col-sm-9 col-md-6 col-xl-4 shadow fixed-top transition sidebar-off overflow-auto vh-100 zindex-tooltip" data-show = "on">
             <div class=" px-sm-2 px-0 bg-light">
                 <div class="d-flex flex-column align-items-center px-3 pt-2 text-white min-vh-100">
 
@@ -151,49 +159,11 @@
     </section>
     <!-- MAIN -->
     <main>
-        <div class="sticky-top index pb-2 bg-white border-bottom">
-
-            <div class="slider -fast position-absolute">
-                <div>
-                    <img class="me-5 ms-5" src="./img/brands/ADIDAS.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/BOTTERO.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/BRANCH.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/CLARKS.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/CONVERSE.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/CROCS.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/DISNEY.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/FILA.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/MISSCAROL.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/NEWBALANCE.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/NORTHSAILS.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/PUMA.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/PUSH.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/REEBOK.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/TOPPER.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/UMBRO.svg" alt="...">
-                </div>
-                <div>
-                    <img class="me-5 ms-5" src="./img/brands/ADIDAS.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/BOTTERO.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/BRANCH.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/CLARKS.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/CONVERSE.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/CROCS.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/DISNEY.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/FILA.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/MISSCAROL.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/NEWBALANCE.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/NORTHSAILS.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/PUMA.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/PUSH.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/REEBOK.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/TOPPER.svg" alt="...">
-                    <img class="me-5 ms-5" src="./img/brands/UMBRO.svg" alt="...">
-                </div>
-            </div>
+        <div class="sticky-top top-4rem pb-2 bg-white border-bottom">
             <div class="container d-flex justify-content-end align-items-center">
                 
                 <div class="mb-1 mt-3 bg-white rounded d-flex justify-content-end align-items-center text-dark ps-3 pe-1">
+                    <span class="me-3 ms-3 text-soft-gray text-small">425 artículos</span>
                     <i id="filterBtn" class="fas fa-filter me-3 divider pointer"></i>
                     <!-- <span class="d-inline-block me-2">Sort by</span> -->
                     
@@ -219,7 +189,7 @@
                 <!-- SE AGREGA POR JS TEMPLATE -->
             </div> <!-- END ROW -->
             <!-- PAGINACION -->
-            <nav aria-label="Page navigation example">
+            <!-- <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
                     <li class="page-item">
                         <a class="page-link" href="#" aria-label="Previous">
@@ -235,44 +205,94 @@
                         </a>
                     </li>
                 </ul>
-            </nav>
+            </nav> -->
             <!-- END PAGINACION -->
         </section>
     </main>
     <!-- END MAIN -->
     <!-- FOOTER -->
-    <footer class="bg-dark text-center text-white">
+    <footer class="bg-dark text-center text-white mt-5">
+        <div class="position-relative">
+            <div class="slider -fast bg-mark p-3">
+                <div>
+                    <img class="me-5 ms-5" src="./img/brands/ADIDAS.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/BOTTERO.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/BRANCH.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/CLARKS.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/CONVERSE.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/CROCS.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/DISNEY.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/FILA.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/MISSCAROL.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/NEWBALANCE.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/NORTHSAILS.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/PUMA.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/PUSH.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/REEBOK.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/TOPPER.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/UMBRO.svg" alt="...">
+                </div>
+                <div>
+                    <img class="me-5 ms-5" src="./img/brands/ADIDAS.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/BOTTERO.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/BRANCH.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/CLARKS.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/CONVERSE.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/CROCS.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/DISNEY.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/FILA.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/MISSCAROL.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/NEWBALANCE.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/NORTHSAILS.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/PUMA.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/PUSH.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/REEBOK.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/TOPPER.svg" alt="...">
+                    <img class="me-5 ms-5" src="./img/brands/UMBRO.svg" alt="...">
+                </div>
+            </div>
+        </div>
         <!-- Grid container -->
         <div class="">
+            
+            <!-- <div class="bg-mark mt-5 p-4 text d-flex justify-content-center align-items-center text-gray text-uppercase"> 
+                <span>Las mejores marcas a precios increíbles</span>
+            </div> -->
             <!-- Section: Form -->
-            <section class="bg-secondary p-5 shadow">
-                <form action="">
-                    <!--Grid row-->
+            <section class="bg-primary p-5 shadow">
+                <div class="container">
+                    <div class="col-auto">
+                        <p class="pt-2 mb-0 fs-3 fw-bold"><strong>Sign up for our newsletter</strong></p>
+                        <p class="pt-2 mb-0"><strong>New articles every week</strong></p>
+                    </div>
+                    <form class="d-flex search col-4 offset-4 mt-3">
+                        <input class="form-control" type="search" placeholder="Suscribe" aria-label="Search">
+                        <button class="btn btn-mark border-straight col-3" type="submit" aria-label="Search">SUSCRIBE</button>
+                    </form>
+                </div>
+                
+                <!-- <form action="">
+
                     <div class="row d-flex justify-content-center">
-                        <!--Grid column-->
+                        
                         <div class="col-auto">
                             <p class="pt-2 mb-0"><strong>Sign up for our newsletter</strong></p>
                         </div>
-                        <!--Grid column-->
-            
-                        <!--Grid column-->
+                        
                         <div class="col-md-5 col-12">
-                        <!-- Email input -->
+                            
+
                             <div class="form-outline form-white">
                                 <input type="email" id="form5Example2" class="form-control" placeholder="Email address"/>
                             </div>
                         </div>
-                        <!--Grid column-->
-            
-                        <!--Grid column-->
                         <div class="col-auto">
-                            <!-- Submit button -->
+
                             <button type="submit" class="btn btn-outline-light">Subscribe</button>
                         </div>
-                        <!--Grid column-->
                     </div>
-                    <!--Grid row-->
-                </form>
+
+                </form> -->
             </section>
             <!-- Section: Form -->
 

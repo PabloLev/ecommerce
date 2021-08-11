@@ -1,5 +1,81 @@
-body {
-  margin-top: 4rem;
+.zindex-dropdown {
+  z-index: 1000;
+}
+
+.zindex-fixed {
+  z-index: 1030;
+}
+
+.zindex-modal {
+  z-index: 1060;
+}
+
+.zindex-tooltip {
+  z-index: 1080;
+}
+
+.bg-primary {
+  background-color: #6c4aff !important;
+}
+
+.btn-primary {
+  background-color: #6c4aff !important;
+  border-color: #6c4aff !important;
+}
+
+.page-item, .page-link, .text-primary {
+  color: #6c4aff !important;
+}
+
+.form-control {
+  border-radius: 0;
+  border: none;
+}
+
+.border-straight {
+  border-radius: 0;
+}
+
+.search {
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.bg-info {
+  background-color: #563bcc !important;
+}
+
+.bg-mark {
+  background-color: #d3ff00;
+}
+
+.btn-mark {
+  background-color: #d3ff00;
+  border-color: #d3ff00;
+}
+
+.text-gray {
+  color: #666666;
+}
+
+.text-soft-gray {
+  color: #8a8a8a;
+}
+
+.top-4rem {
+  top: 4rem;
+}
+
+.text-small {
+  font-size: 0.7rem;
+}
+
+.banner {
+  font-size: 0.65rem;
+}
+
+header {
+  display: initial;
 }
 
 .pointer {
@@ -211,7 +287,6 @@ button .btn-outline-secondary {
 .slider {
   top: 0;
   padding: 0.3rem;
-  background-color: #c0ff00;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -219,6 +294,8 @@ button .btn-outline-secondary {
 
 .slider img {
   width: 3.3rem;
+  -webkit-filter: invert(20%);
+          filter: invert(20%);
 }
 
 .-fast {

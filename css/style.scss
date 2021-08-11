@@ -1,7 +1,84 @@
+$zindex-dropdown:                   1000;
+$zindex-sticky:                     1020;
+$zindex-fixed:                      1030;
+$zindex-modal-backdrop:             1040;
+$zindex-offcanvas:                  1050;
+$zindex-modal:                      1060;
+$zindex-popover:                    1070;
+$zindex-tooltip:                    1080;
 
-body{
-    margin-top: 4rem;
+.zindex-dropdown{
+    z-index: 1000;
 }
+.zindex-fixed{
+    z-index: 1030;
+}
+.zindex-modal{
+    z-index: 1060;
+}
+.zindex-tooltip{
+    z-index: 1080;
+}
+//SACAR CUANDO BAJE BOOTSTRAP
+.bg-primary{
+    background-color: #6c4aff !important;
+}
+.btn-primary{
+    background-color: #6c4aff !important;
+    border-color: #6c4aff !important;
+}
+.page-item, .page-link, .text-primary{
+    color: #6c4aff !important;
+}
+.form-control{
+    border-radius: 0;
+    border: none;
+}
+.border-straight{
+    border-radius: 0;
+}
+.search{
+    border-radius: 2rem;
+    overflow: hidden;
+}
+.bg-info{
+    background-color: #563bcc !important;;
+}
+.bg-mark{
+    background-color: #d3ff00;
+}
+.btn-mark{
+    background-color: #d3ff00;
+    border-color: #d3ff00;
+}
+.text-gray{
+    color: #666666;
+}
+.text-soft-gray{
+    color: #8a8a8a;
+}
+.top-4rem{
+    top: 4rem;
+}
+.text-small{
+    font-size: 0.7rem;
+}
+.banner{
+    font-size: 0.65rem;
+}
+
+// .container-pablo{
+//     width: 80%;
+//     margin: 0 auto;
+// }
+
+// body{
+//     margin-top: 4rem;
+// }
+header{
+    display: initial;
+}
+
 .pointer{
     cursor: pointer;
 }
@@ -39,6 +116,7 @@ body{
     padding-right: 2rem;
 }
 .index{
+
     z-index: 10;
     padding-top: 3.5rem;
 }
@@ -177,12 +255,14 @@ button{
 .slider {
     top: 0;
     padding: 0.3rem;
-    background-color: #c0ff00;
+    // background-color: #c0ff00;
+    // background-color: rgb(231, 231, 231);
     overflow: hidden;
     position: relative;
     width: 100%;
     img{
         width: 3.3rem;
+        filter: invert(20%);
     }
 }
 .-fast {
