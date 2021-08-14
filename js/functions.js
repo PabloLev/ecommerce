@@ -60,6 +60,8 @@ export function fixStock(id, sizeSelected) {
         console.log('No stock of size: ' + restaStock.size);
     }
 }
-function addToCart(){
-
+function addToCart(id, sizeSelected){
+    let findProduct = products.find((el)=>el.id == id)
+    let precio = findProduct.priceÇ;
+    console.log(price);
 }
