@@ -236,11 +236,7 @@ function addToCart(id, sizeSelected){
                     <span class=""><strong>${product.brand} - ${product.model}</strong></span>
                     <span class=""><strong>Size: ${product.size}</strong></span>
                 </div>
-                <div class="d-flex flex-row align-items-center">
-                    <span class="text-dark pointer"><strong>-</strong></span>
-                    <span class="text-dark mt-1 ms-3 me-3"><strong>2</strong></span>
-                    <span class="text-dark pointer"><strong>+</strong></span>
-                </div>
+                
                 <div>
                     <span class="text-dark"><strong>$${product.price}</strong></span>
                 </div>
@@ -256,7 +252,11 @@ function addToCart(id, sizeSelected){
     
 }
 
-
+{/* <div class="d-flex flex-row align-items-center">
+    <span class="text-dark pointer"><strong>-</strong></span>
+    <span class="text-dark mt-1 ms-3 me-3"><strong>2</strong></span>
+    <span class="text-dark pointer"><strong>+</strong></span>
+</div> */}
 
 
 
