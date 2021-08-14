@@ -15,9 +15,8 @@ class Product{
         this.promotion = false;
     }
 }
+//CREO "BASE DE DATOS"
 const products = [];
-
-
 function obtainData(){
     const xhttp = new XMLHttpRequest();
     xhttp.open('GET', './assets/products.json', true);
@@ -36,6 +35,12 @@ function obtainData(){
     }
 }
 obtainData();
+//LIMPIO EL DOM - PARA EVITAR SUMATORIA DE ELEMENTOS CUANDO SE PUEBLA
+function emptyFromDom(empty){
+    while (empty.firstChild) {
+        empty.removeChild(empty.firstChild);
+    }
+}
 
 // CARGANDO EL DOM con FRAGMENT y el TEMPLATE DE HTML
 function loadDOM(){
@@ -51,9 +56,7 @@ function loadDOM(){
         templateProduct.querySelector('.card-body .cart').dataset.id=product.id;
         //LIMPIO PARA NO REPOBLAR
         let empty = templateProduct.querySelector('.dropdown-menu');
-        while (empty.firstChild) {
-            empty.removeChild(empty.firstChild);
-        }
+        emptyFromDom(empty)
         //END LIMPIO PARA NO REPOBLAR
         product.sizeStock.forEach(element => {
             const dropdownSize = templateProduct.querySelector('.dropdown-menu');
@@ -124,9 +127,9 @@ function obtainDataAjax(data){
                 fragment.appendChild(clone); 
                 
             }
-            productsCatalog.innerHTML = '';
+            // Empty productsCatalog
+            emptyFromDom(productsCatalog)
             productsCatalog.appendChild(fragment);
-            // loadDOMAjax();
             selectSize()
             addCart()
         }
@@ -136,20 +139,22 @@ function obtainDataAjax(data){
 // CLICK EN BOTON SIZE
 let pressedBtn;
 let pressedId;
+function toggleActive(selectedSize, key, el){
+    pressedBtn=parseInt(el.textContent);
+    pressedId = el.getAttribute('data-id'); 
+    el.classList.toggle("active");
+    selectedSize.forEach(function(ell, els){
+        if(key !== els) {
+            ell.classList.remove('active');
+        }
+    });
+    console.log('Size selected: ' + pressedBtn + '\nID of product: ' + pressedId);
+}
 function selectSize(){
     const selectedSize = document.querySelectorAll('.btn-outline-primary');
     selectedSize.forEach(function(el, key){
         el.addEventListener('click', function () {  
-            pressedBtn=parseInt(el.textContent);
-            pressedId = el.getAttribute('data-id');
-            
-            el.classList.toggle("active");
-            selectedSize.forEach(function(ell, els){
-                if(key !== els) {
-                    ell.classList.remove('active');
-                }
-            });
-            console.log('Size selected: ' + pressedBtn + '\nID of product: ' + pressedId);
+            toggleActive(selectedSize, key, el)
         });
     });
 }
@@ -160,96 +165,101 @@ function addCart(){
         if(pressedBtn === undefined || pressedId != element.getAttribute('data-id')){
             console.log('Seleccione un talle');
         }else{
-            // products[pressedId-1].fixStock(pressedId, pressedBtn);
             fixStock(pressedId, pressedBtn);
         }
     })});
 }
 //Arreglo stock
-let sum = 0;
-function fixStock(id, sizeSelected) {
-    let findedProduct = products.find((el)=>el.id == id)
+// let sum = 0;
+// function increaseCartIconNum(){
+//     let cartIconNum = document.querySelector('.fa-shopping-cart .badge');    
+//     sum = sum + 1;
+//     cartIconNum.textContent = sum;
+// }
+let findedProduct;
+function findTheProduct(id){
+    findedProduct = products.find((el)=>el.id == id);
     console.log(findedProduct);
-    // let restaStock = products[id-1].sizeStock.find((el)=>el.size == sizeSelected);
-    let restaStock = findedProduct.sizeStock.find((el)=>el.size == sizeSelected);
-    if ( restaStock.stock > 0){
-        restaStock.stock = restaStock.stock - 1;
+}
+let findedSize;
+function findTheSize(sizeSelected){
+    findedSize = findedProduct.sizeStock.find((el)=>el.size == sizeSelected);
+}
+function fixStock(id, sizeSelected) {
+    findTheProduct(id);
+    findTheSize(sizeSelected);
+    if ( findedSize.stock > 0){
+        findedSize.stock = findedSize.stock - 1;
         let removeActive = document.querySelector('.dropdown-menu .active');
-        let cartIconNum = document.querySelector('.fa-shopping-cart .badge');
-        
-        sum = sum + 1;
-        cartIconNum.textContent = sum;
-        if(restaStock.stock == 0){
+        // increaseCartIconNum();
+        if(findedSize.stock == 0){
             removeActive.classList.remove('active');
             removeActive.classList.remove('btn-outline-primary');
             removeActive.classList.add('btn-outline-secondary');
             removeActive.disabled = true;
         }
-        console.log(restaStock);
+        console.log(findedSize);
         addToCart(id, sizeSelected);
-        // console.log(products[id-1]);
     }else{
-        // products[id-1].inStock = false;s
-        
-        console.log('No stock of size: ' + restaStock.size);
+        console.log('No stock of size: ' + findedSize.size);
     }
 }
+//END ARREGLO STOCK
+
+
 let cartProducts=[];
+//NUMERO DEL CARRITO
+function productsQuantityInCart(){
+    let cartIconNum = document.querySelector('.fa-shopping-cart .badge');    
+    // sum = sum + 1;
+    let productsInCart = cartProducts.length;
+    cartIconNum.textContent = productsInCart;
+}
+let productId = 0;
 function addToCart(id, sizeSelected){
-    
     let findedProduct = products.find((el)=>el.id == id)
+    productId = ++productId;
     let productImg1 = findedProduct.img1;
     let productBrand = findedProduct.brand;
     let productModel = findedProduct.model;
     let productSize = sizeSelected;
     let productPrice = findedProduct.price;
-    // let element = {};
-    // element.id = id;
-    // element.quantity = quantity;
-    cartProducts.push({img1: productImg1, model: productModel, brand: productBrand, size: productSize, price: productPrice});
-    console.log(cartProducts);
+    cartProducts.push({id: productId, img1: productImg1, model: productModel, brand: productBrand, size: productSize, price: productPrice});
     //Agrego como objeto cada producto que agrego.
     //Con un for o foreach voy llenando un innerHTML y le hago el appendchild.
     //Agregar funcionalidad a los botones de agregar cantidad y que si agrego el mismo producto se sume y no ponga otro elemento nuevo del mismo. Si es otro tamaño si es un obj nuevo
-    console.log(productImg1);
-    // console.log(productBrand);
-    // console.log(productModel);
-    // console.log(productPrice);
-
-    // let prod = {};
-    // prod.img1 = findedProduct.img1;
-    // prod.brand = findedProduct.brand;
-    // prod.model = findedProduct.model;
-    // prod.price = findedProduct.price;
-    // cartProducts.push({element: prod});
-
     let productInCart = document.getElementById('productsInCart');
-    productInCart.innerHTML = '';
+    // Empty productInCart
+    emptyFromDom(productInCart)
+    // sum=0;
+    productsQuantityInCart();
     for (const index in cartProducts){
-        // console.log(cartProducts[product].model)
         let product = cartProducts[index]
         let createDiv = document.createElement('div');
         createDiv.innerHTML = `
-            <div class="d-flex flex-row justify-content-between align-items-center bg-white p-2 mt-4 px-3 rounded text-dark col-12 shadow-sm">
+            <div id="${product.id}" class="d-flex flex-row justify-content-between align-items-center bg-white p-2 mt-4 px-3 rounded text-dark col-12 shadow-sm">
                 <div class="mr-1"><img class="rounded" src="${product.img1}" width="70"></div>
                 <div class="d-flex flex-column align-items-center product-details">
                     <span class=""><strong>${product.brand} - ${product.model}</strong></span>
                     <span class=""><strong>Size: ${product.size}</strong></span>
                 </div>
-                
                 <div>
                     <span class="text-dark"><strong>$${product.price}</strong></span>
                 </div>
-                <div class="d-flex align-items-center pointer"><i class="fa fa-trash mb-1 text-dark"></i></div>
+                <i class="trash fa fa-trash mb-1 text-dark pointer"></i>
             </div>
         `;
         productInCart.appendChild(createDiv);
-    }
-    // cartProducts.forEach( () => {
+        let trash = document.querySelector('.trash');
+        console.log(trash)
+        trash.addEventListener('click', function() {
+            trash.parentNode.remove();
+            cartProducts=[];
+            productsQuantityInCart();
+        });
         
-    // });
-    
-    
+        
+    }  
 }
 
 {/* <div class="d-flex flex-row align-items-center">
@@ -260,18 +270,33 @@ function addToCart(id, sizeSelected){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+//ADD SIDEBAR
+let closeSidebar = document.getElementById('closeSidebar');
+closeSidebar.addEventListener('click', toggleSidebar);
+//BTN CART
+let cartIcon = document.getElementById('cartIcon');
+cartIcon.addEventListener('click', toggleSidebar);
+let sidebar = document.getElementById('sidebar');
+let overlay2 = document.getElementById('sidebarOverlay2');
+overlay2.addEventListener('click', toggleSidebar);
+function toggleSidebar(e) {
+    e.preventDefault();
+    sidebar.classList.toggle('sidebar-off');
+    overlay2.classList.toggle('overlay-off');
+    document.body.classList.toggle('no-scroll');
+};
+//BTN FILTER
+let filterBtn = document.getElementById('filterBtn');
+filterBtn.addEventListener('click', toggleSidebarFilter);
+let sidebarFilter = document.getElementById('sidebarFilter');
+let overlay1 = document.getElementById('sidebarOverlay1');
+overlay1.addEventListener('click', toggleSidebarFilter);
+function toggleSidebarFilter(e) {
+    e.preventDefault();
+    sidebarFilter.classList.toggle('sidebar-off');
+    overlay1.classList.toggle('overlay-off');
+    document.body.classList.toggle('no-scroll');
+};
 
 //****FILTROS****
 //ORDENAR POR ID
@@ -293,38 +318,24 @@ function sortAscending(){
     obtainDataAjax(products);
 };
 //FILTRAR POR RANGO DE PRECIOS
-let priceRanges = [];
+
 function priceRange(){
+    let priceRanges = [];
     let lowRange = parseInt(prompt('Ingrese su precio mínimo'));
     let highRange = parseInt(prompt('Ingrese su precio máximo'));
     console.log('NEW PRICE RANGE');
     priceRanges = products.filter( a => a.price > lowRange && a.price < highRange);
-    // products = priceRanges;
-    console.log(priceRanges);
     obtainDataAjax(priceRanges);
 };
 //****END FILTROS****
 // EVENTOS
 //***SORT****
-document.getElementById('sortRecomended').addEventListener('click', function() {
-    sortRecomended();
-    console.log(products);
-});
-document.getElementById('sortDescending').addEventListener('click', function() {
-    sortDescending();
-    console.log(products);
-});
-document.getElementById('sortAscending').addEventListener('click', function() {
-    sortAscending();
-    console.log(products);
-});
+document.getElementById('sortRecomended').addEventListener('click', sortRecomended);
+document.getElementById('sortDescending').addEventListener('click', sortDescending);
+document.getElementById('sortAscending').addEventListener('click', sortAscending);
 //****END SORT****
 //****RANGE****
-document.getElementById('priceRange').addEventListener('click', function() {
-    console.log(priceRanges);
-    priceRange();
-    // console.log(priceRanges);
-});
+document.getElementById('priceRange').addEventListener('click', priceRange);
 //****END RANGE****
 
 
