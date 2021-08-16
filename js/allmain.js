@@ -224,7 +224,7 @@ function addToCart(id, sizeSelected){
     let productModel = findedProduct.model;
     let productSize = sizeSelected;
     let productPrice = findedProduct.price;
-    cartProducts.push({id: productId, img1: productImg1, model: productModel, brand: productBrand, size: productSize, price: productPrice});
+    cartProducts.push({id: productId, originalId: id, img1: productImg1, model: productModel, brand: productBrand, size: productSize, price: productPrice});
     //Agrego como objeto cada producto que agrego.
     //Con un for o foreach voy llenando un innerHTML y le hago el appendchild.
     //Agregar funcionalidad a los botones de agregar cantidad y que si agrego el mismo producto se sume y no ponga otro elemento nuevo del mismo. Si es otro tamaño si es un obj nuevo
@@ -233,12 +233,26 @@ function addToCart(id, sizeSelected){
     emptyFromDom(productInCart)
     // sum=0;
     productsQuantityInCart();
-    console.log(cartProducts)
+
+
+    // let findedInCart = cartProducts.filter((el)=>el.model == findedProduct.model)
+    // console.log(findedInCart.length)
+    // console.log(cartProducts)
+    // if (cartProducts.length > 1){
+    //     console.log('PPPPPPP');
+    //     let findedInCart = cartProducts.find((el)=>el.model == findedProduct.model)
+    //     console.log('finded in cart = ' + findedInCart.model);
+    //     console.log('finded PRODUCT = ' + findedProduct.model);
+    //     // let findedInCartSize = cartProducts.find((el)=>el.size == findedProduct.size)
+    //     if(findedInCart.model == findedProduct.model){
+    //         console.log("iguallllllll")
+    //     }
+    // }
     for (const index in cartProducts){
         let product = cartProducts[index]
         let createDiv = document.createElement('div');
         createDiv.innerHTML = `
-            <div id="${product.id}" class="d-flex flex-row justify-content-between align-items-center bg-white p-2 mt-4 px-3 rounded text-dark col-12 shadow-sm">
+            <div id="${product.id}" data-originalId="${product.originalId}" class="d-flex flex-row justify-content-between align-items-center bg-white p-2 mt-4 px-3 rounded text-dark col-12 shadow-sm">
                 <div class="mr-1"><img class="rounded" src="${product.img1}" width="70"></div>
                 <div class="d-flex flex-column align-items-center product-details">
                     <span class=""><strong>${product.brand} - ${product.model}</strong></span>
@@ -252,13 +266,18 @@ function addToCart(id, sizeSelected){
         `;
         productInCart.appendChild(createDiv);
         console.log(createDiv)
-        let trash = document.querySelector('.trash');
+        let trash = document.querySelectorAll('.trash');
         console.log(trash)
-        trash.addEventListener('click', function() {
-            trash.parentNode.remove();
-            cartProducts=[];
+        trash.forEach(el => el.addEventListener('click', function() {
+            // trash.parentNode.remove();
+            // trash.parentNode.removeChild(trash);
+            this.parentNode.remove();
+            // cartProducts=[];
             productsQuantityInCart();
-        });
+        }));
+        // $('button.remove').click(function(){ 
+        //     $(this).parent().remove() 
+        // }); 
         
         
     }  
