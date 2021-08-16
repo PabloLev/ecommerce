@@ -233,6 +233,7 @@ function addToCart(id, sizeSelected){
     emptyFromDom(productInCart)
     // sum=0;
     productsQuantityInCart();
+    console.log(cartProducts)
     for (const index in cartProducts){
         let product = cartProducts[index]
         let createDiv = document.createElement('div');
@@ -250,6 +251,7 @@ function addToCart(id, sizeSelected){
             </div>
         `;
         productInCart.appendChild(createDiv);
+        console.log(createDiv)
         let trash = document.querySelector('.trash');
         console.log(trash)
         trash.addEventListener('click', function() {
