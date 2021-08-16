@@ -271,8 +271,9 @@ function addToCart(id, sizeSelected){
 
 
 //ADD SIDEBAR
-let closeSidebar = document.getElementById('closeSidebar');
-closeSidebar.addEventListener('click', toggleSidebar);
+
+let closeSidebar2 = document.getElementById('closeSidebar2');
+closeSidebar2.addEventListener('click', toggleSidebar);
 //BTN CART
 let cartIcon = document.getElementById('cartIcon');
 cartIcon.addEventListener('click', toggleSidebar);
@@ -286,6 +287,8 @@ function toggleSidebar(e) {
     document.body.classList.toggle('no-scroll');
 };
 //BTN FILTER
+let closeSidebar1 = document.getElementById('closeSidebar1');
+closeSidebar1.addEventListener('click', toggleSidebarFilter);
 let filterBtn = document.getElementById('filterBtn');
 filterBtn.addEventListener('click', toggleSidebarFilter);
 let sidebarFilter = document.getElementById('sidebarFilter');
