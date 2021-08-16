@@ -299,23 +299,27 @@ function toggleSidebarFilter(e) {
 };
 
 //****FILTROS****
+let sortBy = document.getElementById('dropdownMenuButton1');
 //ORDENAR POR ID
 function sortRecomended(){ 
     console.log('ORDENADO POR RECOMENDADOS');
     products.sort((a, b) => a.id - b.id)
     obtainDataAjax(products);
+    sortBy.textContent = 'Sort By: Recomended';
 };
 //ORDENAR POR PRECIO DESCENDENTE
 function sortDescending(){ 
     console.log('PRECIO MÁS ALTO PRIMERO AJAX');
     products.sort((a, b) => b.price - a.price)
     obtainDataAjax(products);
+    sortBy.textContent = 'Sort By: High to low';
 };
 //ORDENAR POR PRECIO ASCENDENTE
 function sortAscending(){ 
     console.log('PRECIO MÁS BAJO PRIMERO');
     products.sort((a, b) => a.price - b.price)
     obtainDataAjax(products);
+    sortBy.textContent = 'Sort By: Low to high';
 };
 //FILTRAR POR RANGO DE PRECIOS
 
@@ -326,6 +330,7 @@ function priceRange(){
     console.log('NEW PRICE RANGE');
     priceRanges = products.filter( a => a.price > lowRange && a.price < highRange);
     obtainDataAjax(priceRanges);
+    sortBy.textContent = 'Sort By: Price Range - $' + lowRange + ' to $' + highRange;
 };
 //****END FILTROS****
 // EVENTOS
