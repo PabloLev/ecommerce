@@ -231,28 +231,13 @@ function addToCart(id, sizeSelected){
     let productInCart = document.getElementById('productsInCart');
     // Empty productInCart
     emptyFromDom(productInCart)
-    // sum=0;
     productsQuantityInCart();
 
-
-    // let findedInCart = cartProducts.filter((el)=>el.model == findedProduct.model)
-    // console.log(findedInCart.length)
-    // console.log(cartProducts)
-    // if (cartProducts.length > 1){
-    //     console.log('PPPPPPP');
-    //     let findedInCart = cartProducts.find((el)=>el.model == findedProduct.model)
-    //     console.log('finded in cart = ' + findedInCart.model);
-    //     console.log('finded PRODUCT = ' + findedProduct.model);
-    //     // let findedInCartSize = cartProducts.find((el)=>el.size == findedProduct.size)
-    //     if(findedInCart.model == findedProduct.model){
-    //         console.log("iguallllllll")
-    //     }
-    // }
     for (const index in cartProducts){
         let product = cartProducts[index]
         let createDiv = document.createElement('div');
         createDiv.innerHTML = `
-            <div id="${product.id}" data-originalId="${product.originalId}" class="d-flex flex-row justify-content-between align-items-center bg-white p-2 mt-4 px-3 rounded text-dark col-12 shadow-sm">
+            <div data-id="${product.id}" data-originalId="${product.originalId}" class="d-flex flex-row justify-content-between align-items-center bg-white p-2 mt-4 px-3 rounded text-dark col-12 shadow-sm">
                 <div class="mr-1"><img class="rounded" src="${product.img1}" width="70"></div>
                 <div class="d-flex flex-column align-items-center product-details">
                     <span class=""><strong>${product.brand} - ${product.model}</strong></span>
@@ -261,27 +246,38 @@ function addToCart(id, sizeSelected){
                 <div>
                     <span class="text-dark"><strong>$${product.price}</strong></span>
                 </div>
-                <i class="trash fa fa-trash mb-1 text-dark pointer"></i>
-            </div>
-        `;
+                <i data-cartid="${product.id}" class="trash fa fa-trash mb-1 text-dark pointer"></i>
+            </div>`;
         productInCart.appendChild(createDiv);
-        console.log(createDiv)
-        let trash = document.querySelectorAll('.trash');
-        console.log(trash)
-        trash.forEach(el => el.addEventListener('click', function() {
-            // trash.parentNode.remove();
-            // trash.parentNode.removeChild(trash);
-            this.parentNode.remove();
-            // cartProducts=[];
-            productsQuantityInCart();
-        }));
-        // $('button.remove').click(function(){ 
-        //     $(this).parent().remove() 
-        // }); 
+
+        
         
         
     }  
+    let trash = document.querySelectorAll('.trash');
+    trash.forEach(el => el.addEventListener('click', function(e) { 
+        
+        cartArrayRemove(e);
+        this.parentNode.remove();
+        
+    })); 
+    
 }
+
+function cartArrayRemove(e) { 
+    // productId = cartProducts.filter(item => item.id != '').length; 
+    // console.log(productId) 
+    const id = e.target.dataset.cartid;
+    const forIndex = cartProducts.find(el=> el.id)
+    const index = cartProducts.indexOf(forIndex);
+    console.log("id = " + id);
+    console.log("index = " + index);
+    cartProducts.splice(index, 1);
+    console.log(cartProducts);
+    productsQuantityInCart();
+    return cartProducts;
+}
+
 
 {/* <div class="d-flex flex-row align-items-center">
     <span class="text-dark pointer"><strong>-</strong></span>
@@ -326,7 +322,7 @@ function toggleSidebarFilter(e) {
 let sortBy = document.getElementById('dropdownMenuButton1');
 //ORDENAR POR ID
 function sortRecomended(){ 
-    console.log('ORDENADO POR RECOMENDADOS');
+    console.log('ORDENADO POR RECOMENDADOS ' + e.target);
     products.sort((a, b) => a.id - b.id)
     obtainDataAjax(products);
     sortBy.textContent = 'Sort By: Recomended';
