@@ -20,15 +20,9 @@
     <!-- EJERCICIO -->
     <div id="insertar">
         <!-- acá se inserta lo que se hace en jquery-test.js -->
-        
-
     </div>
-
-
     <!-- HEADER -->
-    
     <header>
-        
         <div class="banner bg-info p-2 text d-flex justify-content-center align-items-center text-light text-uppercase"> 
             <span>YOUR ORDER AT HOME IN 24HS</span>
         </div>
@@ -62,22 +56,6 @@
                     <button id="cartIcon" type="button" class="btn btn-primary ms-3 me-1" aria-label="Cart">
                         <i class="fas fa-shopping-cart"><span class="badge position-absolute"></span></i>
                     </button>
-
-
-                    
-                    
-                    
-                    <!-- <div id="sidebarOverlay3" class="bg-dark min-vh-100 fixed-top m-0 transition opacity-at-25 toast" style="width: 100vw; "></div> -->
-                    <!-- SORT FILTER-->
-                    <!--<div class="btn-group">
-                        <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Sort</button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><button class="dropdown-item">Price: Low to high</button></li>
-                            <li><button  class="dropdown-item">Price: High to low</button></li>
-                            <li><button  class="dropdown-item">Price: RANGE</button></li>
-                        </ul>
-                    </div> -->
-                    <!-- <button id="buy" type="button" class="btn btn-outline-primary m-1 text-white">Buy</button> -->
                     <!-- Click on Modal Button -->
                     <button id="userBtn" type="button" class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#modalForm" aria-label="User"><i class="fas fa-user"></i><span></span></button>
 
@@ -89,11 +67,13 @@
         </div>
         
     </header>
+    <!-- END HEADER -->
+    <!-- TOAST  -->
     <div class="toast-container top-0 start-0 position-fixed min-vh-100 min-vw-100 zindex-tooltip-hi">
         <div id="basicToast"  class="toast" data-bs-autohide="false" data-bs-delay="3000">
-            <div class="position-fixed top-50 start-50 translate-middle zindex-tooltip col-lg-4 bg-white rounded d-flex flex-column justify-content-center align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="position-fixed top-50 start-50 translate-middle zindex-tooltip col-lg-3 bg-white rounded d-flex flex-column justify-content-center align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header bg-primary text-light d-flex justify-content-center w-100">
-                    <h5 class="my-0 text-uppercase text-center">Product added</h5>
+                    <h5 class="my-0 text-uppercase text-center p-3">Product added</h5>
                 </div>
                 <img id="toastImg" src="./img/man/adidas/5_adidas_infinity_black_a.webp" class="card-img-top ps-3 pe-3 w-50" alt="...">
                 <div id="toastBrand" class="toast-body opacity-at-100 ps-3 pe-3 text-center">        
@@ -107,7 +87,7 @@
             <div class="bg-dark min-vh-100 min-vw-100 fixed-top m-0 transition opacity-at-25 overflow-hidden"></div>
         </div>
     </div>
-    <!-- END HEADER -->
+    
     <div id="sidebarOverlay1" class="bg-dark min-vh-100 fixed-top m-0 transition overlay-off opacity-at-25 zindex-tooltip"></div>
     <div id="sidebarFilter" class="bg-light col-auto col-sm-9 col-md-6 col-xl-4 shadow fixed-top transition sidebar-off overflow-auto vh-100 zindex-tooltip" data-show = "on">
         <div class=" px-sm-2 px-0 bg-light">

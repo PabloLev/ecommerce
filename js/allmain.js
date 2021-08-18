@@ -16,43 +16,66 @@ class Product{
         this.promotion = false;
     }
 }
-
-//CREO "BASE DE DATOS"
 const products = [];
-function obtainData(){
-    const xhttp = new XMLHttpRequest();
-    xhttp.open('GET', './assets/products.json', true);
-    xhttp.send();
-    xhttp.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200){
-            let datos = JSON.parse(this.responseText);
-            for(let item of datos){
-                products.push(new Product(item.id, item.category, item.gender, item.brand, item.model, item.color, item.price, item.sizeStock));     
-            }
-            loadDOM(products);
-            //AGREGO EVENTOS A LOS BOTONES
-            selectSizeBtn();
-            addCartBtn();
+
+//CREO "BASE DE DATOS con AJAX"
+// function obtainData(){
+//     const xhttp = new XMLHttpRequest();
+//     xhttp.open('GET', './assets/products.json', true);
+//     xhttp.send();
+//     xhttp.onreadystatechange = function(){
+//         if(this.readyState == 4 && this.status == 200){
+//             const datos = JSON.parse(this.responseText);
+//             for(let item of datos){
+//                 products.push(new Product(item.id, item.category, item.gender, item.brand, item.model, item.color, item.price, item.sizeStock));     
+//             }
+//             loadDOM(products);
+//         }
+//     }
+// }
+//CREO "BASE DE DATOS con FETCH"
+const fetchDataProducts = async () => {
+    try {
+        const res = await fetch('./assets/products.json');
+        const response = await res.json();
+        console.log(response);
+        for(let item of response){
+            products.push(new Product(item.id, item.category, item.gender, item.brand, item.model, item.color, item.price, item.sizeStock));     
         }
+        loadDOM(products)
+    } catch (error) {
+        console.log(error);
     }
 }
-obtainData();
+document.addEventListener('DOMContentLoaded', () => {
+    fetchDataProducts();
+    // obtainData();
+})
+
 
 //RELOAD AJAX
-function obtainDataAjax(newProducts){
-    const xhttp = new XMLHttpRequest();
-    xhttp.open('GET', '', true);
-    xhttp.send();
-    xhttp.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200){
-            emptyFromDom(productsCatalog)
-            loadDOM(newProducts);
-            selectSizeBtn();
-            addCartBtn();
-        }
+// function obtainDataAjax(newProducts){
+//     const xhttp = new XMLHttpRequest();
+//     xhttp.open('GET', '', true);
+//     xhttp.send();
+//     xhttp.onreadystatechange = function(){
+//         if(this.readyState == 4 && this.status == 200){
+//             emptyFromDom(productsCatalog)
+//             loadDOM(newProducts);
+//         }
+//     }
+// }
+//RELOAD ASYNC
+const fetchDataNewProducts = async (products) => {
+    try {
+        console.log(products);
+        emptyFromDom(productsCatalog)
+        loadDOM(products);
+    } catch (error) {
+        console.log(error);
     }
 }
-//LIMPIO EL DOM - PARA EVITAR SUMATORIA DE ELEMENTOS CUANDO SE PUEBLA
+//METODO LIMPIO EL DOM - PARA EVITAR SUMATORIA DE ELEMENTOS CUANDO SE PUEBLA
 function emptyFromDom(empty){
     while (empty.firstChild) {
         empty.removeChild(empty.firstChild);
@@ -95,23 +118,11 @@ function loadDOM(products){
         fragment.appendChild(clone);
     });
     productsCatalog.appendChild(fragment);
+    //AGREGO EVENTOS A LOS BOTONES CREADOS
+    selectSizeBtn();
+    addCartBtn();
 }
 
-
-
-
-
-
-
-// window.addEventListener('DOMContentLoaded', (event) => {
-//     selectSizeBtn();
-//     addCartBtn();
-// });
-
-
-// document.querySelector("#basicToastBtn").onclick = function() {
-//     new bootstrap.Toast(document.querySelector('#basicToast')).show();
-// } 
 
 let sizeSelected;
 let pressedId;
@@ -139,7 +150,6 @@ function clickSizeBtn(sizeButton, key, el){
 
 // AGREGA EVENTO A TODOS LOS BOTONES ADD TO CART
 function addCartBtn(){
-    console.log("EL ID es " + pressedId);
     const addCart = document.querySelectorAll('.card-body .cart');
     addCart.forEach(element => {element.addEventListener('click', function() {
         if(sizeSelected === undefined || pressedId != element.getAttribute('data-id')){
@@ -153,13 +163,11 @@ function addCartBtn(){
 let findedProduct;
 function findTheProduct(id){
     findedProduct = products.find((el)=>el.id == id);
-    console.log("FIND PRODUCT " + findedProduct);
 }
 
 let findedSize;
 function findTheSize(sizeSelected){
     findedSize = findedProduct.sizeStock.find((el)=>el.size == sizeSelected);
-    console.log("FIND SIZE " + findedSize);
 }
 
 
@@ -179,7 +187,6 @@ function fixStock(id, sizeSelected) {
         addToCart(id, sizeSelected);
         new bootstrap.Toast(document.querySelector('#basicToast')).show();
         // new bootstrap.Toast(document.querySelector('#sidebarOverlay3')).show();
-
     }else{
         console.log('No stock of size: ' + findedSize.size);
     }
@@ -211,9 +218,7 @@ function addToCart(id, sizeSelected){
     let toastBrand = document.querySelector('#toastBrand');
     let toastDiv = document.createElement('div');
     emptyFromDom(toastBrand);
-    toastDiv.innerHTML=`<h5><strong>${productBrand} - ${productModel}</strong></h5>
-    <div class="text-center"><strong>Size: ${productSize}</strong></div>
-    <div class="text-center"><strong>$${productPrice}</strong></div>`
+    toastDiv.innerHTML=`<h6 class="mt-3"><strong>${productBrand} - ${productModel} - Size: ${productSize}</strong></h6>`
     toastBrand.appendChild(toastDiv);
     
     // Empty productInCart
@@ -229,6 +234,11 @@ function addToCart(id, sizeSelected){
                 <div class="d-flex flex-column align-items-center product-details">
                     <span class=""><strong>${product.brand} - ${product.model}</strong></span>
                     <span class=""><strong>Size: ${product.size}</strong></span>
+                </div>
+                <div class="d-flex flex-row align-items-center">
+                    <span class="text-dark pointer"><strong>-</strong></span>
+                    <span class="text-dark mt-1 ms-3 me-3"><strong>1</strong></span>
+                    <span class="text-dark pointer"><strong>+</strong></span>
                 </div>
                 <div>
                     <span class="text-dark"><strong>$${product.price}</strong></span>
@@ -251,15 +261,11 @@ function cartArrayRemove() {
     const index = cartProducts.indexOf(forIndex);
     cartProducts.splice(index, 1);
     productsQuantityInCart();
-    return cartProducts;
+    // return cartProducts;
 }
 
 
-{/* <div class="d-flex flex-row align-items-center">
-    <span class="text-dark pointer"><strong>-</strong></span>
-    <span class="text-dark mt-1 ms-3 me-3"><strong>2</strong></span>
-    <span class="text-dark pointer"><strong>+</strong></span>
-</div> */}
+
 
 
 //CART sidebar
@@ -299,21 +305,24 @@ let sortBy = document.getElementById('dropdownMenuButton1');
 function sortRecomended(){ 
     console.log('ORDENADO POR RECOMENDADOS ');
     products.sort((a, b) => a.id - b.id)
-    obtainDataAjax(products);
+    // obtainDataAjax(products);
+    fetchDataNewProducts(products);
     sortBy.textContent = 'Sort By: Recomended';
 };
 //ORDENAR POR PRECIO DESCENDENTE
 function sortDescending(){ 
     console.log('PRECIO MÁS ALTO PRIMERO AJAX');
     products.sort((a, b) => b.price - a.price)
-    obtainDataAjax(products);
+    // obtainDataAjax(products);
+    fetchDataNewProducts(products);
     sortBy.textContent = 'Sort By: High to low';
 };
 //ORDENAR POR PRECIO ASCENDENTE
 function sortAscending(){ 
     console.log('PRECIO MÁS BAJO PRIMERO');
     products.sort((a, b) => a.price - b.price)
-    obtainDataAjax(products);
+    // obtainDataAjax(products);
+    fetchDataNewProducts(products);
     sortBy.textContent = 'Sort By: Low to high';
 };
 //FILTRAR POR RANGO DE PRECIOS
@@ -324,7 +333,8 @@ function priceRange(){
     let highRange = parseInt(prompt('Ingrese su precio máximo'));
     console.log('NEW PRICE RANGE');
     priceRanges = products.filter( a => a.price > lowRange && a.price < highRange);
-    obtainDataAjax(priceRanges);
+    // obtainDataAjax(priceRanges);
+    fetchDataNewProducts(priceRanges);
     sortBy.textContent = 'Sort By: Price Range - $' + lowRange + ' to $' + highRange;
 };
 //****END FILTROS****

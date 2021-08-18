@@ -232,8 +232,7 @@ button .btn-outline-secondary {
 }
 
 .img-wrapper :hover {
-  cursor: -webkit-zoom-in;
-  cursor: zoom-in;
+  cursor: pointer;
 }
 
 :hover > .img-b {
