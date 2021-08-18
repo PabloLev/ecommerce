@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', (event) => {
+
 //CONSTRUCTOR PRODUCTS - CREADORA DE OBJETOS 
 class Product{
     constructor (id, category, gender, brand, model, color, price, sizeStock){
@@ -17,8 +17,6 @@ class Product{
     }
 }
 
-    
-
 //CREO "BASE DE DATOS"
 const products = [];
 function obtainData(){
@@ -28,17 +26,32 @@ function obtainData(){
     xhttp.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             let datos = JSON.parse(this.responseText);
-            // console.log(datos);
             for(let item of datos){
                 products.push(new Product(item.id, item.category, item.gender, item.brand, item.model, item.color, item.price, item.sizeStock));     
             }
-            loadDOM();
+            loadDOM(products);
+            //AGREGO EVENTOS A LOS BOTONES
             selectSizeBtn();
             addCartBtn();
         }
     }
 }
 obtainData();
+
+//RELOAD AJAX
+function obtainDataAjax(newProducts){
+    const xhttp = new XMLHttpRequest();
+    xhttp.open('GET', '', true);
+    xhttp.send();
+    xhttp.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            emptyFromDom(productsCatalog)
+            loadDOM(newProducts);
+            selectSizeBtn();
+            addCartBtn();
+        }
+    }
+}
 //LIMPIO EL DOM - PARA EVITAR SUMATORIA DE ELEMENTOS CUANDO SE PUEBLA
 function emptyFromDom(empty){
     while (empty.firstChild) {
@@ -47,7 +60,7 @@ function emptyFromDom(empty){
 }
 
 // CARGANDO EL DOM con FRAGMENT y el TEMPLATE DE HTML
-function loadDOM(){
+function loadDOM(products){
     const productsCatalog = document.getElementById('productsCatalog');
     const templateProduct = document.getElementById('templateProduct').content;
     const fragment = document.createDocumentFragment();
@@ -60,7 +73,7 @@ function loadDOM(){
         templateProduct.querySelector('.card-body .cart').dataset.id=product.id;
         //LIMPIO PARA NO REPOBLAR
         let empty = templateProduct.querySelector('.dropdown-menu');
-        emptyFromDom(empty)
+        emptyFromDom(empty);
         //END LIMPIO PARA NO REPOBLAR
         product.sizeStock.forEach(element => {
             const dropdownSize = templateProduct.querySelector('.dropdown-menu');
@@ -86,119 +99,68 @@ function loadDOM(){
 
 
 
-//RELOAD AJAX
-function obtainDataAjax(data){
-    const xhttp = new XMLHttpRequest();
-    xhttp.open('GET', '', true);
-    xhttp.send();
-    xhttp.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200){
-            let datos = data;
-            const productsCatalog = document.getElementById('productsCatalog');
-            const templateProduct = document.getElementById('templateProduct').content;
-            const fragment = document.createDocumentFragment();
-            for(let product of datos){
-                templateProduct.querySelector('.img-a').src= product.img1;
-                templateProduct.querySelector('.img-b').src= product.img2;
-                templateProduct.querySelector('.img-brand-card').src='img/brands/' + product.brand + '.svg';
-                templateProduct.querySelector('.card-title').textContent = product.model;
-                templateProduct.querySelector('.price').textContent = '$'+ product.price;
-                templateProduct.querySelector('.card-body .cart').dataset.id=product.id;
-                //LIMPIO PARA NO REPOBLAR
-                let empty = templateProduct.querySelector('.dropdown-menu');
-                while (empty.firstChild) {
-                    empty.removeChild(empty.firstChild);
-                }
-                //END LIMPIO PARA NO REPOBLAR
-                product.sizeStock.forEach(element => {
-                    const dropdownSize = templateProduct.querySelector('.dropdown-menu');
-                    //CREO EL BOTÓN DE TALLES CON SUS CLASES Y LE AGREGO EL VALOR
-                    const sizeBtn = document.createElement('button');
-                    sizeBtn.dataset.id = product.id;
-                    sizeBtn.classList.add('btn', 'm-1', 'p-0');
-                    sizeBtn.textContent = element.size;
-                    if (element.stock === 0){
-                        sizeBtn.classList.add('btn-outline-secondary');
-                        sizeBtn.disabled = true;
-                        dropdownSize.appendChild(sizeBtn);
-                    }else{
-                        sizeBtn.classList.add('btn-outline-primary');
-                        dropdownSize.appendChild(sizeBtn);
-                    }
-                    
-                }); 
-                const clone = templateProduct.cloneNode(true);
-                fragment.appendChild(clone); 
-                
-            }
-            // Empty productsCatalog
-            emptyFromDom(productsCatalog)
-            productsCatalog.appendChild(fragment);
-            selectSizeBtn();
-            addCartBtn();
-        }
-    }
-}
-
-// CLICK EN BOTON SIZE
-let pressedBtn;
-let pressedId;
-function toggleActive(selectedSize, key, el){
-    pressedBtn=parseInt(el.textContent);
-    pressedId = el.getAttribute('data-id'); 
-    el.classList.toggle("active");
-    // let addBtn = el.parentNode.parentNode.parentNode.childNodes[9];
-    // addBtn.classList.toggle("disabled");
-    // addBtn.textContent = "Add to cart"
-
-    selectedSize.forEach(function(ell, els){
-        if(key !== els) {
-            ell.classList.remove('active');
-        }
-    });
-    console.log('Size selected: ' + pressedBtn + '\nID of product: ' + pressedId);
-}
 
 
+
+
+// window.addEventListener('DOMContentLoaded', (event) => {
+//     selectSizeBtn();
+//     addCartBtn();
+// });
 
 
 // document.querySelector("#basicToastBtn").onclick = function() {
 //     new bootstrap.Toast(document.querySelector('#basicToast')).show();
 // } 
 
+let sizeSelected;
+let pressedId;
+// AGREGA EVENTO A TODOS LOS BOTONES SIZE
 function selectSizeBtn(){
-    const selectedSize = document.querySelectorAll('.btn-outline-primary');
-    selectedSize.forEach(function(el, key){
+    const sizeButton = document.querySelectorAll('.dropdown .dropdown-menu .btn-outline-primary');
+    sizeButton.forEach(function(el, key){
         el.addEventListener('click', function () {  
-            toggleActive(selectedSize, key, el)
+            clickSizeBtn(sizeButton, key, el)
         });
     });
 }
+// CLICK EN BOTON SIZE
+function clickSizeBtn(sizeButton, key, el){
+    sizeSelected=parseInt(el.textContent);
+    pressedId = el.getAttribute('data-id'); 
+    el.classList.toggle("active");
+    sizeButton.forEach(function(ell, els){
+        if(key !== els) {
+            ell.classList.remove('active');
+        }
+    });
+    console.log('Size selected: ' + sizeSelected + '\nID of product: ' + pressedId);
+}
+
+// AGREGA EVENTO A TODOS LOS BOTONES ADD TO CART
+function addCartBtn(){
+    console.log("EL ID es " + pressedId);
+    const addCart = document.querySelectorAll('.card-body .cart');
+    addCart.forEach(element => {element.addEventListener('click', function() {
+        if(sizeSelected === undefined || pressedId != element.getAttribute('data-id')){
+            console.log('Seleccione un talle');
+        }else{
+            fixStock(pressedId, sizeSelected);
+        }
+    })}); 
+}
+
 let findedProduct;
 function findTheProduct(id){
     findedProduct = products.find((el)=>el.id == id);
-    console.log(findedProduct);
+    console.log("FIND PRODUCT " + findedProduct);
 }
 
 let findedSize;
 function findTheSize(sizeSelected){
     findedSize = findedProduct.sizeStock.find((el)=>el.size == sizeSelected);
+    console.log("FIND SIZE " + findedSize);
 }
-// CLICK EN BOTON ADD CARRITO
-function addCartBtn(){
-    console.log("EL ID es " + pressedId);
-    const addCart = document.querySelectorAll('.card-body .cart');
-    addCart.forEach(element => {element.addEventListener('click', function() {
-        if(pressedBtn === undefined || pressedId != element.getAttribute('data-id')){
-            console.log('Seleccione un talle');
-        }else{
-            fixStock(pressedId, pressedBtn);
-        }
-    })});
-    
-    
-}
-
 
 
 function fixStock(id, sizeSelected) {
@@ -234,9 +196,6 @@ function productsQuantityInCart(){
 }
 let productId = 0;
 function addToCart(id, sizeSelected){
-    
-    
-
     let findedProduct = products.find((el)=>el.id == id)
     productId = ++productId;
     let productImg1 = findedProduct.img1;
@@ -276,31 +235,21 @@ function addToCart(id, sizeSelected){
                 </div>
                 <i data-cartid="${product.id}" class="trash fa fa-trash mb-1 text-dark pointer"></i>
             </div>`;
-        productInCart.appendChild(createDiv);
-
-        
-        
-        
+        productInCart.appendChild(createDiv);   
     }  
+    trash();
+}
+function trash(){
     let trash = document.querySelectorAll('.trash');
     trash.forEach(el => el.addEventListener('click', function(e) { 
-        
-        cartArrayRemove(e);
-        this.parentNode.remove();
-        
+        cartArrayRemove();
+        this.parentNode.remove();  
     })); 
-
-    
 }
-
-function cartArrayRemove(e) { 
-    const id = e.target.dataset.cartid;
+function cartArrayRemove() { 
     const forIndex = cartProducts.find(el=> el.id)
     const index = cartProducts.indexOf(forIndex);
-    console.log("id = " + id);
-    console.log("index = " + index);
     cartProducts.splice(index, 1);
-    console.log(cartProducts);
     productsQuantityInCart();
     return cartProducts;
 }
@@ -313,36 +262,32 @@ function cartArrayRemove(e) {
 </div> */}
 
 
-
-//ADD SIDEBAR
-let checkOut = document.getElementById('checkOut');
-checkOut.addEventListener('click', toggleSidebar);
-
-let closeSidebar2 = document.getElementById('closeSidebar2');
-closeSidebar2.addEventListener('click', toggleSidebar);
-//BTN CART
+//CART sidebar
 let cartIcon = document.getElementById('cartIcon');
 cartIcon.addEventListener('click', toggleSidebar);
-let sidebar = document.getElementById('sidebar');
 let overlay2 = document.getElementById('sidebarOverlay2');
 overlay2.addEventListener('click', toggleSidebar);
+let checkOut = document.getElementById('checkOut');
+checkOut.addEventListener('click', toggleSidebar);
+let closeSidebar2 = document.getElementById('closeSidebar2');
+closeSidebar2.addEventListener('click', toggleSidebar);
 function toggleSidebar(e) {
     e.preventDefault();
+    let sidebar = document.getElementById('sidebar');
     sidebar.classList.toggle('sidebar-off');
     overlay2.classList.toggle('overlay-off');
     document.body.classList.toggle('no-scroll');
 };
-//BTN FILTER
-
-let closeSidebar1 = document.getElementById('closeSidebar1');
-closeSidebar1.addEventListener('click', toggleSidebarFilter);
+//FILTER sidebar
 let filterBtn = document.getElementById('filterBtn');
 filterBtn.addEventListener('click', toggleSidebarFilter);
-let sidebarFilter = document.getElementById('sidebarFilter');
+let closeSidebar1 = document.getElementById('closeSidebar1');
+closeSidebar1.addEventListener('click', toggleSidebarFilter);
 let overlay1 = document.getElementById('sidebarOverlay1');
 overlay1.addEventListener('click', toggleSidebarFilter);
 function toggleSidebarFilter(e) {
     e.preventDefault();
+    let sidebarFilter = document.getElementById('sidebarFilter');
     sidebarFilter.classList.toggle('sidebar-off');
     overlay1.classList.toggle('overlay-off');
     document.body.classList.toggle('no-scroll');
@@ -352,7 +297,7 @@ function toggleSidebarFilter(e) {
 let sortBy = document.getElementById('dropdownMenuButton1');
 //ORDENAR POR ID
 function sortRecomended(){ 
-    console.log('ORDENADO POR RECOMENDADOS ' + e.target);
+    console.log('ORDENADO POR RECOMENDADOS ');
     products.sort((a, b) => a.id - b.id)
     obtainDataAjax(products);
     sortBy.textContent = 'Sort By: Recomended';
@@ -392,6 +337,3 @@ document.getElementById('sortAscending').addEventListener('click', sortAscending
 //****RANGE****
 document.getElementById('priceRange').addEventListener('click', priceRange);
 //****END RANGE****
-
-
-});
