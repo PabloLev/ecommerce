@@ -28,6 +28,7 @@
     <!-- HEADER -->
     
     <header>
+        
         <div class="banner bg-info p-2 text d-flex justify-content-center align-items-center text-light text-uppercase"> 
             <span>YOUR ORDER AT HOME IN 24HS</span>
         </div>
@@ -61,6 +62,12 @@
                     <button id="cartIcon" type="button" class="btn btn-primary ms-3 me-1" aria-label="Cart">
                         <i class="fas fa-shopping-cart"><span class="badge position-absolute"></span></i>
                     </button>
+
+
+                    
+                    
+                    
+                    <!-- <div id="sidebarOverlay3" class="bg-dark min-vh-100 fixed-top m-0 transition opacity-at-25 toast" style="width: 100vw; "></div> -->
                     <!-- SORT FILTER-->
                     <!--<div class="btn-group">
                         <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Sort</button>
@@ -80,7 +87,26 @@
         <div class="bg-mark p-2 text d-flex justify-content-center align-items-center text-gray"> 
             <span>The best brands at incredible prices</span>
         </div>
+        
     </header>
+    <div class="toast-container top-0 start-0 position-fixed min-vh-100 min-vw-100 zindex-tooltip-hi">
+        <div id="basicToast"  class="toast" data-bs-autohide="false" data-bs-delay="3000">
+            <div class="position-fixed top-50 start-50 translate-middle zindex-tooltip col-lg-4 bg-white rounded d-flex flex-column justify-content-center align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header bg-primary text-light d-flex justify-content-center w-100">
+                    <h5 class="my-0 text-uppercase text-center">Product added</h5>
+                </div>
+                <img id="toastImg" src="./img/man/adidas/5_adidas_infinity_black_a.webp" class="card-img-top ps-3 pe-3 w-50" alt="...">
+                <div id="toastBrand" class="toast-body opacity-at-100 ps-3 pe-3 text-center">        
+                    
+                </div>
+                <div class="d-flex justify-content-evenly p-3">
+                    <button type="button" class="btn btn-primary shadow text-uppercase m-3" data-bs-dismiss="toast">Continue Shopping</button>
+                    <button id="checkOut" type="button" class="btn btn-primary shadow text-uppercase m-3" data-bs-dismiss="toast">Check out</button>
+                </div>
+            </div>  
+            <div class="bg-dark min-vh-100 min-vw-100 fixed-top m-0 transition opacity-at-25 overflow-hidden"></div>
+        </div>
+    </div>
     <!-- END HEADER -->
     <div id="sidebarOverlay1" class="bg-dark min-vh-100 fixed-top m-0 transition overlay-off opacity-at-25 zindex-tooltip"></div>
     <div id="sidebarFilter" class="bg-light col-auto col-sm-9 col-md-6 col-xl-4 shadow fixed-top transition sidebar-off overflow-auto vh-100 zindex-tooltip" data-show = "on">
@@ -91,7 +117,6 @@
                 </div>
                 <div id="filters" class="col-12">
                     <H6 class="text-black text-center">ACA VAN A IR LOS FILTROS</H6>
-                   
                 </div>
                 <div id="closeSidebar1" class="pointer p-3 mb-3 text-dark">
                     <i class="fas fa-chevron-left pe-3"></i>
@@ -111,24 +136,6 @@
                 </div>
                 <div id="productsInCart" class="col-12">
                     <H6 class="text-black text-center">Please select a product</H6>
-                    <!-- <div class="d-flex flex-row justify-content-between align-items-center bg-white p-2 mt-4 px-3 rounded text-dark col-12 shadow-sm">
-                        <div class="mr-1"><img class="rounded" src="./img/man/topper/1_topper_classic_black_a.webp" width="70"></div>
-                        <div class="d-flex flex-column align-items-center product-details">
-                            <span class=""><strong>Topper - Classic</strong></span>
-                            <span class=""><strong>Size: 38</strong></span>
-                        </div>
-                        <div class="d-flex flex-row align-items-center">
-                            <span class="text-dark pointer"><strong>-</strong></span>
-                            <span class="text-dark mt-1 ms-3 me-3"><strong>2</strong></span>
-                            <span class="text-dark pointer"><strong>+</strong></span>
-                        </div>
-                        <div>
-                            <span class="text-dark"><strong>$2050</strong></span>
-                        </div>
-                        <div class="d-flex align-items-center pointer"><i class="fa fa-trash mb-1 text-dark"></i></div>
-                    </div> -->
-                    
-                    
                 </div>
                 <button type="button" class="align-middle btn btn-primary py-2 mt-4">Finalizar Compra</button>
                 <div id="closeSidebar2" class="pointer p-3 mb-3 text-dark">
@@ -151,7 +158,6 @@
             <div class="carousel-inner">
                 <div class="carousel-item item1 active" >
                     <a href="#">
-                        <!-- <img src="img/hero/slider 1.gif" class="d-block w-100" alt="..."> -->
                         <div class="carousel-caption">
                             <h2 class="display-4 text-uppercase text-shadow-lg"><strong>Summer sales</strong></h2>
                             <p class="fs-5 d-none d-md-block text-shadow">Some representative placeholder content for the first slide.</p>
@@ -160,7 +166,6 @@
                 </div>
                 <div class="carousel-item item2" >
                     <a href="#">
-                        <!-- <img src="img/hero/2.webp" class="d-block w-100" alt="..."> -->
                         <div class="carousel-caption">
                             <h2 class="display-4 text-uppercase text-shadow-lg"><strong>Second hand</strong></h2>
                             <p class="fs-5 d-none d-md-block text-shadow">Some representative placeholder content for the second slide.</p>
@@ -169,7 +174,6 @@
                 </div>
                 <div class="carousel-item item3" >
                     <a href="#">
-                        <!-- <img src="img/hero/3.webp" class="d-block w-100" alt="..."> -->
                         <div class="carousel-caption">
                             <h2 class="display-4 text-uppercase text-shadow-lg"><strong>All in Sports</strong></h2>
                             <p class="fs-5 d-none d-md-block text-shadow">Some representative placeholder content for the third slide.</p>
@@ -195,8 +199,6 @@
                 <div class="bg-white rounded d-flex justify-content-end align-items-center text-dark ps-3 pe-1">
                     <span class="me-3 ms-3 text-soft-gray text-small">425 artículos</span>
                     <i id="filterBtn" class="fas fa-filter me-3 divider pointer"></i>
-                    <!-- <span class="d-inline-block me-2">Sort by</span> -->
-                    
                     <div class="dropdown">
                         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Sort By: Recomended
@@ -217,26 +219,7 @@
         <section class="container"> 
             <div  id="productsCatalog" class="row"> 
                 <!-- SE AGREGA POR JS TEMPLATE -->
-            </div> <!-- END ROW -->
-            <!-- PAGINACION -->
-            <!-- <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true"><i class="fas fa-angle-left ms-3"></i></span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true"><i class="fas fa-angle-right ms-3"></i></span>
-                        </a>
-                    </li>
-                </ul>
-            </nav> -->
-            <!-- END PAGINACION -->
+            </div>
         </section>
     </main>
     <!-- END MAIN -->
@@ -284,10 +267,6 @@
         </div>
         <!-- Grid container -->
         <div class="">
-            
-            <!-- <div class="bg-mark mt-5 p-4 text d-flex justify-content-center align-items-center text-gray text-uppercase"> 
-                <span>The best brands at incredible prices</span>
-            </div> -->
             <!-- Section: Form -->
             <section class="bg-primary p-5 shadow">
                 <div class="container">
@@ -300,29 +279,7 @@
                         <button class="btn btn-mark border-straight col-auto" type="submit" aria-label="Search">SUSCRIBE</button>
                     </form>
                 </div>
-                
-                <!-- <form action="">
 
-                    <div class="row d-flex justify-content-center">
-                        
-                        <div class="col-auto">
-                            <p class="pt-2 mb-0"><strong>Sign up for our newsletter</strong></p>
-                        </div>
-                        
-                        <div class="col-md-5 col-12">
-                            
-
-                            <div class="form-outline form-white">
-                                <input type="email" id="form5Example2" class="form-control" placeholder="Email address"/>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-
-                            <button type="submit" class="btn btn-outline-light">Subscribe</button>
-                        </div>
-                    </div>
-
-                </form> -->
             </section>
             <!-- Section: Form -->
 
@@ -414,7 +371,6 @@
             <a class="text-primary text-decoration-none" href="https://www.coderhouse.com.uy/" target="_blank" rel="noopener">PL - Coderhouse</a>
         </div>
             <!-- Copyright -->
-            
     </footer>
 
 
@@ -506,27 +462,36 @@
             </div>
         </div>
     </div>
+    <!-- Toast -->
+    <div class="toast">
+        <div class="toast-header">
+            <strong class="mr-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">
+            <span>&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
     <!-- TEMPLATE -->
     <template id="templateProduct">
         <article class="card col-6 col-md-4 col-lg-3 text-center border-0 p-3">
             <div class="img-wrapper position-relative p-1" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content="More info">
-                <img src="img/hombres/adidas/adidas_4a.webp" class="img-a card-img-top" alt="...">
-                <img src="img/hombres/adidas/adidas_4b.webp" class="img-b card-img-top position-absolute p-1" alt="...">
+                <img src="" class="img-a card-img-top" alt="...">
+                <img src="" class="img-b card-img-top position-absolute p-1" alt="...">
             </div>
             <div class="card-body">
-                <img src="img/brands/ADIDAS" class="img-brand-card" alt="Topper_100x70">
+                <img src="" class="img-brand-card" alt="...">
                 <p class="card-title text-uppercase fw-bold"></p>
                 <span class="price card-text fs-5 text-dark"></span>
                 
                 <div class="dropdown">
-                    <button class="btn dropdown-toggle mb-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Chose Size
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">     
-                    </ul>
+                    <button class="btn dropdown-toggle mb-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">Chose Size</button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton"></ul>
                 </div>
-        
-                <button type="button" class="cart btn container-fluid btn-primary py-2">Add to cart<i class="fas fa-plus ms-3"></i></button>
+                <button type="button" class="cart btn container-fluid btn-primary py-2">Add to Cart<!-- <i class="fas fa-plus ms-3"></i> --></button>
             </div>
         </article>
     </template>

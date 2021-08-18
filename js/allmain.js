@@ -1,3 +1,4 @@
+window.addEventListener('DOMContentLoaded', (event) => {
 //CONSTRUCTOR PRODUCTS - CREADORA DE OBJETOS 
 class Product{
     constructor (id, category, gender, brand, model, color, price, sizeStock){
@@ -15,6 +16,9 @@ class Product{
         this.promotion = false;
     }
 }
+
+    
+
 //CREO "BASE DE DATOS"
 const products = [];
 function obtainData(){
@@ -29,8 +33,8 @@ function obtainData(){
                 products.push(new Product(item.id, item.category, item.gender, item.brand, item.model, item.color, item.price, item.sizeStock));     
             }
             loadDOM();
-            selectSize()
-            addCart()
+            selectSizeBtn();
+            addCartBtn();
         }
     }
 }
@@ -130,8 +134,8 @@ function obtainDataAjax(data){
             // Empty productsCatalog
             emptyFromDom(productsCatalog)
             productsCatalog.appendChild(fragment);
-            selectSize()
-            addCart()
+            selectSizeBtn();
+            addCartBtn();
         }
     }
 }
@@ -143,6 +147,10 @@ function toggleActive(selectedSize, key, el){
     pressedBtn=parseInt(el.textContent);
     pressedId = el.getAttribute('data-id'); 
     el.classList.toggle("active");
+    // let addBtn = el.parentNode.parentNode.parentNode.childNodes[9];
+    // addBtn.classList.toggle("disabled");
+    // addBtn.textContent = "Add to cart"
+
     selectedSize.forEach(function(ell, els){
         if(key !== els) {
             ell.classList.remove('active');
@@ -150,7 +158,15 @@ function toggleActive(selectedSize, key, el){
     });
     console.log('Size selected: ' + pressedBtn + '\nID of product: ' + pressedId);
 }
-function selectSize(){
+
+
+
+
+// document.querySelector("#basicToastBtn").onclick = function() {
+//     new bootstrap.Toast(document.querySelector('#basicToast')).show();
+// } 
+
+function selectSizeBtn(){
     const selectedSize = document.querySelectorAll('.btn-outline-primary');
     selectedSize.forEach(function(el, key){
         el.addEventListener('click', function () {  
@@ -158,8 +174,19 @@ function selectSize(){
         });
     });
 }
+let findedProduct;
+function findTheProduct(id){
+    findedProduct = products.find((el)=>el.id == id);
+    console.log(findedProduct);
+}
+
+let findedSize;
+function findTheSize(sizeSelected){
+    findedSize = findedProduct.sizeStock.find((el)=>el.size == sizeSelected);
+}
 // CLICK EN BOTON ADD CARRITO
-function addCart(){
+function addCartBtn(){
+    console.log("EL ID es " + pressedId);
     const addCart = document.querySelectorAll('.card-body .cart');
     addCart.forEach(element => {element.addEventListener('click', function() {
         if(pressedBtn === undefined || pressedId != element.getAttribute('data-id')){
@@ -168,30 +195,18 @@ function addCart(){
             fixStock(pressedId, pressedBtn);
         }
     })});
+    
+    
 }
-//Arreglo stock
-// let sum = 0;
-// function increaseCartIconNum(){
-//     let cartIconNum = document.querySelector('.fa-shopping-cart .badge');    
-//     sum = sum + 1;
-//     cartIconNum.textContent = sum;
-// }
-let findedProduct;
-function findTheProduct(id){
-    findedProduct = products.find((el)=>el.id == id);
-    console.log(findedProduct);
-}
-let findedSize;
-function findTheSize(sizeSelected){
-    findedSize = findedProduct.sizeStock.find((el)=>el.size == sizeSelected);
-}
+
+
+
 function fixStock(id, sizeSelected) {
     findTheProduct(id);
     findTheSize(sizeSelected);
     if ( findedSize.stock > 0){
         findedSize.stock = findedSize.stock - 1;
         let removeActive = document.querySelector('.dropdown-menu .active');
-        // increaseCartIconNum();
         if(findedSize.stock == 0){
             removeActive.classList.remove('active');
             removeActive.classList.remove('btn-outline-primary');
@@ -200,6 +215,9 @@ function fixStock(id, sizeSelected) {
         }
         console.log(findedSize);
         addToCart(id, sizeSelected);
+        new bootstrap.Toast(document.querySelector('#basicToast')).show();
+        // new bootstrap.Toast(document.querySelector('#sidebarOverlay3')).show();
+
     }else{
         console.log('No stock of size: ' + findedSize.size);
     }
@@ -211,12 +229,14 @@ let cartProducts=[];
 //NUMERO DEL CARRITO
 function productsQuantityInCart(){
     let cartIconNum = document.querySelector('.fa-shopping-cart .badge');    
-    // sum = sum + 1;
     let productsInCart = cartProducts.length;
     cartIconNum.textContent = productsInCart;
 }
 let productId = 0;
 function addToCart(id, sizeSelected){
+    
+    
+
     let findedProduct = products.find((el)=>el.id == id)
     productId = ++productId;
     let productImg1 = findedProduct.img1;
@@ -225,12 +245,20 @@ function addToCart(id, sizeSelected){
     let productSize = sizeSelected;
     let productPrice = findedProduct.price;
     cartProducts.push({id: productId, originalId: id, img1: productImg1, model: productModel, brand: productBrand, size: productSize, price: productPrice});
-    //Agrego como objeto cada producto que agrego.
-    //Con un for o foreach voy llenando un innerHTML y le hago el appendchild.
-    //Agregar funcionalidad a los botones de agregar cantidad y que si agrego el mismo producto se sume y no ponga otro elemento nuevo del mismo. Si es otro tamaño si es un obj nuevo
     let productInCart = document.getElementById('productsInCart');
+
+    let toastImg = document.getElementById('toastImg');
+    toastImg.src=productImg1;
+    let toastBrand = document.querySelector('#toastBrand');
+    let toastDiv = document.createElement('div');
+    emptyFromDom(toastBrand);
+    toastDiv.innerHTML=`<h5><strong>${productBrand} - ${productModel}</strong></h5>
+    <div class="text-center"><strong>Size: ${productSize}</strong></div>
+    <div class="text-center"><strong>$${productPrice}</strong></div>`
+    toastBrand.appendChild(toastDiv);
+    
     // Empty productInCart
-    emptyFromDom(productInCart)
+    emptyFromDom(productInCart);
     productsQuantityInCart();
 
     for (const index in cartProducts){
@@ -261,12 +289,11 @@ function addToCart(id, sizeSelected){
         this.parentNode.remove();
         
     })); 
+
     
 }
 
 function cartArrayRemove(e) { 
-    // productId = cartProducts.filter(item => item.id != '').length; 
-    // console.log(productId) 
     const id = e.target.dataset.cartid;
     const forIndex = cartProducts.find(el=> el.id)
     const index = cartProducts.indexOf(forIndex);
@@ -288,6 +315,8 @@ function cartArrayRemove(e) {
 
 
 //ADD SIDEBAR
+let checkOut = document.getElementById('checkOut');
+checkOut.addEventListener('click', toggleSidebar);
 
 let closeSidebar2 = document.getElementById('closeSidebar2');
 closeSidebar2.addEventListener('click', toggleSidebar);
@@ -304,6 +333,7 @@ function toggleSidebar(e) {
     document.body.classList.toggle('no-scroll');
 };
 //BTN FILTER
+
 let closeSidebar1 = document.getElementById('closeSidebar1');
 closeSidebar1.addEventListener('click', toggleSidebarFilter);
 let filterBtn = document.getElementById('filterBtn');
@@ -364,3 +394,4 @@ document.getElementById('priceRange').addEventListener('click', priceRange);
 //****END RANGE****
 
 
+});
