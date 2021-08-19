@@ -249,6 +249,14 @@ function addToCart(id, sizeSelected){
     }  
     trash();
 }
+//elimino del array carrito
+function cartArrayRemove() { 
+    const forIndex = cartProducts.find(el=> el.id)
+    const index = cartProducts.indexOf(forIndex);
+    cartProducts.splice(index, 1);
+    productsQuantityInCart();
+}
+//Elimino del sidebar
 function trash(){
     let trash = document.querySelectorAll('.trash');
     trash.forEach(el => el.addEventListener('click', function(e) { 
@@ -256,13 +264,7 @@ function trash(){
         this.parentNode.remove();  
     })); 
 }
-function cartArrayRemove() { 
-    const forIndex = cartProducts.find(el=> el.id)
-    const index = cartProducts.indexOf(forIndex);
-    cartProducts.splice(index, 1);
-    productsQuantityInCart();
-    // return cartProducts;
-}
+
 
 
 
