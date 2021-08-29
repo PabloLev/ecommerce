@@ -22,6 +22,10 @@ $zindex-tooltip:                    1080;
 .zindex-tooltip-hi{
     z-index: 1100;
 }
+.w-45{
+    width: 45% !important;
+    // margin: 0 2.0%;
+}
 //SACAR CUANDO BAJE BOOTSTRAP
 .bg-primary{
     background-color: #6c4aff !important;
@@ -295,4 +299,11 @@ button{
         transform: translateX(-100%);
     }
 }
+
+
+
+
+
+
+
 

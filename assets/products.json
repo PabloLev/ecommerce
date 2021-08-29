@@ -17,7 +17,7 @@
         "model": "rainbow",
         "color": "multi",
         "price": 3500,
-        "sizeStock": [{"size": 39, "stock": 1},{"size": 40, "stock": 5},{"size":41, "stock":1}]
+        "sizeStock": [{"size": 139, "stock": 1},{"size": 40, "stock": 5},{"size":41, "stock":1}]
     },
     {
         "id": 3,
@@ -67,7 +67,7 @@
         "model": "angular",
         "color": "black",
         "price": 2100,
-        "sizeStock": [{"size": 37, "stock": 4},{"size": 40, "stock": 5},{"size":99, "stock":1}]
+        "sizeStock": [{"size": 37, "stock": 4},{"size": 140, "stock": 5},{"size":99, "stock":1}]
     },
     {
         "id": 8,
@@ -77,7 +77,7 @@
         "model": "rougue",
         "color": "black",
         "price": 4200,
-        "sizeStock": [{"size": 37, "stock": 4},{"size": 40, "stock": 5},{"size":99, "stock":1}]
+        "sizeStock": [{"size": 40, "stock": 5}]
     }
 ]
 

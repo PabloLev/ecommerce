@@ -20,9 +20,14 @@
 </head>
 <body>
     <!-- EJERCICIO -->
-    <div id="insertar">
-        <!-- acá se inserta lo que se hace en jquery-test.js -->
-    </div>
+    <!-- <div class="container d-flex flex-column align-items-center">
+        <h1 class="">JQUERY LOAD</h1>
+        <button id="jqueryLoad" class="btn btn-primary m-3">ADD</button>
+        <button id="jqueryClear" class="btn btn-danger m-3" style="display: none;">CLEAR</button>
+        <div id="insertar" class="row">
+
+        </div>
+    </div> -->
     <!-- HEADER -->
     <header>
         <div class="banner bg-info p-2 text d-flex justify-content-center align-items-center text-light text-uppercase"> 
@@ -91,28 +96,96 @@
     </div>
     
     <div id="sidebarOverlay1" class="bg-dark min-vh-100 fixed-top m-0 transition overlay-off opacity-at-25 zindex-tooltip"></div>
-    <div id="sidebarFilter" class="bg-light col-auto col-sm-9 col-md-6 col-xl-4 shadow fixed-top transition sidebar-off overflow-auto vh-100 zindex-tooltip" data-show = "on">
+    <div id="sidebarFilter" class="bg-light col-auto col-sm-9 col-md-6 col-xl-3 shadow fixed-top transition sidebar-off overflow-auto min-vh-100 zindex-tooltip" data-show = "on">
+        <div id="closeSidebar1" class="pointer p-3 mb-3 text-dark d-flex justify-content-end">
+            <i class="fas fa-times pe-3 position-absolute"></i>
+        </div>
         <div class=" px-sm-2 px-0 bg-light">
-            <div class="d-flex flex-column align-items-center px-3 pt-2 text-white min-vh-100">
+            
+            <div class="d-flex flex-column sidebar-filter mt-1 me-5 ms-5 mb-5">
+                <h3 class="mt-0 mb-5 text-uppercase">Filter <span class="text-primary">your</span> Products</h3>
+                <h6 class="text-uppercase font-weight-bold mb-3">Filter by Brand</h6>
+                <div class="mt-2 mb-2 pl-2">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="category-1">
+                        <label class="custom-control-label" for="category-1">Adidas</label>
+                    </div>
+                </div>
+                <div class="mt-2 mb-2 pl-2">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="category-2">
+                        <label class="custom-control-label" for="category-2">Topper</label>
+                    </div>
+                </div>
+                
+                <div class="divider mt-2 mb-4 border-bottom border-secondary">
+                </div>
+
+                <h6 class="text-uppercase mb-3 font-weight-bold">Filter by Size</h6>
+                <div class="mt-2 mb-2 pl-2">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="filter-size-1">
+                        <label class="custom-control-label" for="filter-size-1">34</label>
+                    </div>
+                </div>
+                <div class="mt-2 mb-2 pl-2">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="filter-size-2">
+                        <label class="custom-control-label" for="filter-size-2">35</label>
+                    </div>
+                </div>
+                <div class="mt-2 mb-2 pl-2">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="filter-size-3">
+                        <label class="custom-control-label" for="filter-size-3">36</label>
+                    </div>
+                </div>
+                <div class="mt-2 mb-2 pl-2">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="filter-size-4">
+                        <label class="custom-control-label" for="filter-size-4">37</label>
+                    </div>
+                </div>
+                <div class="mt-2 mb-2 pl-2">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="filter-size-5">
+                        <label class="custom-control-label" for="filter-size-5">38</label>
+                    </div>
+                </div>
+
+                <div class="divider mt-2 mb-4 border-bottom border-secondary">
+                </div>
+
+                <h6 class="text-uppercase mb-3 font-weight-bold">Filter by Price Range</h6>
+                <div class="price-filter-control">
+                    <input type="number" class="form-control w-45 d-inline-block pull-left mb-2" placeholder="Min price" id="price-min-control">
+                    <input type="number" class="form-control w-45 d-inline-block pull-right" placeholder="Max price" id="price-max-control">
+                </div>
+                <input id="ex2" type="text" class="slider " value="50,150" data-slider-min="10" data-slider-max="200" data-slider-step="5" data-slider-value="[50,150]" data-value="50,150" style="display: none;">
+                <a href="#" class="btn btn-primary mt-5">Apply Filters</a>
+            </div>
+            
+            <!-- <div class="d-flex flex-column align-items-center px-3 pt-2 min-vh-100">
                 <div class="p-2 text-dark">
                     <h4 class="text-uppercase">FILTERS</h4>
                 </div>
-                <div id="filters" class="col-12">
-                    <H6 class="text-black text-center">ACA VAN A IR LOS FILTROS</H6>
-                </div>
+
                 <div id="closeSidebar1" class="pointer p-3 mb-3 text-dark">
                     <i class="fas fa-chevron-left pe-3"></i>
                     <span>Continuar comprando</span>
                 </div>
-                
-            </div>
+            </div> -->
+            
         </div>
         
     </div>
     <div id="sidebarOverlay2" class="bg-dark min-vh-100 fixed-top m-0 transition overlay-off opacity-at-25 zindex-tooltip"></div>
     <div id="sidebar" class="col-auto col-sm-9 col-md-6 col-xl-4 shadow fixed-top transition sidebar-off overflow-auto vh-100 zindex-tooltip" data-show = "on">
-        <div class=" px-sm-2 px-0 bg-light">
-            <div class="d-flex flex-column align-items-center px-3 pt-2 text-white min-vh-100">
+        <div class=" px-sm-2 px-0 bg-light min-vh-100">
+            <div id="closeSidebar2" class="pointer p-3 mb-3 text-dark d-flex justify-content-end">
+                <i class="fas fa-times pe-3"></i>
+            </div>
+            <div class="d-flex flex-column align-items-center px-3 pt-2 text-white ">
                 <div class="p-2 text-dark">
                     <h4 class="text-uppercase">Your shopping cart</h4>
                 </div>
@@ -120,10 +193,10 @@
                     <H6 class="text-black text-center">Please select a product</H6>
                 </div>
                 <button type="button" class="align-middle btn btn-primary py-2 mt-4">Finalizar Compra</button>
-                <div id="closeSidebar2" class="pointer p-3 mb-3 text-dark">
+                <!-- <div id="closeSidebar2" class="pointer p-3 mb-3 text-dark">
                     <i class="fas fa-chevron-left pe-3"></i>
                     <span>Continuar comprando</span>
-                </div>
+                </div> -->
                 
             </div>
         </div>
@@ -182,7 +255,7 @@
                     <span class="me-3 ms-3 text-soft-gray text-small">425 artículos</span>
                     <i id="filterBtn" class="fas fa-filter me-3 divider pointer"></i>
                     <div class="dropdown">
-                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButtonSort" data-bs-toggle="dropdown" aria-expanded="false">
                             Sort By: Recomended
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -200,6 +273,11 @@
         <!-- Acá se van a cargar los productos a mostrar -->
         <section class="container"> 
             <div  id="productsCatalog" class="row"> 
+                <!-- <div class="d-flex  justify-content-center m-5">
+                    <div class="spinner-grow" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div> -->
                 <!-- SE AGREGA POR JS TEMPLATE -->
             </div>
         </section>
@@ -486,7 +564,7 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> -->
     <!-- JUQERY -->
-    <!-- <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+    <script defer src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- <script defer src="js/jquery-test.js"></script> -->
     <!-- MAIN JS -->
     <script src="js/allmain.js"></script>

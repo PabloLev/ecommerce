@@ -1,7 +1,7 @@
-$(document).ready(function() {
-    alert ("Hola Mundo"); 
-});
+// $(document).ready(function() {
+//     alert ("Hola Mundo"); 
+// });
 
 
 
-$("#insertar").append(`<div><p>Texto</p></div>`)
+// $("#insertar").append(`<div><p>Texto</p></div>`)

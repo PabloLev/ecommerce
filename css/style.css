@@ -18,6 +18,10 @@
   z-index: 1100;
 }
 
+.w-45 {
+  width: 45% !important;
+}
+
 .bg-primary {
   background-color: #6c4aff !important;
 }
