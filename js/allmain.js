@@ -27,58 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
             empty.removeChild(empty.firstChild);
         }
     }
-    //SI SE QUIERE PROBAR ESTO HAY QUE DESCOMENTAR Y DESCOMENTAR LOS LLAMADOS A loadDOM(products) y comentar los llamados a loadDOMJquery(products)
-    // //Usando el array products pueblo el template de html (la funcion es llamada en loadDOM)
-    // function addDataToTemplate(products, fragment, templateProduct){
-    //     products.forEach( product => {
-    //         //AGREGO DATA DE PRODUCTOS AL TEMPLATE DE HTML
-    //         templateProduct.querySelector('.img-a').src= product.imgA;
-    //         templateProduct.querySelector('.img-b').src= product.imgB;
-    //         templateProduct.querySelector('.img-brand-card').src='img/brands/' + product.brand + '.svg';
-    //         templateProduct.querySelector('.card-title').textContent = product.model;
-    //         templateProduct.querySelector('.price').textContent = '$'+product.price;
-    //         templateProduct.querySelector('.card-body .cart').dataset.id=product.id;
-    //         //LIMPIO PARA NO REPOBLAR
-    //         const empty = templateProduct.querySelector('.dropdown-menu');
-    //         emptyFromDom(empty);
-    //         //Recorro el array sizeStock dentro del Array products (products es un array con dos niveles) para poder crear los botones de talle.
-    //         product.sizeStock.forEach(element => {
-    //             const dropdownSize = templateProduct.querySelector('.dropdown-menu');
-    //             //CREO EL BOTÓN DE TALLES CON SUS CLASES Y LE AGREGO EL VALOR
-    //             const sizeBtn = document.createElement('button');
-    //             sizeBtn.dataset.id = product.id;
-    //             sizeBtn.classList.add('btn', 'm-1', 'p-0');
-    //             sizeBtn.textContent = element.size;
-    //             //Si stock del talle es cero desabilito el botón
-    //             if (element.stock === 0){
-    //                 sizeBtn.classList.add('btn-outline-secondary');
-    //                 sizeBtn.disabled = true;
-    //                 dropdownSize.appendChild(sizeBtn);
-    //                 return;
-    //             }else{
-    //                 sizeBtn.classList.add('btn-outline-primary');
-    //                 dropdownSize.appendChild(sizeBtn);
-    //                 return;
-    //             }
-    //         });
-    //         const clone = templateProduct.cloneNode(true);
-    //         fragment.appendChild(clone);
-    //     });
-    //     productsCatalog.appendChild(fragment);
-    //     return;
-    // }
-    // // CARGANDO EL DOM con FRAGMENT y el TEMPLATE DE HTML
-    // function loadDOM(products){
-    //     // const productsCatalog = document.getElementById('productsCatalog'); ****NO ENTIENDO PORQUE NO PRECISO DECLARAR productsCatalog.****
-    //     const templateProduct = document.getElementById('templateProduct').content;
-    //     const fragment = document.createDocumentFragment();
-    //     addDataToTemplate(products, fragment, templateProduct);
-    //     //AGREGO EVENTOS A LOS BOTONES CREADOS (los de size y el add to cart)
-    //     selectSizeBtn();
-    //     addCartBtn();
-    //     return;
-    // }
-
 
     //*****JQUERY */
     // LOAD DOM JQUERY (Se usa al cargar el archivo JSON con los productos y cada vez que se quiere filtrar)
@@ -124,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         };
-        selectSizeBtn();
+        eventToSizeBtn();
         addCartBtn();
     }
 
@@ -152,8 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     fetchDataProducts(products);
 
-    
-    // CLICK EN BOTON SIZE
+    // CLICK EN BOTON SIZE (Dentro de los dropdown, cualquier botón de talles)
     let sizeSelected;
     let pressedId;
     function clickSizeBtn(sizeButton, key, btn){  
@@ -168,8 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Size selected: ' + sizeSelected + '\nID of product: ' + pressedId);
         return;
     }
-    // AGREGA EVENTO A TODOS LOS BOTONES SIZE
-    function selectSizeBtn(){
+
+    // AGREGA EVENTO A TODOS LOS BOTONES SIZE (Dentro de los dropdown, cualquier botón de talles)
+    function eventToSizeBtn(){
         const sizeButton = document.querySelectorAll('.dropdown .dropdown-menu .btn-outline-primary');
         sizeButton.forEach(function(btn, key){
             btn.addEventListener('click', function () {  
@@ -178,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         return;
     }
-    
 
     // AGREGA EVENTO A TODOS LOS BOTONES ADD TO CART
     function addCartBtn(){
@@ -193,11 +140,13 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    //Encuentra el producto con ese ID
     let findedProduct;
     function findTheProduct(id){
         return findedProduct = products.find((el)=>el.id == id);
     }
 
+    //Encuentra el producto con ese Talle
     let findedSize;
     function findTheSize(sizeSelected){
         return findedSize = findedProduct.sizeStock.find((el)=>el.size == sizeSelected);
@@ -217,19 +166,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 removeActive.disabled = true;
             }
             console.log(findedSize);
+            //Llamo a la función que agrega al carrito.
             addToCart(id, sizeSelected);
+            //Despliego el Toast de bootstrap que pregunta si se sigue comprando
             new bootstrap.Toast(document.querySelector('#basicToast')).show();
-            // new bootstrap.Toast(document.querySelector('#sidebarOverlay3')).show();
         }else{
             console.log('No stock of size: ' + findedSize.size);
         }
         return;
     }
-    //END ARREGLO STOCK
 
-
-    let cartProducts=[];
     //NUMERO DEL ICONO CARRITO
+    let cartProducts=[];
     function productsQuantityInCart(){
         let cartIconNum = document.querySelector('.fa-shopping-cart .badge');    
         let productsInCart = cartProducts.length;
@@ -237,30 +185,27 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     
+    //Esta funcion agrega los productos al carrito
     let productId = 0;
     function addToCart(id, sizeSelected){
-        let findedProduct = products.find((el)=>el.id == id)
-        productId = ++productId;
-        let productimgA = findedProduct.imgA;
-        let productBrand = findedProduct.brand;
-        let productModel = findedProduct.model;
-        let productSize = sizeSelected;
-        let productPrice = findedProduct.price;
-        cartProducts.push({id: productId, originalId: id, imgA: productimgA, model: productModel, brand: productBrand, size: productSize, price: productPrice});
-        let productInCart = document.getElementById('productsInCart');
 
+        //Filtro products y creo nuevo array findedProduct
+        const findedProduct = products.find((el)=>el.id == id)
+        productId = ++productId;
+        cartProducts.push({id: productId, originalId: id, imgA: findedProduct.imgA, model: findedProduct.model, brand: findedProduct.brand, size: sizeSelected, price: findedProduct.price});
+        let productInCart = document.getElementById('productsInCart');
         let toastImg = document.getElementById('toastImg');
-        toastImg.src=productimgA;
+        toastImg.src=findedProduct.imgA;
         let toastBrand = document.querySelector('#toastBrand');
         let toastDiv = document.createElement('div');
         emptyFromDom(toastBrand);
-        toastDiv.innerHTML=`<h6 class="mt-3"><strong>${productBrand} - ${productModel} - Size: ${productSize}</strong></h6>`
+        toastDiv.innerHTML=`<h6 class="mt-3"><strong>${findedProduct.brand} - ${findedProduct.model} - Size: ${sizeSelected}</strong></h6>`
         toastBrand.appendChild(toastDiv);
         
         // Empty productInCart
         emptyFromDom(productInCart);
-        productsQuantityInCart();
 
+        productsQuantityInCart();
         for (const index in cartProducts){
             let product = cartProducts[index]
             let createDiv = document.createElement('div');
@@ -271,11 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class=""><strong>${product.brand} - ${product.model}</strong></span>
                         <span class=""><strong>Size: ${product.size}</strong></span>
                     </div>
-                    <div class="d-flex flex-row align-items-center">
-                        <span class="text-dark pointer"><strong>-</strong></span>
-                        <span class="text-dark mt-1 ms-3 me-3"><strong>1</strong></span>
-                        <span class="text-dark pointer"><strong>+</strong></span>
-                    </div>
+                    
                     <div>
                         <span class="text-dark"><strong>$${product.price}</strong></span>
                     </div>
@@ -286,6 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
         trash();
         return;
     }
+
     //elimino del array carrito
     function cartArrayRemove() { 
         const forIndex = cartProducts.find(el=> el.id)
@@ -294,6 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
         productsQuantityInCart();
         return;
     }
+
     //Elimino del sidebar
     function trash(){
         let trash = document.querySelectorAll('.trash');
@@ -303,11 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
         })); 
         return;
     }
-
-
-
-
-
 
     //CART sidebar
     let cartIcon = document.getElementById('cartIcon');
@@ -325,6 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay2.classList.toggle('overlay-off');
         document.body.classList.toggle('no-scroll');
     };
+
     //FILTER sidebar
     let filterBtn = document.getElementById('filterBtn');
     filterBtn.addEventListener('click', toggleSidebarFilter);
@@ -341,8 +280,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     //****FILTROS****
-    let sortBy = document.getElementById('dropdownMenuButtonSort');
     //ORDENAR POR ID
+    let sortBy = document.getElementById('dropdownMenuButtonSort');
     function sortRecomended(){ 
         console.log('ORDENADO POR RECOMENDADOS ');
         products.sort((a, b) => a.id - b.id)
@@ -350,6 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sortBy.textContent = 'Sort By: Recomended';
         return;
     };
+
     //ORDENAR POR PRECIO DESCENDENTE
     function sortDescending(){ 
         console.log('PRECIO MÁS ALTO PRIMERO AJAX');
@@ -359,6 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sortBy.textContent = 'Sort By: High to low';
         return;
     };
+
     //ORDENAR POR PRECIO ASCENDENTE
     function sortAscending(){ 
         console.log('PRECIO MÁS BAJO PRIMERO');
@@ -367,8 +308,8 @@ document.addEventListener('DOMContentLoaded', () => {
         sortBy.textContent = 'Sort By: Low to high';
         return;
     };
-    //FILTRAR POR RANGO DE PRECIOS
 
+    //FILTRAR POR RANGO DE PRECIOS
     function priceRange(){
         let priceRanges = [];
         let lowRange = parseInt(prompt('Ingrese su precio mínimo'));
@@ -380,6 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     };
     //****END FILTROS****
+
     // EVENTOS
     //***SORT****
     document.getElementById('sortRecomended').addEventListener('click', sortRecomended);

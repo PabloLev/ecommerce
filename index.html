@@ -19,15 +19,6 @@
     
 </head>
 <body>
-    <!-- EJERCICIO -->
-    <!-- <div class="container d-flex flex-column align-items-center">
-        <h1 class="">JQUERY LOAD</h1>
-        <button id="jqueryLoad" class="btn btn-primary m-3">ADD</button>
-        <button id="jqueryClear" class="btn btn-danger m-3" style="display: none;">CLEAR</button>
-        <div id="insertar" class="row">
-
-        </div>
-    </div> -->
     <!-- HEADER -->
     <header>
         <div class="banner bg-info p-2 text d-flex justify-content-center align-items-center text-light text-uppercase"> 
@@ -95,13 +86,13 @@
         </div>
     </div>
     
+    <!-- SIDEBARS  -->
     <div id="sidebarOverlay1" class="bg-dark min-vh-100 fixed-top m-0 transition overlay-off opacity-at-25 zindex-tooltip"></div>
     <div id="sidebarFilter" class="bg-light col-auto col-sm-9 col-md-6 col-xl-3 shadow fixed-top transition sidebar-off overflow-auto min-vh-100 zindex-tooltip" data-show = "on">
         <div id="closeSidebar1" class="pointer p-3 mb-3 text-dark d-flex justify-content-end">
             <i class="fas fa-times pe-3 position-absolute"></i>
         </div>
         <div class=" px-sm-2 px-0 bg-light">
-            
             <div class="d-flex flex-column sidebar-filter mt-1 me-5 ms-5 mb-5">
                 <h3 class="mt-0 mb-5 text-uppercase">Filter <span class="text-primary">your</span> Products</h3>
                 <h6 class="text-uppercase font-weight-bold mb-3">Filter by Brand</h6>
@@ -120,7 +111,6 @@
                 
                 <div class="divider mt-2 mb-4 border-bottom border-secondary">
                 </div>
-
                 <h6 class="text-uppercase mb-3 font-weight-bold">Filter by Size</h6>
                 <div class="mt-2 mb-2 pl-2">
                     <div class="custom-control custom-checkbox">
@@ -152,10 +142,8 @@
                         <label class="custom-control-label" for="filter-size-5">38</label>
                     </div>
                 </div>
-
                 <div class="divider mt-2 mb-4 border-bottom border-secondary">
                 </div>
-
                 <h6 class="text-uppercase mb-3 font-weight-bold">Filter by Price Range</h6>
                 <div class="price-filter-control">
                     <input type="number" class="form-control w-45 d-inline-block pull-left mb-2" placeholder="Min price" id="price-min-control">
@@ -164,20 +152,7 @@
                 <input id="ex2" type="text" class="slider " value="50,150" data-slider-min="10" data-slider-max="200" data-slider-step="5" data-slider-value="[50,150]" data-value="50,150" style="display: none;">
                 <a href="#" class="btn btn-primary mt-5">Apply Filters</a>
             </div>
-            
-            <!-- <div class="d-flex flex-column align-items-center px-3 pt-2 min-vh-100">
-                <div class="p-2 text-dark">
-                    <h4 class="text-uppercase">FILTERS</h4>
-                </div>
-
-                <div id="closeSidebar1" class="pointer p-3 mb-3 text-dark">
-                    <i class="fas fa-chevron-left pe-3"></i>
-                    <span>Continuar comprando</span>
-                </div>
-            </div> -->
-            
-        </div>
-        
+        </div> 
     </div>
     <div id="sidebarOverlay2" class="bg-dark min-vh-100 fixed-top m-0 transition overlay-off opacity-at-25 zindex-tooltip"></div>
     <div id="sidebar" class="col-auto col-sm-9 col-md-6 col-xl-4 shadow fixed-top transition sidebar-off overflow-auto vh-100 zindex-tooltip" data-show = "on">
@@ -193,16 +168,11 @@
                     <H6 class="text-black text-center">Please select a product</H6>
                 </div>
                 <button type="button" class="align-middle btn btn-primary py-2 mt-4">Finalizar Compra</button>
-                <!-- <div id="closeSidebar2" class="pointer p-3 mb-3 text-dark">
-                    <i class="fas fa-chevron-left pe-3"></i>
-                    <span>Continuar comprando</span>
-                </div> -->
-                
             </div>
         </div>
     </div>
     
-    
+    <!-- HERO  -->
     <section id="hero">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -246,6 +216,7 @@
             </button>
         </div>
     </section>
+    <!-- END SIDEBARS -->
     <!-- MAIN -->
     <main>
         <div class="sticky-top top-4rem bg-white border-bottom">
