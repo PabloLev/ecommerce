@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.promotion = false;
         }
     }
-    //Declaro Array products se puebla en fetchDataProducts linea 156 (pudo haber cambiado, capaz que me olvidé de actualizar, jeje)
+    //Declaro Array products se puebla en fetchDataProducts linea 144 (pudo haber cambiado, capaz que me olvidé de actualizar, jeje)
     const products = [];
     //METODO LIMPIO EL DOM - PARA EVITAR SUMATORIA DE ELEMENTOS CUANDO SE PUEBLA
     function emptyFromDom(empty){
@@ -127,18 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
         selectSizeBtn();
         addCartBtn();
     }
-    //EVENTO JQUERY
-    $( document ).ready(function() {
-        function showClear(){
-            $( "#jqueryClear" ).fadeIn(500);
-        }
-        $( "#jqueryLoad" ).click(function() {
-            console.log( "Se carga usando jquery" );
-            loadDOMJquery(products);
-            $(this).prop('disabled', true).fadeOut(500, showClear);
-            $("#insertar").hide().show(500);
-        });
-    });
 
     //CREO "BASE DE DATOS con FETCH"
     const fetchDataProducts = async (products) => {
