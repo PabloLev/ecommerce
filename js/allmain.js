@@ -141,14 +141,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     //CREO "BASE DE DATOS con FETCH"
-    const fetchDataProducts = async () => {
+    const fetchDataProducts = async (products) => {
         try {
-            const res = await fetch('./assets/products.json');
-            const response = await res.json();
-            console.log(response);
-            //Pueblo el array products 
-            for(let item of response){
-                products.push(new Product(item.id, item.category, item.gender, item.brand, item.model, item.color, item.price, item.sizeStock));     
+            if (products.length === 0){
+                //Cargo el JSON
+                const res = await fetch('./assets/products.json');
+                const response = await res.json();
+                //Pueblo el array products 
+                for(let item of response){
+                    products.push(new Product(item.id, item.category, item.gender, item.brand, item.model, item.color, item.price, item.sizeStock));     
+                }
+            }else{
+                $("#productsCatalog").fadeOut(150, function(){
+                    $(this).empty().fadeIn(150, loadDOMJquery(products));
+                });
             }
             // loadDOM(products);
             loadDOMJquery(products);
@@ -156,27 +162,12 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(error);
         }
     }
-    fetchDataProducts();
+    fetchDataProducts(products);
 
-
-    //RELOAD ASYNC
-    const fetchDataNewProducts = async (products) => {
-        try {
-            // console.log(products);
-            // emptyFromDom(productsCatalog)
-            $("#productsCatalog").fadeOut(150, function(){
-                $(this).empty().fadeIn(150, loadDOMJquery(products));
-            });
-            // loadDOM(products);
-            // loadDOMJquery(products);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
+    
+    // CLICK EN BOTON SIZE
     let sizeSelected;
     let pressedId;
-    // CLICK EN BOTON SIZE
     function clickSizeBtn(sizeButton, key, btn){  
         sizeSelected=parseInt(btn.textContent);
         pressedId = btn.getAttribute('data-id'); 
@@ -367,8 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function sortRecomended(){ 
         console.log('ORDENADO POR RECOMENDADOS ');
         products.sort((a, b) => a.id - b.id)
-        // obtainDataAjax(products);
-        fetchDataNewProducts(products);
+        fetchDataProducts(products);
         sortBy.textContent = 'Sort By: Recomended';
         return;
     };
@@ -376,8 +366,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function sortDescending(){ 
         console.log('PRECIO MÁS ALTO PRIMERO AJAX');
         products.sort((a, b) => b.price - a.price)
-        // obtainDataAjax(products);
-        fetchDataNewProducts(products);
+        fetchDataProducts(products);
+
         sortBy.textContent = 'Sort By: High to low';
         return;
     };
@@ -385,8 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function sortAscending(){ 
         console.log('PRECIO MÁS BAJO PRIMERO');
         products.sort((a, b) => a.price - b.price)
-        // obtainDataAjax(products);
-        fetchDataNewProducts(products);
+        fetchDataProducts(products);
         sortBy.textContent = 'Sort By: Low to high';
         return;
     };
@@ -398,8 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let highRange = parseInt(prompt('Ingrese su precio máximo'));
         console.log('NEW PRICE RANGE');
         priceRanges = products.filter( a => a.price > lowRange && a.price < highRange);
-        // obtainDataAjax(priceRanges);
-        fetchDataNewProducts(priceRanges);
+        fetchDataProducts(priceRanges);
         sortBy.textContent = 'Sort By: Price Range - $' + lowRange + ' to $' + highRange;
         return;
     };
