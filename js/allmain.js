@@ -321,6 +321,8 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay2.addEventListener('click', function() {toggleSidebars('sidebar', overlay2)});
     const cartIcon = document.getElementById('cartIcon');
     cartIcon.addEventListener('click', function() {toggleSidebars('sidebar', overlay2)});
+    const cartIconMobile = document.getElementById('cartIconMobile');
+    cartIconMobile.addEventListener('click', function() {toggleSidebars('sidebar', overlay2)});
     const checkOut = document.getElementById('checkOut');
     checkOut.addEventListener('click', function() {toggleSidebars('sidebar', overlay2)});
     const closeSidebar2 = document.getElementById('closeSidebar2');

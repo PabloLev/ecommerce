@@ -26,11 +26,13 @@
         </div>
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary zindex-tooltip">
             <div class="container">
-                <a class="navbar-brand me-5" href="#"><strong>BIG-STORE</strong></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand me-5 d-none d-lg-block" href="#"><strong>BIG-STORE</strong></a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <a class="navbar-brand ms-3 me-3 d-lg-none" href="#"><strong>BIG-STORE</strong></a>
+                <button id="cartIconMobile" type="button" class="btn btn-primary ms-lg-3 ms-0 me-1 d-lg-none" aria-label="Cart"><i class="fas fa-shopping-cart"><span class="badge position-absolute"></span></i></button>
+                <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active text-uppercase" aria-current="page" href="#">Man</a>
@@ -51,13 +53,12 @@
                         <input class="form-control form-control-special" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-mark border-straight" type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
                     </form>
-                    <button id="cartIcon" type="button" class="btn btn-primary ms-3 me-1" aria-label="Cart">
-                        <i class="fas fa-shopping-cart"><span class="badge position-absolute"></span></i>
-                    </button>
-                    <!-- Click on Modal Button -->
-                    <button id="userBtn" type="button" class="btn btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#modalForm1" aria-label="User"><i class="fas fa-user"></i><span></span></button>
-
+                    <button id="userBtn" type="button" class="btn btn-primary ms-lg-3 ms-0" data-bs-toggle="modal" data-bs-target="#modalForm1" aria-label="User"><i class="fas fa-user"></i><span></span></button>
                 </div>
+                
+                <button id="cartIcon" type="button" class="btn btn-primary ms-lg-3 ms-0 me-1 d-none d-lg-block" aria-label="Cart"><i class="fas fa-shopping-cart"><span class="badge position-absolute"></span></i></button>
+                
+                
             </div>
         </nav>
         <div class="bg-mark p-2 text d-flex justify-content-center align-items-center text-gray"> 
