@@ -189,8 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let cartProducts=[];
     function productsQuantityInCart(){
         let cartIconNum = document.querySelector('.fa-shopping-cart .badge');    
-        let productsInCart = cartProducts.length;
-        cartIconNum.textContent = productsInCart;
+        cartIconNum.textContent = cartProducts.length;
         return;
     }
     
