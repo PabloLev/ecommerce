@@ -10,8 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
             this.model = model.toUpperCase();
             this.color = color.toUpperCase();
             this.price = parseFloat(price);
+
             //SizeStock es un array, para poder manejar el stock por cada talle pero seguir manejandolo como un único objeto (Definido conceptualmente por marca y modelo)
             this.sizeStock = sizeStock;
+
             //Mantengo una nomeclatura al guardar imagenes. Si se respeta la estructura y nomeclatura funciona de manera dinamica.
             this.imgA = 'img/' + this.gender.toLowerCase() + '/' + this.brand.toLowerCase() + '/' + this.id + '_' + this.brand.toLowerCase() + '_' + this.model.toLowerCase() + '_' + this.color.toLowerCase() + '_a.webp';
             this.imgB = 'img/' + this.gender.toLowerCase() + '/' + this.brand.toLowerCase() + '/' + this.id + '_' + this.brand.toLowerCase() + '_' + this.model.toLowerCase() + '_' + this.color.toLowerCase() + '_b.webp';
@@ -19,8 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
             this.promotion = false;
         }
     }
-    //Declaro Array products se puebla en fetchDataProducts linea 144 (pudo haber cambiado, capaz que me olvidé de actualizar, jeje)
+    //Declaro Array products se puebla en fetchDataProducts linea 88 (pudo haber cambiado, capaz que me olvidé de actualizar, jeje)
     const products = [];
+
     //METODO LIMPIO EL DOM - PARA EVITAR SUMATORIA DE ELEMENTOS CUANDO SE PUEBLA
     function emptyFromDom(empty){
         while (empty.firstChild) {
@@ -53,14 +56,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 </article>
                 
             `);
+
             //Recorro el Array sizeStock dentro del array products (segundo nivel). Agrega botones en el dropdown Size. Agrega los talles de cada modelo.
             $.each(product.sizeStock, function(element, value) {
                 const dropdownSize = $('#dropdownMenuButton'+ product.id);
+
                 //CREO EL BOTÓN DE TALLES CON SUS CLASES Y LE AGREGO EL VALOR
                 const sizeBtn = $('<button></button>')
                 sizeBtn.addClass('btn', 'm-1', 'p-0');
                 sizeBtn.text(value.size);
                 sizeBtn.attr("data-id", product.id);
+
                 //En caso de no haber stock del talle inhabilito el botón.
                 if (value.stock === 0){
                     sizeBtn.addClass('btn-outline-secondary');
@@ -80,9 +86,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const fetchDataProducts = async (products) => {
         try {
             if (products.length === 0){
+
                 //Cargo el JSON
                 const res = await fetch('./assets/products.json');
                 const response = await res.json();
+
                 //Pueblo el array products 
                 for(let item of response){
                     products.push(new Product(item.id, item.category, item.gender, item.brand, item.model, item.color, item.price, item.sizeStock));     
@@ -92,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     $(this).empty().fadeIn(150, loadDOMJquery(products));
                 });
             }
-            // loadDOM(products);
             loadDOMJquery(products);
         } catch (error) {
             console.log(error);
@@ -166,8 +173,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 removeActive.disabled = true;
             }
             console.log(findedSize);
+
             //Llamo a la función que agrega al carrito.
             addToCart(id, sizeSelected);
+
             //Despliego el Toast de bootstrap que pregunta si se sigue comprando
             new bootstrap.Toast(document.querySelector('#basicToast')).show();
         }else{
@@ -247,40 +256,34 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    //CART sidebar
-    let cartIcon = document.getElementById('cartIcon');
-    cartIcon.addEventListener('click', toggleSidebar);
-    let overlay2 = document.getElementById('sidebarOverlay2');
-    overlay2.addEventListener('click', toggleSidebar);
-    let checkOut = document.getElementById('checkOut');
-    checkOut.addEventListener('click', toggleSidebar);
-    let closeSidebar2 = document.getElementById('closeSidebar2');
-    closeSidebar2.addEventListener('click', toggleSidebar);
-    function toggleSidebar(e) {
-        e.preventDefault();
-        let sidebar = document.getElementById('sidebar');
-        sidebar.classList.toggle('sidebar-off');
-        overlay2.classList.toggle('overlay-off');
-        document.body.classList.toggle('no-scroll');
-    };
-
     //FILTER sidebar
-    let filterBtn = document.getElementById('filterBtn');
-    filterBtn.addEventListener('click', toggleSidebarFilter);
-    let closeSidebar1 = document.getElementById('closeSidebar1');
-    closeSidebar1.addEventListener('click', toggleSidebarFilter);
     let overlay1 = document.getElementById('sidebarOverlay1');
-    overlay1.addEventListener('click', toggleSidebarFilter);
-    function toggleSidebarFilter(e) {
-        e.preventDefault();
-        let sidebarFilter = document.getElementById('sidebarFilter');
-        sidebarFilter.classList.toggle('sidebar-off');
-        overlay1.classList.toggle('overlay-off');
+    overlay1.addEventListener('click', function() {toggleSidebars('sidebarFilter', overlay1)});
+    let filterBtn = document.getElementById('filterBtn');
+    filterBtn.addEventListener('click', function() {toggleSidebars('sidebarFilter', overlay1)});
+    let closeSidebar1 = document.getElementById('closeSidebar1');
+    closeSidebar1.addEventListener('click', function() {toggleSidebars('sidebarFilter', overlay1)});
+
+    //CART sidebar
+    let overlay2 = document.getElementById('sidebarOverlay2');
+    overlay2.addEventListener('click', function() {toggleSidebars('sidebar', overlay2)});
+    let cartIcon = document.getElementById('cartIcon');
+    cartIcon.addEventListener('click', function() {toggleSidebars('sidebar', overlay2)});
+    let checkOut = document.getElementById('checkOut');
+    checkOut.addEventListener('click', function() {toggleSidebars('sidebar', overlay2)});
+    let closeSidebar2 = document.getElementById('closeSidebar2');
+    closeSidebar2.addEventListener('click', function() {toggleSidebars('sidebar', overlay2)});
+    
+    //Function Toggle clases del sidebar para mostrarlo. Se eliminan las clases y aparecen y se cancela el scroll.
+    function toggleSidebars(sidebar, overlay) {
+        let sidebarInDOM = document.getElementById(sidebar);
+        sidebarInDOM.classList.toggle('sidebar-off');
+        overlay.classList.toggle('overlay-off');
         document.body.classList.toggle('no-scroll');
     };
 
-    //****FILTROS****
-    //ORDENAR POR ID
+    //****FILTRADO (SORT BY:)****
+    //ORDENAR POR ID (RECOMENDADOS)
     let sortBy = document.getElementById('dropdownMenuButtonSort');
     function sortRecomended(){ 
         console.log('ORDENADO POR RECOMENDADOS ');
@@ -295,7 +298,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('PRECIO MÁS ALTO PRIMERO AJAX');
         products.sort((a, b) => b.price - a.price)
         fetchDataProducts(products);
-
         sortBy.textContent = 'Sort By: High to low';
         return;
     };
@@ -331,9 +333,4 @@ document.addEventListener('DOMContentLoaded', () => {
     //****RANGE****
     document.getElementById('priceRange').addEventListener('click', priceRange);
     //****END RANGE****
-
-
-
-
-    
 });
