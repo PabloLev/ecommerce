@@ -69,17 +69,23 @@
     <!-- TOAST  -->
     <div class="toast-container top-0 start-0 position-fixed min-vh-100 min-vw-100 zindex-tooltip-hi">
         <div id="basicToast"  class="toast" data-bs-autohide="false" data-bs-delay="3000">
-            <div class="position-fixed top-50 start-50 translate-middle zindex-tooltip col-lg-3 bg-white rounded d-flex flex-column justify-content-center align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="position-fixed top-50 start-50 translate-middle zindex-tooltip col-9 col-lg-6 col-xl-4 col-xxl-3 bg-white rounded row text-center overflow-hidden" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header bg-primary text-light d-flex justify-content-center w-100">
                     <h5 class="my-0 text-uppercase text-center p-3">Product added</h5>
                 </div>
-                <img id="toastImg" src="./img/man/adidas/5_adidas_infinity_black_a.webp" class="card-img-top ps-3 pe-3 w-50" alt="...">
+                <img id="toastImg" src="./img/man/adidas/5_adidas_infinity_black_a.webp" class="card-img-top ps-3 pe-3 w-50 m-auto" alt="...">
                 <div id="toastBrand" class="toast-body opacity-at-100 ps-3 pe-3 text-center">        
                     
                 </div>
-                <div class="d-flex justify-content-evenly p-3">
-                    <button type="button" class="btn btn-primary shadow text-uppercase m-3" data-bs-dismiss="toast">Continue Shopping</button>
-                    <button id="checkOut" type="button" class="btn btn-primary shadow text-uppercase m-3" data-bs-dismiss="toast">Check out</button>
+                <div class="row p-3 w-100 m-auto">
+                    <div class="col-12 col-md-6">
+                        <button type="button" class="btn btn-primary shadow text-uppercase m-auto mt-2 mb-2 w-100" data-bs-dismiss="toast">To Shop</button>
+                    </div>
+                    
+                    <div class="col-12 col-md-6">
+                        <button id="checkOut" type="button" class="btn btn-primary shadow text-uppercase m-auto mt-2 mb-2 w-100" data-bs-dismiss="toast">Check out</button>
+                    </div>
+                    
                 </div>
             </div>  
             <div class="bg-dark min-vh-100 min-vw-100 fixed-top m-0 transition opacity-at-25 overflow-hidden"></div>

@@ -313,6 +313,8 @@ document.addEventListener('DOMContentLoaded', () => {
     filterBtn.addEventListener('click', function() {toggleSidebars('sidebarFilter', overlay1)});
     const closeSidebar1 = document.getElementById('closeSidebar1');
     closeSidebar1.addEventListener('click', function() {toggleSidebars('sidebarFilter', overlay1)});
+    const applyFilter = document.querySelector('.sidebar-filter .btn-primary');
+    applyFilter.addEventListener('click', function() {toggleSidebars('sidebarFilter', overlay1)});
 
     //CART sidebar
     const overlay2 = document.getElementById('sidebarOverlay2');
