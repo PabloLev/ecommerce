@@ -140,7 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 fixStock(pressedId, sizeSelected);
             }
         })}); 
-
     }
 
     //Encuentra el producto con ese ID
@@ -161,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         findTheSize(sizeSelected);
         if ( findedSize.stock > 0){
             findedSize.stock = findedSize.stock - 1;
-            let removeActive = document.querySelector('.dropdown-menu .active');
+            const removeActive = document.querySelector('.dropdown-menu .active');
             if(findedSize.stock == 0){
                 removeActive.classList.remove('active');
                 removeActive.classList.remove('btn-outline-primary');
@@ -181,9 +180,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     //NUMERO DEL ICONO CARRITO
-    let cartProducts=[];
+    const cartProducts=[];
     function productsQuantityInCart(){
-        let cartIconNum = document.querySelector('.fa-shopping-cart .badge');    
+        const cartIconNum = document.querySelector('.fa-shopping-cart .badge');    
         cartIconNum.textContent = cartProducts.length;
     }
     
@@ -197,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Elimino del sidebar de carrito
     function trash(){
-        let trash = document.querySelectorAll('.trash');
+        const trash = document.querySelectorAll('.trash');
         trash.forEach(el => el.addEventListener('click', function(e) { 
             cartArrayRemove();
             this.parentNode.remove();  
@@ -212,11 +211,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const findedProduct = products.find((el)=>el.id == id)
         productId = ++productId;
         cartProducts.push({id: productId, originalId: id, imgA: findedProduct.imgA, model: findedProduct.model, brand: findedProduct.brand, size: sizeSelected, price: findedProduct.price});
-        let productInCart = document.getElementById('productsInCart');
-        let toastImg = document.getElementById('toastImg');
+        const productInCart = document.getElementById('productsInCart');
+        const toastImg = document.getElementById('toastImg');
         toastImg.src=findedProduct.imgA;
-        let toastBrand = document.querySelector('#toastBrand');
-        let toastDiv = document.createElement('div');
+        const toastBrand = document.querySelector('#toastBrand');
+        const toastDiv = document.createElement('div');
         emptyFromDom(toastBrand);
         toastDiv.innerHTML=`<h6 class="mt-3"><strong>${findedProduct.brand} - ${findedProduct.model} - Size: ${sizeSelected}</strong></h6>`
         toastBrand.appendChild(toastDiv);
@@ -226,8 +225,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         productsQuantityInCart();
         for (const index in cartProducts){
-            let product = cartProducts[index]
-            let createDiv = document.createElement('div');
+            const product = cartProducts[index]
+            const createDiv = document.createElement('div');
             createDiv.innerHTML = `
                 <div data-id="${product.id}" data-originalId="${product.originalId}" class="d-flex flex-row justify-content-between align-items-center bg-white p-2 mt-4 px-3 rounded text-dark col-12 shadow-sm">
                     <div class="mr-1"><img class="rounded" src="${product.imgA}" width="70"></div>
@@ -246,35 +245,9 @@ document.addEventListener('DOMContentLoaded', () => {
         trash();
     }
 
-    //FILTER sidebar
-    let overlay1 = document.getElementById('sidebarOverlay1');
-    overlay1.addEventListener('click', function() {toggleSidebars('sidebarFilter', overlay1)});
-    let filterBtn = document.getElementById('filterBtn');
-    filterBtn.addEventListener('click', function() {toggleSidebars('sidebarFilter', overlay1)});
-    let closeSidebar1 = document.getElementById('closeSidebar1');
-    closeSidebar1.addEventListener('click', function() {toggleSidebars('sidebarFilter', overlay1)});
-
-    //CART sidebar
-    let overlay2 = document.getElementById('sidebarOverlay2');
-    overlay2.addEventListener('click', function() {toggleSidebars('sidebar', overlay2)});
-    let cartIcon = document.getElementById('cartIcon');
-    cartIcon.addEventListener('click', function() {toggleSidebars('sidebar', overlay2)});
-    let checkOut = document.getElementById('checkOut');
-    checkOut.addEventListener('click', function() {toggleSidebars('sidebar', overlay2)});
-    let closeSidebar2 = document.getElementById('closeSidebar2');
-    closeSidebar2.addEventListener('click', function() {toggleSidebars('sidebar', overlay2)});
-    
-    //Function Toggle clases del sidebar para mostrarlo. Se eliminan las clases y aparecen y se cancela el scroll.
-    function toggleSidebars(sidebar, overlay) {
-        let sidebarInDOM = document.getElementById(sidebar);
-        sidebarInDOM.classList.toggle('sidebar-off');
-        overlay.classList.toggle('overlay-off');
-        document.body.classList.toggle('no-scroll');
-    };
-
     //****FILTRADO (SORT BY:)****
     //ORDENAR POR ID (RECOMENDADOS)
-    let sortBy = document.getElementById('dropdownMenuButtonSort');
+    const sortBy = document.getElementById('dropdownMenuButtonSort');
     function sortRecomended(){ 
         console.log('ORDENADO POR RECOMENDADOS ');
         products.sort((a, b) => a.id - b.id)
@@ -300,8 +273,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //FILTRAR POR RANGO DE PRECIOS
     function priceRange(){
-        let lowRange = parseInt(prompt('Ingrese su precio mínimo'));
-        let highRange = parseInt(prompt('Ingrese su precio máximo'));
+        const lowRange = parseInt(prompt('Ingrese su precio mínimo'));
+        const highRange = parseInt(prompt('Ingrese su precio máximo'));
         console.log('NEW PRICE RANGE');
         const priceRanges = products.filter( a => a.price > lowRange && a.price < highRange);
         console.log("Price Ranges = " + priceRanges);
@@ -312,7 +285,15 @@ document.addEventListener('DOMContentLoaded', () => {
             $("#productsCatalog").empty();
         }
     };
-    //****END FILTROS****
+    //****END FILTRADO****
+
+    //Function Toggle clases del sidebar para mostrarlo. Se eliminan las clases y aparecen y se cancela el scroll.
+    function toggleSidebars(sidebar, overlay) {
+        const sidebarInDOM = document.getElementById(sidebar);
+        sidebarInDOM.classList.toggle('sidebar-off');
+        overlay.classList.toggle('overlay-off');
+        document.body.classList.toggle('no-scroll');
+    };
 
     // EVENTOS
     //***SORT****
@@ -323,4 +304,23 @@ document.addEventListener('DOMContentLoaded', () => {
     //****RANGE****
     document.getElementById('priceRange').addEventListener('click', priceRange);
     //****END RANGE****
+
+    //SIDEBARS EVENTOS
+    //FILTER sidebar
+    const overlay1 = document.getElementById('sidebarOverlay1');
+    overlay1.addEventListener('click', function() {toggleSidebars('sidebarFilter', overlay1)});
+    const filterBtn = document.getElementById('filterBtn');
+    filterBtn.addEventListener('click', function() {toggleSidebars('sidebarFilter', overlay1)});
+    const closeSidebar1 = document.getElementById('closeSidebar1');
+    closeSidebar1.addEventListener('click', function() {toggleSidebars('sidebarFilter', overlay1)});
+
+    //CART sidebar
+    const overlay2 = document.getElementById('sidebarOverlay2');
+    overlay2.addEventListener('click', function() {toggleSidebars('sidebar', overlay2)});
+    const cartIcon = document.getElementById('cartIcon');
+    cartIcon.addEventListener('click', function() {toggleSidebars('sidebar', overlay2)});
+    const checkOut = document.getElementById('checkOut');
+    checkOut.addEventListener('click', function() {toggleSidebars('sidebar', overlay2)});
+    const closeSidebar2 = document.getElementById('closeSidebar2');
+    closeSidebar2.addEventListener('click', function() {toggleSidebars('sidebar', overlay2)});
 });
