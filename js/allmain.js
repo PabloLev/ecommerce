@@ -86,11 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const fetchDataProducts = async (products) => {
         try {
             if (products.length === 0){
-
                 //Cargo el JSON
                 const res = await fetch('./assets/products.json');
                 const response = await res.json();
-
                 //Pueblo el array products 
                 for(let item of response){
                     products.push(new Product(item.id, item.category, item.gender, item.brand, item.model, item.color, item.price, item.sizeStock));     
@@ -120,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         console.log('Size selected: ' + sizeSelected + '\nID of product: ' + pressedId);
-        return;
     }
 
     // AGREGA EVENTO A TODOS LOS BOTONES SIZE (Dentro de los dropdown, cualquier botón de talles)
@@ -131,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 clickSizeBtn(sizeButton, key, btn)
             });
         });
-        return;
     }
 
     // AGREGA EVENTO A TODOS LOS BOTONES ADD TO CART
@@ -144,19 +140,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 fixStock(pressedId, sizeSelected);
             }
         })}); 
-        return;
+
     }
 
     //Encuentra el producto con ese ID
     let findedProduct;
     function findTheProduct(id){
-        return findedProduct = products.find((el)=>el.id == id);
+        findedProduct = products.find((el)=>el.id == id);
     }
 
     //Encuentra el producto con ese Talle
     let findedSize;
     function findTheSize(sizeSelected){
-        return findedSize = findedProduct.sizeStock.find((el)=>el.size == sizeSelected);
+        findedSize = findedProduct.sizeStock.find((el)=>el.size == sizeSelected);
     }
 
     //Arregla el stock luego de agregado el producto al carrito, resta el stock del talle
@@ -182,7 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }else{
             console.log('No stock of size: ' + findedSize.size);
         }
-        return;
     }
 
     //NUMERO DEL ICONO CARRITO
@@ -190,9 +185,25 @@ document.addEventListener('DOMContentLoaded', () => {
     function productsQuantityInCart(){
         let cartIconNum = document.querySelector('.fa-shopping-cart .badge');    
         cartIconNum.textContent = cartProducts.length;
-        return;
     }
     
+    //elimino del array carrito
+    function cartArrayRemove() { 
+        const forIndex = cartProducts.find(el=> el.id)
+        const index = cartProducts.indexOf(forIndex);
+        cartProducts.splice(index, 1);
+        productsQuantityInCart();
+    }
+
+    //Elimino del sidebar de carrito
+    function trash(){
+        let trash = document.querySelectorAll('.trash');
+        trash.forEach(el => el.addEventListener('click', function(e) { 
+            cartArrayRemove();
+            this.parentNode.remove();  
+        })); 
+    }
+
     //Esta funcion agrega los productos al carrito
     let productId = 0;
     function addToCart(id, sizeSelected){
@@ -233,26 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
             productInCart.appendChild(createDiv);   
         }  
         trash();
-        return;
-    }
-
-    //elimino del array carrito
-    function cartArrayRemove() { 
-        const forIndex = cartProducts.find(el=> el.id)
-        const index = cartProducts.indexOf(forIndex);
-        cartProducts.splice(index, 1);
-        productsQuantityInCart();
-        return;
-    }
-
-    //Elimino del sidebar
-    function trash(){
-        let trash = document.querySelectorAll('.trash');
-        trash.forEach(el => el.addEventListener('click', function(e) { 
-            cartArrayRemove();
-            this.parentNode.remove();  
-        })); 
-        return;
     }
 
     //FILTER sidebar
@@ -289,7 +280,6 @@ document.addEventListener('DOMContentLoaded', () => {
         products.sort((a, b) => a.id - b.id)
         fetchDataProducts(products);
         sortBy.textContent = 'Sort By: Recomended';
-        return;
     };
 
     //ORDENAR POR PRECIO DESCENDENTE
@@ -298,7 +288,6 @@ document.addEventListener('DOMContentLoaded', () => {
         products.sort((a, b) => b.price - a.price)
         fetchDataProducts(products);
         sortBy.textContent = 'Sort By: High to low';
-        return;
     };
 
     //ORDENAR POR PRECIO ASCENDENTE
@@ -307,19 +296,21 @@ document.addEventListener('DOMContentLoaded', () => {
         products.sort((a, b) => a.price - b.price)
         fetchDataProducts(products);
         sortBy.textContent = 'Sort By: Low to high';
-        return;
     };
 
     //FILTRAR POR RANGO DE PRECIOS
     function priceRange(){
-        let priceRanges = [];
         let lowRange = parseInt(prompt('Ingrese su precio mínimo'));
         let highRange = parseInt(prompt('Ingrese su precio máximo'));
         console.log('NEW PRICE RANGE');
-        priceRanges = products.filter( a => a.price > lowRange && a.price < highRange);
-        fetchDataProducts(priceRanges);
-        sortBy.textContent = 'Sort By: Price Range - $' + lowRange + ' to $' + highRange;
-        return;
+        const priceRanges = products.filter( a => a.price > lowRange && a.price < highRange);
+        console.log("Price Ranges = " + priceRanges);
+        if (priceRanges.length !== 0){
+            fetchDataProducts(priceRanges);
+            sortBy.textContent = 'Sort By: Price Range - $' + lowRange + ' to $' + highRange;
+        }else{
+            $("#productsCatalog").empty();
+        }
     };
     //****END FILTROS****
 
