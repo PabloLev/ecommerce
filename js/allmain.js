@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	//ORDENAR POR ID (RECOMENDADOS)
 	const sortBy = document.getElementById('dropdownMenuButtonSort');
 	function sortRecomended() {
-		filteredProducts = products;
+		// filteredProducts = products;
 		console.log('ORDENADO POR RECOMENDADOS ');
 		filteredProducts.sort((a, b) => a.id - b.id);
 		fetchDataProducts(filteredProducts);
@@ -309,62 +309,89 @@ document.addEventListener('DOMContentLoaded', () => {
 		console.log(filteredProducts);
 		fetchDataProducts(filteredProducts);
 	}
-	// function sizeFilter(sizeValue) {
-	// 	console.log(sizeValue);
-	// 	filteredProducts = [];
 
-	// 	filteredProducts.push.apply(
-	// 		newArray,
-	// 		products.filter((product) => product.sizeStock.some((element) => element.size === sizeValue))
-	// 	);
-	// 	console.log(newArray);
-	// 	fetchDataProducts(filteredProducts);
-	// }
 	let newArray = [];
 	let dataArr = [];
-	function applyFilters(sizeValue, brandSelected, type) {
-		if (type === 'size') {
-			filteredProducts.push.apply(
-				newArray,
-				products.filter((product) => product.sizeStock.some((element) => element.size === sizeValue))
-			);
-		} else if (type === 'brand') {
-			console.log('BRAND CKECHBOX = ' + brandSelected);
-			filteredProducts.push.apply(
-				newArray,
-				products.filter((a) => a.brand === brandSelected)
-			);
-		}
+	let checkedArray = [];
+	function pushArray(sizeValue) {
+		filteredProducts.push.apply(
+			newArray,
+			products.filter((product) => product.sizeStock.some((element) => element.size === sizeValue))
+		);
 
 		console.log(newArray);
 
-		dataArr = [...new Set(newArray)];
-		console.log(dataArr);
+		filteredProducts = [...new Set(newArray)];
+		console.log(filteredProducts);
 	}
-
-	// let XXX = products.forEach((el) => el.sizeStock.filter((a) => a.size === 38));
-
-	// console.log(XXX);
 	//****END FILTRADO****
-
+	function removeArray(sizeValue) {
+		newArray = [];
+		console.log(sizeValue);
+		filteredProducts = filteredProducts.filter((product) => product.sizeStock.every((element) => element.size !== sizeValue));
+		console.log(filteredProducts);
+		newArray = filteredProducts;
+		// return arr.filter(function (ele) {
+		// 	return ele != value;
+		// });
+	}
+	function filterArray() {
+		filteredProducts = [];
+		newArray = [];
+		console.log(filteredProducts);
+		console.log('checkedARRAY');
+		console.log(checkedArray);
+		checkedArray.forEach((el) => {
+			console.log(el);
+			filteredProducts.push.apply(
+				newArray,
+				products.filter((product) => product.sizeStock.some((element) => element.size == el))
+			);
+			filteredProducts = [...new Set(newArray)];
+			// console.log(filteredProducts);
+		});
+		console.log('filtered');
+		console.log(filteredProducts);
+	}
 	// FILTERS
 	const filters = document.getElementById('sidebarFilter');
-	let sizeValue = 0;
-	let brandSelected = 'all';
+
 	filters.addEventListener('click', (e) => {
-		if (e.target && e.target.getAttribute('data-value')) {
-			type = 'size';
-			sizeValue = parseInt(e.target.getAttribute('data-value'));
-			console.log(sizeValue);
-			applyFilters(sizeValue, brandSelected, type);
-		} else if (e.target && e.target.getAttribute('data-brand')) {
-			type = 'brand';
-			brandSelected = e.target.getAttribute('data-brand');
-			applyFilters(sizeValue, brandSelected, type);
+		if (e.target.checked && e.target.getAttribute('data-value')) {
+			//Add to filter array
+			checkedArray.push(e.target.getAttribute('data-value'));
+			console.log(checkedArray);
+			console.log('CHECKED');
+			filterArray();
 		}
+		if (!e.target.checked && e.target.getAttribute('data-value')) {
+			let checkboxClicked = e.target.getAttribute('data-value');
+			let index = checkedArray.indexOf(checkboxClicked);
+			//Remove from array to filter
+			if (index !== -1) {
+				checkedArray.splice(index, 1);
+			}
+			console.log('UNCHECKED');
+			filterArray();
+		}
+		// if (e.target && e.target.getAttribute('data-value')) {
+		// 	sizeValue = parseInt(e.target.getAttribute('data-value'));
+		// 	console.log(sizeValue);
+		// 	pushArray(sizeValue);
+		// } else if (e.target && e.target.getAttribute('data-brand')) {
+		// 	brandSelected = e.target.getAttribute('data-brand');
+		// 	brandFilter(brandSelected);
+		// }
 		if (e.target && e.target == document.getElementById('applyFilters')) {
-			fetchDataProducts(dataArr);
+			fetchDataProducts(filteredProducts);
 		}
+		// if (ckeckBoxAdidas.checked) {
+		// 	console.log('Adidas checked');
+		// 	brandFilter('ADIDAS');
+		// } else if (ckeckBoxTopper.checked) {
+		// 	console.log('Adidas checked');
+		// 	brandFilter('TOPPER');
+		// }
 	});
 
 	// filters.addEventListener('click', (e) => {
@@ -373,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	// 		console.log(sizeValue);
 	// 	}
 
-	// 	if (e.target && e.target == document.getElementById('applyFilters')) {
+	// 	if (e.target && e.target == document.getElementById('pushArray')) {
 	// 		filteredProducts = [];
 	// 		filteredProducts = products;
 	// 		sizeFilter(sizeValue);
