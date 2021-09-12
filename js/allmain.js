@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	let newArray = [];
 	let newArray2 = [];
-	let checkeBrandArray = [];
+	let checkedBrandArray = [];
 	let checkeSizedArray = [];
 	let lowRange = 0;
 	let highRange = 9999999;
@@ -295,32 +295,28 @@ document.addEventListener('DOMContentLoaded', () => {
 		// SI ALGÚN CHECKBOX DE FILTER BY SIZE ESTÁ ACTIVO
 		if (checkeSizedArray.length > 0) {
 			checkeSizedArray.forEach((el) => {
-				// console.log(el);
 				filteredProducts.push.apply(
 					newArray,
 					products.filter((product) => product.sizeStock.some((element) => element.size == el))
 				);
-				filteredProducts = [...new Set(newArray)];
-				// console.log('ESTOY ACA');
 			});
-
+			filteredProducts = [...new Set(newArray)];
 			// SI NO HAY CHECKBOX DE FILTER BY SIZE ACTIVO
 		} else {
 			filteredProducts = products;
 		}
-		console.log(checkeBrandArray.length);
-		if (checkeBrandArray.length > 0) {
+
+		if (checkedBrandArray.length > 0) {
+			console.log(checkedBrandArray.length);
 			newArray2 = [];
-			checkeBrandArray.forEach((el) => {
-				console.log('element = ' + el);
+			checkedBrandArray.forEach((el) => {
 				filteredProducts.push.apply(
 					newArray2,
 					filteredProducts.filter((a) => a.brand === el)
 				);
-				filteredProducts = [...new Set(newArray2)];
+				console.log('element = ' + el);
 			});
-
-			// SI NO HAY CHECKBOX DE FILTER BY SIZE ACTIVO
+			filteredProducts = [...new Set(newArray2)];
 		}
 
 		//filter by price range
@@ -360,17 +356,17 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 
 		if (e.target.checked && e.target.getAttribute('data-brand')) {
-			//Add to checkeBrandArray
-			checkeBrandArray.push(e.target.getAttribute('data-brand'));
-			console.log(checkeBrandArray);
+			//Add to checkedBrandArray
+			checkedBrandArray.push(e.target.getAttribute('data-brand'));
+			console.log(checkedBrandArray);
 			filterArray();
 		}
 		if (!e.target.checked && e.target.getAttribute('data-brand')) {
 			let brandCheckboxClicked = e.target.getAttribute('data-brand');
-			let index = checkeBrandArray.indexOf(brandCheckboxClicked);
-			//Remove from checkeBrandArray
+			let index = checkedBrandArray.indexOf(brandCheckboxClicked);
+			//Remove from checkedBrandArray
 			if (index !== -1) {
-				checkeBrandArray.splice(index, 1);
+				checkedBrandArray.splice(index, 1);
 			}
 
 			filterArray();
