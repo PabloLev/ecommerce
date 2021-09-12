@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				}
 			});
 		}
-		eventsToButtons();
+
 		// addCartBtn();
 	}
 
@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				for (let item of response) {
 					products.push(new Product(item.id, item.category, item.gender, item.brand, item.model, item.color, item.price, item.sizeStock));
 				}
+				eventsToButtons();
 			} else {
 				$('#productsCatalog').fadeOut(150, function () {
 					$(this).empty().fadeIn(150, loadDOMJquery(products));
@@ -126,7 +127,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	// AGREGA EVENTO A TODOS LOS BOTONES ADD TO CART Y SIZE (Dentro de los dropdown, cualquier botón de talles), Usando delegation y propagation
 	function eventsToButtons() {
 		const productsCatalog = document.getElementById('productsCatalog');
+		// console.log(productsCatalog);
+
 		productsCatalog.addEventListener('click', (e) => {
+			e.preventDefault();
 			if (e.target && e.target.getAttribute('data-btn')) {
 				clickSizeBtn(e.target);
 			} else if (e.target && e.target.classList.contains('cart')) {
@@ -215,6 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			size: sizeSelected,
 			price: findedProduct.price,
 		});
+
 		const productInCart = document.getElementById('productsInCart');
 		const toastImg = document.getElementById('toastImg');
 		toastImg.src = findedProduct.imgA;
@@ -275,41 +280,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		filteredProducts.sort((a, b) => a.price - b.price);
 		fetchDataProducts(filteredProducts);
 		sortBy.textContent = 'Sort By: Low to high';
-	}
-
-	function brandFilter(brandSelected) {
-		filteredProducts = [];
-		filteredProducts = products.filter((a) => a.brand === brandSelected);
-		// console.log(filteredProducts);
-		fetchDataProducts(filteredProducts);
-	}
-	//FILTRAR POR RANGO DE PRECIOS
-	function priceRange() {
-		filteredProducts = [];
-		newArray = [];
-		let lowRange = parseInt(document.getElementById('price-min-control').value);
-		let highRange = parseInt(document.getElementById('price-max-control').value);
-		// let filteredProducts = [];
-		if (highRange < lowRange) {
-			lowRange = 0;
-		}
-		if (isNaN(lowRange) && isNaN(highRange) && checkeSizedArray.length == 0) {
-			filteredProducts = products;
-			fetchDataProducts(filteredProducts);
-		} else {
-			if (isNaN(lowRange)) {
-				lowRange = 0;
-				filteredProducts = products.filter((a) => a.price > lowRange && a.price < highRange);
-				fetchDataProducts(filteredProducts);
-			} else if (isNaN(highRange)) {
-				highRange = 99999999;
-				filteredProducts = products.filter((a) => a.price > lowRange && a.price < highRange);
-				fetchDataProducts(filteredProducts);
-			} else if (!isNaN(lowRange) && !isNaN(highRange)) {
-				filteredProducts = products.filter((a) => a.price > lowRange && a.price < highRange);
-				fetchDataProducts(filteredProducts);
-			}
-		}
 	}
 
 	let newArray = [];
