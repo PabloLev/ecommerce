@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	let increment = -1;
 	function loadDOMJquery(products) {
 		//Recorro el Array products en el primer nivel.
-		$('#productsCatalog').empty();
-		console.log(products);
+		// $('#productsCatalog').empty();
+		// console.log(products);
 		for (const product of products) {
 			$('#productsCatalog').append(`
 				<article class="card col-6 col-md-4 col-lg-3 text-center border-0 p-3">
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			} else {
 				$('#productsCatalog').fadeOut(150, function () {
 					$(this).empty().fadeIn(150, loadDOMJquery(products));
-					console.log('filtered = ' + products);
+					// console.log('filtered = ' + products);
 				});
 			}
 			loadDOMJquery(products);
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const sortBy = document.getElementById('dropdownMenuButtonSort');
 	function sortRecomended() {
 		// filteredProducts = products;
-		console.log('ORDENADO POR RECOMENDADOS ');
+		// console.log('ORDENADO POR RECOMENDADOS ');
 		filteredProducts.sort((a, b) => a.id - b.id);
 		fetchDataProducts(filteredProducts);
 		sortBy.textContent = 'Sort By: Recomended';
@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	//ORDENAR POR PRECIO DESCENDENTE
 	function sortDescending() {
-		console.log('PRECIO MÁS ALTO PRIMERO AJAX');
+		// console.log('PRECIO MÁS ALTO PRIMERO AJAX');
 		filteredProducts.sort((a, b) => b.price - a.price);
 		fetchDataProducts(filteredProducts);
 		sortBy.textContent = 'Sort By: High to low';
@@ -271,22 +271,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	//ORDENAR POR PRECIO ASCENDENTE
 	function sortAscending() {
-		console.log('PRECIO MÁS BAJO PRIMERO');
+		// console.log('PRECIO MÁS BAJO PRIMERO');
 		filteredProducts.sort((a, b) => a.price - b.price);
 		fetchDataProducts(filteredProducts);
 		sortBy.textContent = 'Sort By: Low to high';
 	}
 
+	function brandFilter(brandSelected) {
+		filteredProducts = [];
+		filteredProducts = products.filter((a) => a.brand === brandSelected);
+		// console.log(filteredProducts);
+		fetchDataProducts(filteredProducts);
+	}
 	//FILTRAR POR RANGO DE PRECIOS
 	function priceRange() {
+		filteredProducts = [];
+		newArray = [];
 		let lowRange = parseInt(document.getElementById('price-min-control').value);
 		let highRange = parseInt(document.getElementById('price-max-control').value);
 		// let filteredProducts = [];
 		if (highRange < lowRange) {
 			lowRange = 0;
 		}
-		if (isNaN(lowRange) && isNaN(highRange)) {
-			fetchDataProducts(products);
+		if (isNaN(lowRange) && isNaN(highRange) && checkeSizedArray.length == 0) {
+			filteredProducts = products;
+			fetchDataProducts(filteredProducts);
 		} else {
 			if (isNaN(lowRange)) {
 				lowRange = 0;
@@ -303,120 +312,114 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-	function brandFilter(brandSelected) {
-		filteredProducts = [];
-		filteredProducts = products.filter((a) => a.brand === brandSelected);
-		console.log(filteredProducts);
-		fetchDataProducts(filteredProducts);
-	}
-
 	let newArray = [];
-	let dataArr = [];
-	let checkedArray = [];
-	function pushArray(sizeValue) {
-		filteredProducts.push.apply(
-			newArray,
-			products.filter((product) => product.sizeStock.some((element) => element.size === sizeValue))
-		);
+	let newArray2 = [];
+	let checkeBrandArray = [];
+	let checkeSizedArray = [];
+	let lowRange = 0;
+	let highRange = 9999999;
 
-		console.log(newArray);
-
-		filteredProducts = [...new Set(newArray)];
-		console.log(filteredProducts);
-	}
-	//****END FILTRADO****
-	function removeArray(sizeValue) {
-		newArray = [];
-		console.log(sizeValue);
-		filteredProducts = filteredProducts.filter((product) => product.sizeStock.every((element) => element.size !== sizeValue));
-		console.log(filteredProducts);
-		newArray = filteredProducts;
-		// return arr.filter(function (ele) {
-		// 	return ele != value;
-		// });
-	}
 	function filterArray() {
 		filteredProducts = [];
 		newArray = [];
-		console.log(filteredProducts);
-		console.log('checkedARRAY');
-		console.log(checkedArray);
-		checkedArray.forEach((el) => {
-			console.log(el);
-			filteredProducts.push.apply(
-				newArray,
-				products.filter((product) => product.sizeStock.some((element) => element.size == el))
-			);
-			filteredProducts = [...new Set(newArray)];
-			// console.log(filteredProducts);
-		});
+		// SI ALGÚN CHECKBOX DE FILTER BY SIZE ESTÁ ACTIVO
+		if (checkeSizedArray.length > 0) {
+			checkeSizedArray.forEach((el) => {
+				// console.log(el);
+				filteredProducts.push.apply(
+					newArray,
+					products.filter((product) => product.sizeStock.some((element) => element.size == el))
+				);
+				filteredProducts = [...new Set(newArray)];
+				// console.log('ESTOY ACA');
+			});
+
+			// SI NO HAY CHECKBOX DE FILTER BY SIZE ACTIVO
+		} else {
+			filteredProducts = products;
+		}
+		console.log(checkeBrandArray.length);
+		if (checkeBrandArray.length > 0) {
+			newArray2 = [];
+			checkeBrandArray.forEach((el) => {
+				console.log('element = ' + el);
+				filteredProducts.push.apply(
+					newArray2,
+					filteredProducts.filter((a) => a.brand === el)
+				);
+				filteredProducts = [...new Set(newArray2)];
+			});
+
+			// SI NO HAY CHECKBOX DE FILTER BY SIZE ACTIVO
+		}
+
+		//filter by price range
+		filteredProducts = filteredProducts.filter((a) => a.price > lowRange && a.price < highRange);
+		//Sort by after filter applyed
+		if (sortBy.textContent == 'Sort By: Recomended' && filteredProducts.length > 0) {
+			sortRecomended();
+		} else if (sortBy.textContent == 'Sort By: High to low' && filteredProducts.length > 0) {
+			sortDescending();
+		} else if (sortBy.textContent == 'Sort By: Low to high' && filteredProducts.length > 0) {
+			sortAscending();
+		} else {
+			$('#productsCatalog').empty().append('<h3 class="text-uppercase text-center mt-5">ZERO RESULTS TO SHOW, please filter again</h3>');
+		}
 		console.log('filtered');
 		console.log(filteredProducts);
+		// priceRange();
 	}
+	//****END FILTRADO****
 	// FILTERS
 	const filters = document.getElementById('sidebarFilter');
 
 	filters.addEventListener('click', (e) => {
 		if (e.target.checked && e.target.getAttribute('data-value')) {
-			//Add to filter array
-			checkedArray.push(e.target.getAttribute('data-value'));
-			console.log(checkedArray);
-			console.log('CHECKED');
+			//Add to checkeSizedArray
+			checkeSizedArray.push(e.target.getAttribute('data-value'));
 			filterArray();
 		}
 		if (!e.target.checked && e.target.getAttribute('data-value')) {
 			let checkboxClicked = e.target.getAttribute('data-value');
-			let index = checkedArray.indexOf(checkboxClicked);
-			//Remove from array to filter
+			let index = checkeSizedArray.indexOf(checkboxClicked);
+			//Remove from checkeSizedArray
 			if (index !== -1) {
-				checkedArray.splice(index, 1);
+				checkeSizedArray.splice(index, 1);
 			}
-			console.log('UNCHECKED');
 			filterArray();
 		}
-		// if (e.target && e.target.getAttribute('data-value')) {
-		// 	sizeValue = parseInt(e.target.getAttribute('data-value'));
-		// 	console.log(sizeValue);
-		// 	pushArray(sizeValue);
-		// } else if (e.target && e.target.getAttribute('data-brand')) {
-		// 	brandSelected = e.target.getAttribute('data-brand');
-		// 	brandFilter(brandSelected);
-		// }
-		if (e.target && e.target == document.getElementById('applyFilters')) {
-			fetchDataProducts(filteredProducts);
+
+		if (e.target.checked && e.target.getAttribute('data-brand')) {
+			//Add to checkeBrandArray
+			checkeBrandArray.push(e.target.getAttribute('data-brand'));
+			console.log(checkeBrandArray);
+			filterArray();
 		}
-		// if (ckeckBoxAdidas.checked) {
-		// 	console.log('Adidas checked');
-		// 	brandFilter('ADIDAS');
-		// } else if (ckeckBoxTopper.checked) {
-		// 	console.log('Adidas checked');
-		// 	brandFilter('TOPPER');
-		// }
+		if (!e.target.checked && e.target.getAttribute('data-brand')) {
+			let brandCheckboxClicked = e.target.getAttribute('data-brand');
+			let index = checkeBrandArray.indexOf(brandCheckboxClicked);
+			//Remove from checkeBrandArray
+			if (index !== -1) {
+				checkeBrandArray.splice(index, 1);
+			}
+
+			filterArray();
+		}
+
+		if (e.target && e.target == document.getElementById('sortByRange')) {
+			lowRange = document.getElementById('price-min-control').value;
+			highRange = document.getElementById('price-max-control').value;
+			if (lowRange == '') {
+				lowRange = 0;
+			}
+			if (highRange == '') {
+				highRange = 19999999;
+			}
+			filterArray();
+			// priceRange();
+			// fetchDataProducts(filteredProducts);
+		}
 	});
-
-	// filters.addEventListener('click', (e) => {
-	// 	if (e.target && e.target.getAttribute('data-value')) {
-	// 		sizeValue = parseInt(e.target.getAttribute('data-value'));
-	// 		console.log(sizeValue);
-	// 	}
-
-	// 	if (e.target && e.target == document.getElementById('pushArray')) {
-	// 		filteredProducts = [];
-	// 		filteredProducts = products;
-	// 		sizeFilter(sizeValue);
-	// 		console.log(sizeValue);
-	// 		// priceRange();
-	// 	}
-	// 	const ckeckBoxAdidas = document.getElementById('adidasFilter');
-	// 	const ckeckBoxTopper = document.getElementById('topperFilter');
-	// 	if (ckeckBoxAdidas.checked) {
-	// 		console.log('Adidas checked');
-	// 		brandFilter('ADIDAS');
-	// 	} else if (ckeckBoxTopper.checked) {
-	// 		console.log('Adidas checked');
-	// 		brandFilter('TOPPER');
-	// 	}
-	// });
 
 	//Function Toggle clases del sidebar para mostrarlo. Se eliminan las clases y aparecen y se cancela el scroll.
 	function toggleSidebars(sidebar, overlay) {
@@ -438,7 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const overlay1 = document.getElementById('sidebarOverlay1');
 	const filterBtn = document.getElementById('filterBtn');
 	const closeSidebar1 = document.getElementById('closeSidebar1');
-	const applyFilter = document.querySelector('.sidebar-filter .btn-primary');
+	const applyFilter = document.getElementById('applyFilters');
 
 	overlay1.addEventListener('click', function () {
 		toggleSidebars('sidebarFilter', overlay1);

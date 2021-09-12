@@ -58,13 +58,8 @@
 							<li class="nav-item">
 								<a class="nav-link text-uppercase" href="#">Woman</a>
 							</li>
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">kids</a>
-								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item text-uppercase" href="#">Girls</a></li>
-									<li><hr class="dropdown-divider" /></li>
-									<li><a class="dropdown-item text-uppercase" href="#">Boys</a></li>
-								</ul>
+							<li class="nav-item">
+								<a class="nav-link text-uppercase" href="#">Kids</a>
 							</li>
 						</ul>
 						<form class="d-flex search col-12 col-lg-4 d-none d-lg-flex">
@@ -199,19 +194,21 @@
 							<label class="custom-control-label" for="filter-size-5">44</label>
 						</div>
 					</div>
-					<div class="mt-2 mb-2 pl-2">
-						<div class="custom-control custom-checkbox">
-							<input type="checkbox" class="custom-control-input" id="filter-size-45" data-value="45" />
-							<label class="custom-control-label" for="filter-size-5">45</label>
+					<div class="divider mt-2 mb-4 border-bottom border-secondary"></div>
+					<h6 class="text-uppercase mb-3 font-weight-bold">Filter by Price Range</h6>
+					<div class="price-filter-control row mb-2">
+						<div class="col-4">
+							<input type="number" class="form-control" placeholder="Min price" id="price-min-control" />
+						</div>
+						<div class="col-4">
+							<input type="number" class="form-control" placeholder="Max price" id="price-max-control" />
+						</div>
+						<div class="col-4">
+							<button id="sortByRange" class="btn btn-primary w-100 text-uppercase">sort <i class="fas fa-chevron-right"></i></button>
 						</div>
 					</div>
 					<div class="divider mt-2 mb-4 border-bottom border-secondary"></div>
-					<h6 class="text-uppercase mb-3 font-weight-bold">Filter by Price Range</h6>
-					<div class="price-filter-control">
-						<input type="number" class="form-control w-45 d-inline-block pull-left mb-2" placeholder="Min price" id="price-min-control" />
-						<input type="number" class="form-control w-45 d-inline-block pull-right" placeholder="Max price" id="price-max-control" />
-					</div>
-					<input type="submit" class="btn btn-primary mt-5 text-uppercase" id="applyFilters" value="apply Filters" />
+					<input type="submit" class="btn btn-primary mt-2 w-100 text-uppercase" id="applyFilters" value="VIEW PRODUCTS" />
 					<!-- <a href="#" class="btn btn-primary mt-5">Apply Filters</a> -->
 				</div>
 			</div>
