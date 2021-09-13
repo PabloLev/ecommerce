@@ -346,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			checkeSizedArray.push(sizeVal);
 			filterArray();
 			$('#filtersData').append(
-				`<span data-filter="${sizeVal}" class="m-1 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">Size ${sizeVal} <i class="fas fa-times"></i></span>`
+				`<span data-value="${sizeVal}" class="m-1 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">Size ${sizeVal} <i class="fas fa-times"></i></span>`
 			);
 		}
 		if (!e.target.checked && e.target.getAttribute('data-value')) {
@@ -366,7 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			console.log(checkedBrandArray);
 			filterArray();
 			$('#filtersData').append(
-				`<span data-filter="${brandVal}" class="m-1 mt-3 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">${brandVal} <i class="fas fa-times"></i></span>`
+				`<span data-brand="${brandVal}" class="m-1 mt-3 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">${brandVal} <i class="fas fa-times"></i></span>`
 			);
 		}
 		if (!e.target.checked && e.target.getAttribute('data-brand')) {
@@ -392,16 +392,48 @@ document.addEventListener('DOMContentLoaded', () => {
 			// priceRange();
 			// fetchDataProducts(filteredProducts);
 		}
+		if (checkedBrandArray.length > 0 || checkeSizedArray > 0) {
+			$('#filtersData').show();
+		} else {
+			$('#filtersData').hide();
+		}
 	});
+	$('#filtersData').hide();
 	const filtersData = document.getElementById('filtersData');
 	filtersData.addEventListener('click', (e) => {
-		if (e.target && e.target.getAttribute('data-filter')) {
+		if (e.target && e.target.getAttribute('data-value')) {
 			console.log('REMOVE');
 			e.target.remove();
-			console.log('#' + e.target.getAttribute('data-filter').toLowerCase() + 'Filter');
+			console.log('#' + e.target.getAttribute('data-value').toLowerCase() + 'Filter');
 			// $('input:checked').removeAttr('checked');
-			$('#' + e.target.getAttribute('data-filter').toLowerCase() + 'Filter').prop('checked', false);
+			$('#' + e.target.getAttribute('data-value').toLowerCase() + 'Filter').prop('checked', false);
+
+			let checkboxClicked = e.target.getAttribute('data-value');
+			let index = checkeSizedArray.indexOf(checkboxClicked);
+			//Remove from checkeSizedArray
+			if (index !== -1) {
+				checkeSizedArray.splice(index, 1);
+			}
 			filterArray();
+		} else if (e.target && e.target.getAttribute('data-brand')) {
+			console.log('REMOVE');
+			e.target.remove();
+			console.log('#' + e.target.getAttribute('data-brand').toLowerCase() + 'Filter');
+			// $('input:checked').removeAttr('checked');
+			$('#' + e.target.getAttribute('data-brand').toLowerCase() + 'Filter').prop('checked', false);
+
+			let brandCheckboxClicked = e.target.getAttribute('data-brand');
+			let index = checkedBrandArray.indexOf(brandCheckboxClicked);
+			//Remove from checkedBrandArray
+			if (index !== -1) {
+				checkedBrandArray.splice(index, 1);
+			}
+			filterArray();
+		}
+		if (checkedBrandArray.length > 0 || checkeSizedArray > 0) {
+			$('#filtersData').show();
+		} else {
+			$('#filtersData').hide();
 		}
 	});
 
