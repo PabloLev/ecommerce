@@ -100,10 +100,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const navBarData = document.getElementById('navbarSupportedContent');
 	navBarData.addEventListener('click', (e) => {
-		console.log(e.target.textContent.toUpperCase());
-		genderSelected = e.target.textContent.toUpperCase();
-		// addEventListener
-		fetchDataProducts(products);
+		console.log(e.target.classList.contains('active'));
+		if (e.target && e.target.classList.contains('active')) {
+			genderSelected = e.target.textContent.toUpperCase();
+			console.log(genderSelected);
+			// addEventListener
+			fetchDataProducts(products);
+		}
 	});
 
 	//CREO "BASE DE DATOS con FETCH"
