@@ -53,13 +53,16 @@
 						</form>
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item">
-								<a class="nav-link active text-uppercase" aria-current="page" href="#">Man</a>
+								<a class="nav-link active text-uppercase transition" href="#main">All</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-uppercase" href="#">Woman</a>
+								<a class="nav-link text-uppercase transition" aria-current="page" href="#main">Man</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-uppercase" href="#">Kids</a>
+								<a class="nav-link text-uppercase transition" href="#main">Woman</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-uppercase transition" href="#main">Kids</a>
 							</li>
 						</ul>
 						<form class="d-flex search col-12 col-lg-4 d-none d-lg-flex">
@@ -277,8 +280,8 @@
 		</section>
 		<!-- END SIDEBARS -->
 		<!-- MAIN -->
-		<main>
-			<div class="sticky-top top-4rem bg-white border-bottom">
+		<main id="main">
+			<div id="filterNavBar" class="sticky-top top-4rem bg-white border-bottom">
 				<div class="container d-flex justify-content-end align-items-center">
 					<div class="bg-white rounded d-flex justify-content-end align-items-center text-dark ps-3 pe-1">
 						<span class="me-3 ms-3 text-soft-gray text-small" id="filterArticles"></span>

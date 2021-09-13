@@ -18,7 +18,7 @@ class Product {
 	}
 }
 //Declaro Array products se puebla en fetchDataProducts linea 88 (pudo haber cambiado, capaz que me olvidé de actualizar, jeje)
-const products = [];
+let products = [];
 
 document.addEventListener('DOMContentLoaded', () => {
 	//METODO LIMPIO EL DOM - PARA EVITAR SUMATORIA DE ELEMENTOS CUANDO SE PUEBLA
@@ -28,10 +28,23 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
+	$('.navbar-nav a').on('click', function () {
+		console.log('CLICK');
+
+		$('.navbar-nav').find('.active').removeClass('active');
+		$(this).addClass('active');
+	});
+
 	//*****JQUERY */
 	// LOAD DOM JQUERY (Se usa al cargar el archivo JSON con los productos y cada vez que se quiere filtrar)
 	let increment = -1;
+	let genderSelected = 'ALL';
 	function loadDOMJquery(products) {
+		console.log(products);
+		if (genderSelected != 'ALL') {
+			products = products.filter((e) => e.gender == genderSelected);
+		}
+
 		//Recorro el Array products en el primer nivel.
 		// $('#productsCatalog').empty();
 		// console.log(products);
@@ -85,6 +98,14 @@ document.addEventListener('DOMContentLoaded', () => {
 		// addCartBtn();
 	}
 
+	const navBarData = document.getElementById('navbarSupportedContent');
+	navBarData.addEventListener('click', (e) => {
+		console.log(e.target.textContent.toUpperCase());
+		genderSelected = e.target.textContent.toUpperCase();
+		// addEventListener
+		fetchDataProducts(products);
+	});
+
 	//CREO "BASE DE DATOS con FETCH"
 	const fetchDataProducts = async (products) => {
 		try {
@@ -99,9 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
 				}
 				eventsToButtons();
 			} else {
-				$('#productsCatalog').fadeOut(150, function () {
+				$('#productsCatalog').fadeOut(250, function () {
 					$(this).empty().fadeIn(150, loadDOMJquery(products));
-					// console.log('filtered = ' + products);
 				});
 			}
 			loadDOMJquery(products);
@@ -319,7 +339,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 			filteredProducts = [...new Set(newArray2)];
 		}
-
 		//filter by price range
 		filteredProducts = filteredProducts.filter((a) => a.price > lowRange && a.price < highRange);
 		//Sort by after filter applyed

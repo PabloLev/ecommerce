@@ -2,7 +2,7 @@
 	{
 		"id": 1,
 		"category": "footwear",
-		"gender": "man",
+		"gender": "kids",
 		"brand": "Topper",
 		"model": "classic",
 		"color": "black",
@@ -16,7 +16,7 @@
 	{
 		"id": 2,
 		"category": "footwear",
-		"gender": "man",
+		"gender": "woman",
 		"brand": "Topper",
 		"model": "rainbow",
 		"color": "multi",
@@ -70,7 +70,7 @@
 	{
 		"id": 6,
 		"category": "footwear",
-		"gender": "man",
+		"gender": "kids",
 		"brand": "Adidas",
 		"model": "js",
 		"color": "black",
@@ -98,7 +98,7 @@
 	{
 		"id": 8,
 		"category": "footwear",
-		"gender": "man",
+		"gender": "woman",
 		"brand": "Adidas",
 		"model": "rougue",
 		"color": "black",
