@@ -354,9 +354,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		//SHOW HIDE FILTER BY:
 		if (checkedBrandArray.length > 0 || checkeSizedArray.length > 0) {
-			$('#filtersData').show();
+			$('#filtersData').slideDown();
 		} else {
-			$('#filtersData').hide();
+			$('#filtersData').slideUp();
 		}
 		//NUMBER OF ARTICLES TO SHOW
 		// $('#filterArticles').text(Object.keys(filteredProducts).length + ' articles');
