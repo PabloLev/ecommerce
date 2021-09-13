@@ -10,6 +10,7 @@ $zindex-tooltip: 1080;
 .zindex-dropdown {
 	z-index: 1000;
 }
+
 .zindex-fixed {
 	z-index: 1030;
 }
@@ -25,6 +26,9 @@ $zindex-tooltip: 1080;
 .w-40 {
 	width: 40% !important;
 	// margin: 0 2.0%;
+}
+.fs-7 {
+	font-size: 0.75rem;
 }
 //SACAR CUANDO BAJE BOOTSTRAP
 .bg-primary {

@@ -197,14 +197,14 @@
 					<div class="divider mt-2 mb-4 border-bottom border-secondary"></div>
 					<h6 class="text-uppercase mb-3 font-weight-bold">Filter by Price Range</h6>
 					<div class="price-filter-control row mb-2">
-						<div class="col-4">
+						<div class="col-4 p-2">
 							<input type="number" class="form-control" placeholder="Min price" id="price-min-control" />
 						</div>
-						<div class="col-4">
+						<div class="col-4 p-2">
 							<input type="number" class="form-control" placeholder="Max price" id="price-max-control" />
 						</div>
-						<div class="col-4">
-							<button id="sortByRange" class="btn btn-primary w-100 text-uppercase">RANGE <i class="fas fa-chevron-right"></i></button>
+						<div class="col-4 p-2">
+							<button id="sortByRange" class="btn btn-primary w-100 text-uppercase">RANGE</button>
 						</div>
 					</div>
 					<div class="divider mt-2 mb-4 border-bottom border-secondary"></div>
@@ -281,7 +281,7 @@
 			<div class="sticky-top top-4rem bg-white border-bottom">
 				<div class="container d-flex justify-content-end align-items-center">
 					<div class="bg-white rounded d-flex justify-content-end align-items-center text-dark ps-3 pe-1">
-						<span class="me-3 ms-3 text-soft-gray text-small">425 artículos</span>
+						<span class="me-3 ms-3 text-soft-gray text-small" id="filterArticles"></span>
 						<i id="filterBtn" class="fas fa-filter me-3 divider pointer"></i>
 						<div class="dropdown">
 							<button class="btn dropdown-toggle" type="button" id="dropdownMenuButtonSort" data-bs-toggle="dropdown" aria-expanded="false">Sort By: Recomended</button>
@@ -294,8 +294,8 @@
 					</div>
 				</div>
 			</div>
-			<div id="filtersData" class="container mt-3" style="display: none">
-				<span class="text-uppercase text-gray">Filter by:</span>
+			<div id="filtersData" class="container mt-3 fs-7" style="display: none">
+				<strong class="text-uppercase">Filter by:</strong>
 				<!-- <span class="m-1 mt-3 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">Adidas <i class="fas fa-times"></i></span>
 				<span class="m-1 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">Size 37 <i class="fas fa-times"></i></span>
 				<span class="m-1 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">Price Range : low = $4500 <i class="fas fa-times"></i></span>

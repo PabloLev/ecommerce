@@ -80,7 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
 				}
 			});
 		}
-
+		console.log(products.length);
+		$('#filterArticles').text(products.length + ' articles');
 		// addCartBtn();
 	}
 
@@ -331,16 +332,17 @@ document.addEventListener('DOMContentLoaded', () => {
 		} else {
 			$('#productsCatalog').empty().append('<h3 class="text-uppercase text-center mt-5">ZERO RESULTS TO SHOW, please filter again</h3>');
 		}
-		console.log('filtered');
-		console.log(filteredProducts);
-		// priceRange();
 
+		//SHOW HIDE FILTER BY:
 		if (checkedBrandArray.length > 0 || checkeSizedArray.length > 0) {
 			$('#filtersData').show();
 		} else {
 			$('#filtersData').hide();
 		}
+		//NUMBER OF ARTICLES TO SHOW
+		// $('#filterArticles').text(Object.keys(filteredProducts).length + ' articles');
 	}
+
 	//****END FILTRADO****
 	// FILTERS
 	const filters = document.getElementById('sidebarFilter');
@@ -351,7 +353,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			let sizeVal = e.target.getAttribute('data-value');
 			checkeSizedArray.push(sizeVal);
 			filterArray();
-			$('#filtersData').append(`<span data-value="${sizeVal}" class="m-1 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">Size ${sizeVal} X</span>`);
+			$('#filtersData').append(
+				`<span data-value="${sizeVal}" class="d-inline-block m-1 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">Size ${sizeVal} X</span>`
+			);
 		}
 		if (!e.target.checked && e.target.getAttribute('data-value')) {
 			let checkboxClicked = e.target.getAttribute('data-value');
@@ -372,7 +376,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			checkedBrandArray.push(brandVal);
 			console.log(checkedBrandArray);
 			filterArray();
-			$('#filtersData').append(`<span data-brand="${brandVal}" class="m-1 mt-3 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">${brandVal} X</span>`);
+			$('#filtersData').append(
+				`<span data-brand="${brandVal}" class="d-inline-block m-1 mt-3 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">${brandVal} X</span>`
+			);
 		}
 		if (!e.target.checked && e.target.getAttribute('data-brand')) {
 			let brandCheckboxClicked = e.target.getAttribute('data-brand');
