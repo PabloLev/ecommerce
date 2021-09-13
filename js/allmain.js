@@ -334,6 +334,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		console.log('filtered');
 		console.log(filteredProducts);
 		// priceRange();
+
+		if (checkedBrandArray.length > 0 || checkeSizedArray.length > 0) {
+			$('#filtersData').show();
+		} else {
+			$('#filtersData').hide();
+		}
 	}
 	//****END FILTRADO****
 	// FILTERS
@@ -345,9 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			let sizeVal = e.target.getAttribute('data-value');
 			checkeSizedArray.push(sizeVal);
 			filterArray();
-			$('#filtersData').append(
-				`<span data-value="${sizeVal}" class="m-1 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">Size ${sizeVal} <i class="fas fa-times"></i></span>`
-			);
+			$('#filtersData').append(`<span data-value="${sizeVal}" class="m-1 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">Size ${sizeVal} X</span>`);
 		}
 		if (!e.target.checked && e.target.getAttribute('data-value')) {
 			let checkboxClicked = e.target.getAttribute('data-value');
@@ -357,6 +361,9 @@ document.addEventListener('DOMContentLoaded', () => {
 				checkeSizedArray.splice(index, 1);
 			}
 			filterArray();
+			$('#filtersData')
+				.find(`[data-value='${e.target.getAttribute('data-value')}']`)
+				.remove();
 		}
 
 		if (e.target.checked && e.target.getAttribute('data-brand')) {
@@ -365,9 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			checkedBrandArray.push(brandVal);
 			console.log(checkedBrandArray);
 			filterArray();
-			$('#filtersData').append(
-				`<span data-brand="${brandVal}" class="m-1 mt-3 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">${brandVal} <i class="fas fa-times"></i></span>`
-			);
+			$('#filtersData').append(`<span data-brand="${brandVal}" class="m-1 mt-3 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">${brandVal} X</span>`);
 		}
 		if (!e.target.checked && e.target.getAttribute('data-brand')) {
 			let brandCheckboxClicked = e.target.getAttribute('data-brand');
@@ -377,6 +382,9 @@ document.addEventListener('DOMContentLoaded', () => {
 				checkedBrandArray.splice(index, 1);
 			}
 			filterArray();
+			$('#filtersData')
+				.find(`[data-brand='${e.target.getAttribute('data-brand')}']`)
+				.remove();
 		}
 
 		if (e.target && e.target == document.getElementById('sortByRange')) {
@@ -389,16 +397,9 @@ document.addEventListener('DOMContentLoaded', () => {
 				highRange = 19999999;
 			}
 			filterArray();
-			// priceRange();
-			// fetchDataProducts(filteredProducts);
-		}
-		if (checkedBrandArray.length > 0 || checkeSizedArray > 0) {
-			$('#filtersData').show();
-		} else {
-			$('#filtersData').hide();
 		}
 	});
-	$('#filtersData').hide();
+
 	const filtersData = document.getElementById('filtersData');
 	filtersData.addEventListener('click', (e) => {
 		if (e.target && e.target.getAttribute('data-value')) {
@@ -429,11 +430,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				checkedBrandArray.splice(index, 1);
 			}
 			filterArray();
-		}
-		if (checkedBrandArray.length > 0 || checkeSizedArray > 0) {
-			$('#filtersData').show();
-		} else {
-			$('#filtersData').hide();
 		}
 	});
 
