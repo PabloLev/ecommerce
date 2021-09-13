@@ -22,7 +22,7 @@
 		"color": "multi",
 		"price": 3500,
 		"sizeStock": [
-			{ "size": 139, "stock": 1 },
+			{ "size": 39, "stock": 1 },
 			{ "size": 40, "stock": 5 },
 			{ "size": 41, "stock": 1 }
 		]
@@ -64,7 +64,7 @@
 		"sizeStock": [
 			{ "size": 37, "stock": 4 },
 			{ "size": 40, "stock": 5 },
-			{ "size": 99, "stock": 1 }
+			{ "size": 42, "stock": 1 }
 		]
 	},
 	{
@@ -78,7 +78,7 @@
 		"sizeStock": [
 			{ "size": 37, "stock": 4 },
 			{ "size": 40, "stock": 5 },
-			{ "size": 99, "stock": 1 }
+			{ "size": 43, "stock": 1 }
 		]
 	},
 	{
@@ -90,9 +90,9 @@
 		"color": "black",
 		"price": 2100,
 		"sizeStock": [
-			{ "size": 37, "stock": 4 },
-			{ "size": 140, "stock": 5 },
-			{ "size": 99, "stock": 1 }
+			{ "size": 35, "stock": 4 },
+			{ "size": 37, "stock": 5 },
+			{ "size": 39, "stock": 1 }
 		]
 	},
 	{
