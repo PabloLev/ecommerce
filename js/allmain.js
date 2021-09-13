@@ -342,8 +342,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	filters.addEventListener('click', (e) => {
 		if (e.target.checked && e.target.getAttribute('data-value')) {
 			//Add to checkeSizedArray
-			checkeSizedArray.push(e.target.getAttribute('data-value'));
+			let sizeVal = e.target.getAttribute('data-value');
+			checkeSizedArray.push(sizeVal);
 			filterArray();
+			$('#filtersData').append(
+				`<span data-filter="${sizeVal}" class="m-1 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">Size ${sizeVal} <i class="fas fa-times"></i></span>`
+			);
 		}
 		if (!e.target.checked && e.target.getAttribute('data-value')) {
 			let checkboxClicked = e.target.getAttribute('data-value');
@@ -357,9 +361,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		if (e.target.checked && e.target.getAttribute('data-brand')) {
 			//Add to checkedBrandArray
-			checkedBrandArray.push(e.target.getAttribute('data-brand'));
+			let brandVal = e.target.getAttribute('data-brand');
+			checkedBrandArray.push(brandVal);
 			console.log(checkedBrandArray);
 			filterArray();
+			$('#filtersData').append(
+				`<span data-filter="${brandVal}" class="m-1 mt-3 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">${brandVal} <i class="fas fa-times"></i></span>`
+			);
 		}
 		if (!e.target.checked && e.target.getAttribute('data-brand')) {
 			let brandCheckboxClicked = e.target.getAttribute('data-brand');
@@ -368,7 +376,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			if (index !== -1) {
 				checkedBrandArray.splice(index, 1);
 			}
-
 			filterArray();
 		}
 
@@ -384,6 +391,17 @@ document.addEventListener('DOMContentLoaded', () => {
 			filterArray();
 			// priceRange();
 			// fetchDataProducts(filteredProducts);
+		}
+	});
+	const filtersData = document.getElementById('filtersData');
+	filtersData.addEventListener('click', (e) => {
+		if (e.target && e.target.getAttribute('data-filter')) {
+			console.log('REMOVE');
+			e.target.remove();
+			console.log('#' + e.target.getAttribute('data-filter').toLowerCase() + 'Filter');
+			// $('input:checked').removeAttr('checked');
+			$('#' + e.target.getAttribute('data-filter').toLowerCase() + 'Filter').prop('checked', false);
+			filterArray();
 		}
 	});
 
