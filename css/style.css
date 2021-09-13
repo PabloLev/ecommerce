@@ -367,15 +367,15 @@ button .btn-outline-secondary {
 }
 
 .carousel .home-header .item1 {
-  background-image: url("../img/hero/home-hero-1.jpg");
+  background-image: url("../img/hero/home-hero-1.webp");
 }
 
 .carousel .home-header .item2 {
-  background-image: url("../img/hero/home-hero-2.jpg");
+  background-image: url("../img/hero/home-hero-2.webp");
 }
 
 .carousel .home-header .item3 {
-  background-image: url("../img/hero/home-hero-3.jpg");
+  background-image: url("../img/hero/home-hero-3.webp");
 }
 
 .promo-img {
@@ -405,12 +405,12 @@ button .btn-outline-secondary {
 }
 
 .promo-img1 {
-  background-image: url("../img/hero/promo1.jpg");
+  background-image: url("../img/hero/promo1.webp");
   background-position: center 60%;
 }
 
 .promo-img2 {
-  background-image: url("../img/hero/skate.jpg");
+  background-image: url("../img/hero/skate.webp");
 }
 
 .style-img {
@@ -419,19 +419,19 @@ button .btn-outline-secondary {
 }
 
 .style-img1 {
-  background-image: url("../img/hero/style1.jpg");
+  background-image: url("../img/hero/style1.webp");
 }
 
 .style-img2 {
-  background-image: url("../img/hero/style2.jpg");
+  background-image: url("../img/hero/style2.webp");
 }
 
 .style-img3 {
-  background-image: url("../img/hero/style3.jpg");
+  background-image: url("../img/hero/style3.webp");
 }
 
 .banner-img1 {
-  background-image: url("../img/hero/banner1.jpg");
+  background-image: url("../img/hero/banner1.webp");
   height: 250px;
   background-position: center 50%;
 }
