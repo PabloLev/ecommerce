@@ -40,7 +40,7 @@
 					>
 						<span class="navbar-toggler-icon"></span>
 					</button>
-					<a class="navbar-brand ms-3 me-3 d-lg-none" href="#"><strong>BIG-STORE</strong></a>
+					<a class="navbar-brand ms-3 me-3 d-lg-none" href="./index.html"><strong>BIG-STORE</strong></a>
 					<button id="cartIconMobile" type="button" class="btn btn-primary ms-lg-3 ms-0 me-1 d-lg-none" aria-label="Cart">
 						<i class="fas fa-shopping-cart"><span class="badge badge1 position-absolute"></span></i>
 					</button>
@@ -53,19 +53,19 @@
 						</form>
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item">
-								<a class="nav-link active text-uppercase transition" href="./index.html">Home</a>
+								<a class="nav-link text-uppercase transition" href="./index.html">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-uppercase transition" href="./shop.html">All</a>
+								<a class="nav-link active text-uppercase transition" href="#main">All</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-uppercase transition" aria-current="page" href="./shop.html">Man</a>
+								<a class="nav-link text-uppercase transition" aria-current="page" href="#main">Man</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-uppercase transition" href="./shop.html">Woman</a>
+								<a class="nav-link text-uppercase transition" href="#main">Woman</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-uppercase transition" href="./shop.html">Kids</a>
+								<a class="nav-link text-uppercase transition" href="#main">Kids</a>
 							</li>
 						</ul>
 						<form class="d-flex search col-12 col-lg-4 d-none d-lg-flex">
@@ -89,6 +89,153 @@
 			</div>
 		</header>
 		<!-- END HEADER -->
+		<!-- TOAST  -->
+		<div class="toast-container top-0 start-0 position-fixed min-vh-100 min-vw-100 zindex-tooltip-hi">
+			<div id="basicToast" class="toast" data-bs-autohide="false" data-bs-delay="3000">
+				<div
+					class="position-fixed top-50 start-50 translate-middle zindex-tooltip col-9 col-lg-6 col-xl-4 col-xxl-3 bg-white rounded row text-center overflow-hidden"
+					role="alert"
+					aria-live="assertive"
+					aria-atomic="true"
+				>
+					<div class="toast-header bg-primary text-light d-flex justify-content-center w-100">
+						<h5 class="my-0 text-uppercase text-center p-3">Product added</h5>
+					</div>
+					<img id="toastImg" src="./img/man/adidas/5_adidas_infinity_black_a.webp" class="card-img-top ps-3 pe-3 w-50 m-auto" alt="..." />
+					<div id="toastBrand" class="toast-body opacity-at-100 ps-3 pe-3 text-center"></div>
+					<div class="row p-3 w-100 m-auto">
+						<div class="col-12 col-md-6">
+							<button type="button" class="btn btn-primary shadow text-uppercase m-auto mt-2 mb-2 w-100" data-bs-dismiss="toast">To Shop</button>
+						</div>
+
+						<div class="col-12 col-md-6">
+							<button id="checkOut" type="button" class="btn btn-primary shadow text-uppercase m-auto mt-2 mb-2 w-100" data-bs-dismiss="toast">Check out</button>
+						</div>
+					</div>
+				</div>
+				<div class="bg-dark min-vh-100 min-vw-100 fixed-top m-0 transition opacity-at-25 overflow-hidden"></div>
+			</div>
+		</div>
+
+		<!-- SIDEBARS  -->
+		<div id="sidebarOverlay1" class="bg-dark min-vh-100 fixed-top m-0 transition overlay-off opacity-at-25 zindex-tooltip"></div>
+		<div id="sidebarFilter" class="bg-light col-auto col-sm-9 col-md-6 col-xl-3 shadow fixed-top transition sidebar-off overflow-auto min-vh-100 zindex-tooltip" data-show="on">
+			<div id="closeSidebar1" class="pointer p-3 mb-3 text-dark d-flex justify-content-end">
+				<i class="fas fa-times pe-3 position-absolute"></i>
+			</div>
+			<div class="px-sm-2 px-0 bg-light">
+				<div class="d-flex flex-column sidebar-filter mt-1 me-5 ms-5 mb-5">
+					<h3 class="mt-0 mb-5 text-uppercase">Filter <span class="text-primary">your</span> Products</h3>
+					<h6 class="text-uppercase">Filter by Brand</h6>
+					<div class="mt-2 mb-2 pl-2">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="adidasFilter" data-brand="ADIDAS" />
+							<label class="custom-control-label" for="filter-size-1">Adidas</label>
+						</div>
+					</div>
+					<div class="mt-2 mb-2 pl-2">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="topperFilter" data-brand="TOPPER" />
+							<label class="custom-control-label" for="filter-size-1">Topper</label>
+						</div>
+					</div>
+					<!-- <ul class="p-lists ps-0">
+						<li class="d-flex justify-content-between mt-2 pointer" id="adidasFilter">Adidas</li>
+						<li class="d-flex justify-content-between mt-2 pointer" id="topperFilter">Topper</li>
+					</ul> -->
+					<div class="divider mt-2 mb-4 border-bottom border-secondary"></div>
+					<h6 class="text-uppercase mb-3 font-weight-bold">Filter by Size</h6>
+
+					<div class="mt-2 mb-2 pl-2">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="36Filter" data-value="36" />
+							<label class="custom-control-label" for="filter-size-3">36</label>
+						</div>
+					</div>
+					<div class="mt-2 mb-2 pl-2">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="37Filter" data-value="37" />
+							<label class="custom-control-label" for="filter-size-4">37</label>
+						</div>
+					</div>
+					<div class="mt-2 mb-2 pl-2">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="38Filter" data-value="38" />
+							<label class="custom-control-label" for="filter-size-5">38</label>
+						</div>
+					</div>
+					<div class="mt-2 mb-2 pl-2">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="39Filter" data-value="39" />
+							<label class="custom-control-label" for="filter-size-5">39</label>
+						</div>
+					</div>
+					<div class="mt-2 mb-2 pl-2">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="40Filter" data-value="40" />
+							<label class="custom-control-label" for="filter-size-5">40</label>
+						</div>
+					</div>
+					<div class="mt-2 mb-2 pl-2">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="41Filter" data-value="41" />
+							<label class="custom-control-label" for="filter-size-5">41</label>
+						</div>
+					</div>
+					<div class="mt-2 mb-2 pl-2">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="42Filter" data-value="42" />
+							<label class="custom-control-label" for="filter-size-5">42</label>
+						</div>
+					</div>
+					<div class="mt-2 mb-2 pl-2">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="43Filter" data-value="43" />
+							<label class="custom-control-label" for="filter-size-5">43</label>
+						</div>
+					</div>
+					<div class="mt-2 mb-2 pl-2">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="44Filter" data-value="44" />
+							<label class="custom-control-label" for="filter-size-5">44</label>
+						</div>
+					</div>
+					<div class="divider mt-2 mb-4 border-bottom border-secondary"></div>
+					<h6 class="text-uppercase mb-3 font-weight-bold">Filter by Price Range</h6>
+					<div class="price-filter-control row mb-2">
+						<div class="col-4 p-2">
+							<input type="number" class="form-control" placeholder="Min price" id="price-min-control" />
+						</div>
+						<div class="col-4 p-2">
+							<input type="number" class="form-control" placeholder="Max price" id="price-max-control" />
+						</div>
+						<div class="col-4 p-2">
+							<button id="sortByRange" class="btn btn-primary w-100 text-uppercase">RANGE</button>
+						</div>
+					</div>
+					<div class="divider mt-2 mb-4 border-bottom border-secondary"></div>
+					<input type="submit" class="btn btn-primary mt-2 w-100 text-uppercase" id="applyFilters" value="VIEW PRODUCTS" />
+					<!-- <a href="#" class="btn btn-primary mt-5">Apply Filters</a> -->
+				</div>
+			</div>
+		</div>
+		<div id="sidebarOverlay2" class="bg-dark min-vh-100 fixed-top m-0 transition overlay-off opacity-at-25 zindex-tooltip"></div>
+		<div id="sidebar" class="col-auto col-sm-9 col-md-6 col-xl-4 shadow fixed-top transition sidebar-off overflow-auto vh-100 zindex-tooltip" data-show="on">
+			<div class="px-sm-2 px-0 bg-light min-vh-100">
+				<div id="closeSidebar2" class="pointer p-3 mb-3 text-dark d-flex justify-content-end">
+					<i class="fas fa-times pe-3"></i>
+				</div>
+				<div class="d-flex flex-column align-items-center px-3 pt-2 text-white">
+					<div class="p-2 text-dark">
+						<h4 class="text-uppercase">Your shopping cart</h4>
+					</div>
+					<div id="productsInCart" class="col-12">
+						<h6 class="text-black text-center">Please select a product</h6>
+					</div>
+					<button type="button" class="align-middle btn btn-primary py-2 mt-4">Finalizar Compra</button>
+				</div>
+			</div>
+		</div>
 
 		<!-- HERO  -->
 		<section id="hero">
@@ -98,11 +245,11 @@
 					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
 					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
 				</div>
-				<div class="carousel-inner home-header">
+				<div class="carousel-inner">
 					<div class="carousel-item item1 active">
 						<a href="#">
 							<div class="carousel-caption">
-								<h2 class="display-4 text-uppercase text-shadow-lg"><strong>Bests prices</strong></h2>
+								<h2 class="display-4 text-uppercase text-shadow-lg"><strong>Summer sales</strong></h2>
 								<p class="fs-5 d-none d-md-block text-shadow">Some representative placeholder content for the first slide.</p>
 							</div>
 						</a>
@@ -110,7 +257,7 @@
 					<div class="carousel-item item2">
 						<a href="#">
 							<div class="carousel-caption">
-								<h2 class="display-4 text-uppercase text-shadow-lg"><strong>all brands</strong></h2>
+								<h2 class="display-4 text-uppercase text-shadow-lg"><strong>Second hand</strong></h2>
 								<p class="fs-5 d-none d-md-block text-shadow">Some representative placeholder content for the second slide.</p>
 							</div>
 						</a>
@@ -118,7 +265,7 @@
 					<div class="carousel-item item3">
 						<a href="#">
 							<div class="carousel-caption">
-								<h2 class="display-4 text-uppercase text-shadow-lg"><strong>Flash sales</strong></h2>
+								<h2 class="display-4 text-uppercase text-shadow-lg"><strong>All in Sports</strong></h2>
 								<p class="fs-5 d-none d-md-block text-shadow">Some representative placeholder content for the third slide.</p>
 							</div>
 						</a>
@@ -136,87 +283,83 @@
 		</section>
 		<!-- END SIDEBARS -->
 		<!-- MAIN -->
-		<main id="main" class="container">
-			<div class="row mt-5">
-				<div class="col-12 col-md-6 col-lg-9 p-3 zzz">
-					<div class="promo-img1 promo-img p-3">
-						<h5 class="text-uppercase text-white bg-primary d-inline-block p-2 pointer">Best discounts</h5>
-					</div>
-				</div>
-				<div class="col-12 col-md-6 col-lg-3 p-3">
-					<div class="promo-img2 promo-img p-3">
-						<h5 class="text-uppercase text-white bg-primary d-inline-block p-2 pointer">Best discounts</h5>
-					</div>
-				</div>
-				<div class="d-flex bd-highlight">
-					<div class="flex-fill bd-highlight">
-						<h3 class="text-center mt-5 text-primary fw-bold bg-mark p-2">ALL BRANDS IN ONE PLACE</h3>
-					</div>
-					<div class="flex-fill bd-highlight">
-						<h3 class="text-center mt-5 fw-bold bg-primary text-mark p-2">AT THE BEST PRIES IN THE HOLE WORLD!!!</h3>
-					</div>
-				</div>
-
-				<div class="col-12 col-md-4 p-3">
-					<div class="style-img1 style-img p-3">
-						<h5 class="text-uppercase text-white bg-primary d-inline-block p-2 pointer">Best discounts</h5>
-					</div>
-				</div>
-				<div class="col-12 col-md-4 p-3">
-					<div class="style-img2 style-img p-3">
-						<h5 class="text-uppercase text-white bg-primary d-inline-block p-2 pointer">Best discounts</h5>
-					</div>
-				</div>
-				<div class="col-12 col-md-4 p-3">
-					<div class="style-img3 style-img p-3">
-						<h5 class="text-uppercase text-white bg-primary d-inline-block p-2 pointer">Best discounts</h5>
-					</div>
-				</div>
-				<div class="col-12 p-3 mt-5">
-					<div class="banner-img1 promo-img p-3 d-flex justify-content-center align-items-center">
-						<h5 class="text-uppercase text-white bg-primary d-inline-block p-2 pointer">Best discounts</h5>
+		<main id="main">
+			<div id="filterNavBar" class="sticky-top top-4rem bg-white border-bottom">
+				<div class="container d-flex justify-content-end align-items-center">
+					<div class="bg-white rounded d-flex justify-content-end align-items-center text-dark ps-3 pe-1">
+						<span class="me-3 ms-3 text-soft-gray text-small" id="filterArticles"></span>
+						<i id="filterBtn" class="fas fa-filter me-3 divider pointer"></i>
+						<div class="dropdown">
+							<button class="btn dropdown-toggle" type="button" id="dropdownMenuButtonSort" data-bs-toggle="dropdown" aria-expanded="false">Sort By: Recomended</button>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+								<li><button id="sortRecomended" class="dropdown-item" href="#">Recomended</button></li>
+								<li><button id="sortAscending" class="dropdown-item" href="#">Low to high</button></li>
+								<li><button id="sortDescending" class="dropdown-item" href="#">High to low</button></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
+			<div id="filtersData" class="container pt-3 fs-7 border-bottom pb-3 transition" style="display: none">
+				<strong class="d-inline-block text-uppercase mt-1 mb-1">Filter by:</strong>
+				<!-- <span class="m-1 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">Price Range : low = $4500 <i class="fas fa-times"></i></span>
+				<span class="m-1 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">Price Range : high = $4500 <i class="fas fa-times"></i></span>  -->
+			</div>
+			<!-- Acá se van a cargar los productos a mostrar -->
+			<section class="container">
+				<div id="productsCatalog" class="row">
+					<!-- <div class="d-flex  justify-content-center m-5">
+                    <div class="spinner-grow" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div> -->
+					<!-- SE AGREGA POR JS TEMPLATE -->
+				</div>
+			</section>
 		</main>
 		<!-- END MAIN -->
 		<!-- FOOTER -->
 		<footer class="bg-dark text-center text-white mt-5">
-			<div class="bg-mark p-4">
-				<div class="container">
-					<div class="row">
-						<div class="col-12 col-md-6 col-lg-3 ps-5 pe-5 mt-3 mb-3">
-							<i class="fas fa-tags text-primary fs-1"></i>
-							<h4 class="text-primary mt-3 fw-bold">
-								Best brands at <br />
-								incredible prices
-							</h4>
-						</div>
-						<div class="col-12 col-md-6 col-lg-3 ps-5 pe-5 mt-3 mb-3">
-							<i class="fas fa-truck text-primary fs-1"></i>
-							<h4 class="text-primary mt-3 fw-bold">
-								At home in <br />
-								24 hs
-							</h4>
-						</div>
-						<div class="col-12 col-md-6 col-lg-3 ps-5 pe-5 mt-3 mb-3">
-							<i class="fas fa-redo text-primary fs-1"></i>
-							<h4 class="text-primary mt-3 fw-bold">
-								Free changes <br />
-								at home
-							</h4>
-						</div>
-						<div class="col-12 col-md-6 col-lg-3 ps-5 pe-5 mt-3 mb-3">
-							<i class="fas fa-eye text-primary fs-1"></i>
-							<h4 class="text-primary mt-3 fw-bold">
-								Attention <br />
-								in details
-							</h4>
-						</div>
+			<div class="position-relative">
+				<div class="slider -fast bg-mark p-3">
+					<div>
+						<img class="me-5 ms-5" src="./img/brands/ADIDAS.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/BOTTERO.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/BRANCH.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/CLARKS.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/CONVERSE.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/CROCS.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/DISNEY.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/FILA.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/MISSCAROL.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/NEWBALANCE.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/NORTHSAILS.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/PUMA.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/PUSH.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/REEBOK.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/TOPPER.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/UMBRO.svg" alt="..." />
+					</div>
+					<div>
+						<img class="me-5 ms-5" src="./img/brands/ADIDAS.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/BOTTERO.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/BRANCH.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/CLARKS.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/CONVERSE.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/CROCS.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/DISNEY.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/FILA.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/MISSCAROL.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/NEWBALANCE.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/NORTHSAILS.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/PUMA.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/PUSH.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/REEBOK.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/TOPPER.svg" alt="..." />
+						<img class="me-5 ms-5" src="./img/brands/UMBRO.svg" alt="..." />
 					</div>
 				</div>
 			</div>
-
 			<!-- Grid container -->
 			<div class="">
 				<!-- Section: Form -->
@@ -421,6 +564,38 @@
 			</div>
 		</div>
 		<!-- END MODAL -->
+		<!-- Toast -->
+		<div class="toast">
+			<div class="toast-header">
+				<strong class="mr-auto">Bootstrap</strong>
+				<small>11 mins ago</small>
+				<button type="button" class="ml-2 mb-1 close" data-dismiss="toast">
+					<span>&times;</span>
+				</button>
+			</div>
+			<div class="toast-body">Hello, world! This is a toast message.</div>
+		</div>
+		<!-- TEMPLATE -->
+		<!-- <template id="templateProduct">
+        <article class="card col-6 col-md-4 col-lg-3 text-center border-0 p-3">
+            <div class="img-wrapper position-relative p-1 d-flex justify-content-end" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content="More info">
+                
+                <img src="" class="img-a card-img-top" alt="...">
+                <img src="" class="img-b card-img-top position-absolute p-1" alt="...">
+            </div>
+            <div class="card-body">
+                <img src="" class="img-brand-card" alt="...">
+                <p class="card-title text-uppercase fw-bold"></p>
+                <span class="price card-text fs-5 text-dark"></span>
+                
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle mb-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">Chose Size</button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton"></ul>
+                </div>
+                <button type="button" class="cart btn container-fluid btn-primary py-2">Add to Cart<i class="fas fa-shopping-cart ms-3"></i></button>
+            </div>
+        </article>
+    </template> -->
 
 		<!-- SCRIPTS -->
 		<!-- BOOTSTRAP 5 JS -->

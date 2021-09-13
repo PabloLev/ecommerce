@@ -72,6 +72,9 @@ $zindex-tooltip: 1080;
 .bg-mark {
 	background-color: #d3ff00;
 }
+.text-mark {
+	color: #d3ff00;
+}
 .btn-mark {
 	background-color: #d3ff00;
 	border-color: #d3ff00;
@@ -302,4 +305,72 @@ button {
 	100% {
 		transform: translateX(-100%);
 	}
+}
+
+//HOME
+
+.carousel {
+	.home-header {
+		.carousel-item {
+			min-height: 300px;
+		}
+		.item1 {
+			background-image: url('../img/hero/home-hero-1.jpg');
+		}
+		.item2 {
+			background-image: url('../img/hero/home-hero-2.jpg');
+		}
+		.item3 {
+			background-image: url('../img/hero/home-hero-3.jpg');
+		}
+	}
+}
+
+.promo-img {
+	background-size: cover;
+	height: 300px;
+	position: relative;
+	:before {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		border-bottom: 20px solid #ffffff;
+		border-left: 20px solid transparent;
+		z-index: 1;
+	}
+	:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		border-top: 20px solid #ffffff;
+		border-right: 20px solid transparent;
+		z-index: 1;
+	}
+}
+.promo-img1 {
+	background-image: url('../img/hero/promo1.jpg');
+	background-position: center 60%;
+}
+.promo-img2 {
+	background-image: url('../img/hero/skate.jpg');
+}
+.style-img {
+	background-size: cover;
+	height: 200px;
+}
+.style-img1 {
+	background-image: url('../img/hero/style1.jpg');
+}
+.style-img2 {
+	background-image: url('../img/hero/style2.jpg');
+}
+.style-img3 {
+	background-image: url('../img/hero/style3.jpg');
+}
+.banner-img1 {
+	background-image: url('../img/hero/banner1.jpg');
+	height: 250px;
+	background-position: center 50%;
 }
