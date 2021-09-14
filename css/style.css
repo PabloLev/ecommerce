@@ -424,6 +424,7 @@ button .btn-outline-secondary {
 
 .style-img2 {
   background-image: url("../img/hero/style2.webp");
+  background-position: center 100%;
 }
 
 .style-img3 {
