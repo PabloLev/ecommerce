@@ -196,6 +196,10 @@ header {
   text-shadow: 2px 2px #3a3a3a;
 }
 
+.text-shadow-primary {
+  text-shadow: 2px 2px #0d6efd;
+}
+
 .text-shadow-lg {
   text-shadow: 4px 4px #0d6efd;
   font-weight: bold;
