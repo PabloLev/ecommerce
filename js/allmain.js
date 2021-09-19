@@ -160,8 +160,11 @@ document.addEventListener('DOMContentLoaded', () => {
 			console.log(genderSelected);
 			// addEventListener
 			fetchDataProducts(products);
+			// window.history.pushState('object or string', 'Title', '/' + genderSelected.toLocaleLowerCase());
 		} else if (e.target && e.target.classList.contains('active') && e.target.textContent.toUpperCase() === 'HOME') {
 			loadDOMFirst();
+			// window.history.pushState('object or string', 'Title', '/index.html');
+			// history.replaceState('data to be passed', 'Title of the page', '/index.html');
 		}
 	});
 
@@ -179,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				}
 				eventsToButtons();
 			} else {
-				$('#productsCatalog').fadeOut(250, function () {
+				$('#productsCatalog').fadeOut(150, function () {
 					$(this).empty().fadeIn(150, loadDOMJquery(products));
 				});
 			}
