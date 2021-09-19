@@ -35,18 +35,72 @@ document.addEventListener('DOMContentLoaded', () => {
 		$(this).addClass('active');
 	});
 
+	function loadDOMFirst() {
+		$('#productsCatalog').empty();
+		$('#filterNavBar').hide();
+		$('#productsCatalog').append(`
+			<div class="container">
+				<div class="row mt-5">
+					<div class="col-12 col-md-4 p-3">
+						<div class="style-img1 style-img p-3">
+							<h5 class="text-uppercase text-white bg-primary d-inline-block p-2 pointer">best for woman</h5>
+						</div>
+					</div>
+					<div class="col-12 col-md-4 p-3">
+						<div class="style-img2 style-img p-3">
+							<h5 class="text-uppercase text-white bg-primary d-inline-block p-2 pointer">best for kids</h5>
+						</div>
+					</div>
+					<div class="col-12 col-md-4 p-3">
+						<div class="style-img3 style-img p-3">
+							<h5 class="text-uppercase text-white bg-primary d-inline-block p-2 pointer">best for man</h5>
+						</div>
+					</div>
+
+					<div class="d-flex bd-highlight">
+						<div class="flex-fill bd-highlight">
+							<h3 class="text-center mt-5 text-primary fw-bold bg-mark p-2">ALL BRANDS IN ONE PLACE</h3>
+						</div>
+						<div class="flex-fill bd-highlight">
+							<h3 class="text-center mt-5 fw-bold bg-primary text-mark p-2">AT THE BEST PRIES IN THE HOLE WORLD!!!</h3>
+						</div>
+					</div>
+
+					<div class="col-12 col-md-6 col-lg-9 p-3 zzz">
+						<div class="promo-img1 promo-img p-3">
+							<h5 class="text-uppercase text-white bg-primary d-inline-block p-2 pointer">Best discounts</h5>
+						</div>
+					</div>
+					<div class="col-12 col-md-6 col-lg-3 p-3">
+						<div class="promo-img2 promo-img p-3 d-flex align-items-end justify-content-center">
+							<h5 class="text-uppercase text-white text-shadow-primary d-inline-block p-2 pointer fw-bold">YOUR OWN STYLE</h5>
+						</div>
+					</div>
+					<div class="col-12 p-3 mt-5">
+						<div class="banner-img1 promo-img p-3 d-flex justify-content-center align-items-center">
+							<h2 class="text-uppercase text-white text-shadow-lg p-2 pointer">Lorem ipsum dolor sit amet!</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+				
+			`);
+	}
+	loadDOMFirst();
 	//*****JQUERY */
 	// LOAD DOM JQUERY (Se usa al cargar el archivo JSON con los productos y cada vez que se quiere filtrar)
 	let increment = -1;
 	let genderSelected = 'ALL';
 	function loadDOMJquery(products) {
 		console.log(products);
+		$('#filterNavBar').show();
 		if (genderSelected != 'ALL') {
 			products = products.filter((e) => e.gender == genderSelected);
 		}
 
 		//Recorro el Array products en el primer nivel.
-		// $('#productsCatalog').empty();
+		$('#productsCatalog').empty();
 		// console.log(products);
 		for (const product of products) {
 			$('#productsCatalog').append(`
@@ -101,11 +155,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	const navBarData = document.getElementById('navbarSupportedContent');
 	navBarData.addEventListener('click', (e) => {
 		console.log(e.target.classList.contains('active'));
-		if (e.target && e.target.classList.contains('active')) {
+		if (e.target && e.target.classList.contains('active') && e.target.textContent.toUpperCase() !== 'HOME') {
 			genderSelected = e.target.textContent.toUpperCase();
 			console.log(genderSelected);
 			// addEventListener
 			fetchDataProducts(products);
+		} else if (e.target && e.target.classList.contains('active') && e.target.textContent.toUpperCase() === 'HOME') {
+			loadDOMFirst();
 		}
 	});
 
@@ -132,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			console.log(error);
 		}
 	};
-	fetchDataProducts(products);
+	// fetchDataProducts(products);
 
 	// CLICK EN BOTON SIZE (Dentro de los dropdown, cualquier botón de talles)
 	let sizeSelected;
