@@ -42,17 +42,17 @@ document.addEventListener('DOMContentLoaded', () => {
 				<div class="row mt-5">
 					<div class="col-12 col-md-4 p-3">
 						<div class="style-img1 style-img p-3">
-							<h5 class="text-uppercase text-white bg-primary d-inline-block p-2 pointer">best for woman</h5>
+							<h5 id="womanBtn" class="text-uppercase text-white bg-primary d-inline-block p-2 pointer">best for woman</h5>
 						</div>
 					</div>
 					<div class="col-12 col-md-4 p-3">
 						<div class="style-img2 style-img p-3">
-							<h5 class="text-uppercase text-white bg-primary d-inline-block p-2 pointer">best for kids</h5>
+							<h5 id="kidsBtn" class="text-uppercase text-white bg-primary d-inline-block p-2 pointer">best for kids</h5>
 						</div>
 					</div>
 					<div class="col-12 col-md-4 p-3">
 						<div class="style-img3 style-img p-3">
-							<h5 class="text-uppercase text-white bg-primary d-inline-block p-2 pointer">best for man</h5>
+							<h5 id="manBtn" class="text-uppercase text-white bg-primary d-inline-block p-2 pointer">best for man</h5>
 						</div>
 					</div>
 
@@ -67,17 +67,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 					<div class="col-12 col-md-6 col-lg-9 p-3 zzz">
 						<div class="promo-img1 promo-img p-3">
-							<h5 class="text-uppercase text-white bg-primary d-inline-block p-2 pointer">Best discounts</h5>
+							<h3 class="text-uppercase text-white text-shadow-lg d-inline-block p-2 fw-bold">BESTS DISCOUNTS</h3>
 						</div>
 					</div>
 					<div class="col-12 col-md-6 col-lg-3 p-3">
 						<div class="promo-img2 promo-img p-3 d-flex align-items-end justify-content-center">
-							<h5 class="text-uppercase text-white text-shadow-primary d-inline-block p-2 pointer fw-bold">YOUR OWN STYLE</h5>
+							<h5 class="text-uppercase text-white text-shadow-primary d-inline-block p-2 fw-bold">YOUR OWN STYLE</h5>
 						</div>
 					</div>
 					<div class="col-12 p-3 mt-5">
 						<div class="banner-img1 promo-img p-3 d-flex justify-content-center align-items-center">
-							<h2 class="text-uppercase text-white text-shadow-lg p-2 pointer">Lorem ipsum dolor sit amet!</h2>
+							<h2 class="text-uppercase text-white text-shadow-lg p-2">It is time to rock!!!</h2>
 						</div>
 					</div>
 				</div>
@@ -157,6 +157,28 @@ document.addEventListener('DOMContentLoaded', () => {
 		} else if (e.target && e.target.classList.contains('active') && e.target.textContent.toUpperCase() === 'HOME') {
 			loadDOMHome();
 		}
+	});
+
+	const womanBtn = document.getElementById('womanBtn');
+	const kidsBtn = document.getElementById('kidsBtn');
+	const manBtn = document.getElementById('manBtn');
+
+	womanBtn.addEventListener('click', (e) => {
+		genderSelected = 'WOMAN';
+		products = products.filter((e) => e.gender == genderSelected);
+		fetchDataProducts(products);
+	});
+
+	kidsBtn.addEventListener('click', (e) => {
+		genderSelected = 'KIDS';
+		products = products.filter((e) => e.gender == genderSelected);
+		fetchDataProducts(products);
+	});
+
+	manBtn.addEventListener('click', (e) => {
+		genderSelected = 'MAN';
+		products = products.filter((e) => e.gender == genderSelected);
+		fetchDataProducts(products);
 	});
 
 	//CREO "BASE DE DATOS con FETCH"
