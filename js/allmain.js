@@ -27,15 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
 			empty.removeChild(empty.firstChild);
 		}
 	}
-
+	//Agrga active class al navbar
 	$('.navbar-nav a').on('click', function () {
-		console.log('CLICK');
-
 		$('.navbar-nav').find('.active').removeClass('active');
 		$(this).addClass('active');
 	});
 
-	function loadDOMFirst() {
+	//Cargo el home
+	function loadDOMHome() {
 		$('#productsCatalog').empty();
 		$('#filterNavBar').hide();
 		$('#productsCatalog').append(`
@@ -87,13 +86,13 @@ document.addEventListener('DOMContentLoaded', () => {
 				
 			`);
 	}
-	loadDOMFirst();
-	//*****JQUERY */
+	loadDOMHome();
+
 	// LOAD DOM JQUERY (Se usa al cargar el archivo JSON con los productos y cada vez que se quiere filtrar)
 	let increment = -1;
 	let genderSelected = 'ALL';
 	function loadDOMJquery(products) {
-		console.log(products);
+		//muestro el filterNavBar
 		$('#filterNavBar').show();
 		if (genderSelected != 'ALL') {
 			products = products.filter((e) => e.gender == genderSelected);
@@ -101,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		//Recorro el Array products en el primer nivel.
 		$('#productsCatalog').empty();
-		// console.log(products);
 		for (const product of products) {
 			$('#productsCatalog').append(`
 				<article class="card col-6 col-md-4 col-lg-3 text-center border-0 p-3">
@@ -125,10 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			`);
 
 			//Recorro el Array sizeStock dentro del array products (segundo nivel). Agrega botones en el dropdown Size. Agrega los talles de cada modelo.
-
 			$.each(product.sizeStock, function (element, value) {
 				const dropdownSize = $('#dropdownMenuButton' + product.id);
 				increment = increment + 1;
+
 				//CREO EL BOTÓN DE TALLES CON SUS CLASES Y LE AGREGO EL VALOR
 				const sizeBtn = $('<button></button>');
 				sizeBtn.addClass('btn', 'm-1', 'p-0');
@@ -147,24 +145,17 @@ document.addEventListener('DOMContentLoaded', () => {
 				}
 			});
 		}
-		console.log(products.length);
 		$('#filterArticles').text(products.length + ' articles');
-		// addCartBtn();
 	}
 
+	// Agrego eventListeners a los botones del navbar
 	const navBarData = document.getElementById('navbarSupportedContent');
 	navBarData.addEventListener('click', (e) => {
-		console.log(e.target.classList.contains('active'));
 		if (e.target && e.target.classList.contains('active') && e.target.textContent.toUpperCase() !== 'HOME') {
 			genderSelected = e.target.textContent.toUpperCase();
-			console.log(genderSelected);
-			// addEventListener
 			fetchDataProducts(products);
-			// window.history.pushState('object or string', 'Title', '/' + genderSelected.toLocaleLowerCase());
 		} else if (e.target && e.target.classList.contains('active') && e.target.textContent.toUpperCase() === 'HOME') {
-			loadDOMFirst();
-			// window.history.pushState('object or string', 'Title', '/index.html');
-			// history.replaceState('data to be passed', 'Title of the page', '/index.html');
+			loadDOMHome();
 		}
 	});
 
@@ -173,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		try {
 			if (products.length === 0) {
 				//Cargo el JSON
-				console.log('loaded JSON');
 				const res = await fetch('./assets/products.json');
 				const response = await res.json();
 				//Pueblo el array products
@@ -191,7 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			console.log(error);
 		}
 	};
-	// fetchDataProducts(products);
 
 	// CLICK EN BOTON SIZE (Dentro de los dropdown, cualquier botón de talles)
 	let sizeSelected;
@@ -204,23 +193,21 @@ document.addEventListener('DOMContentLoaded', () => {
 		sizeSelected = parseInt(btn.textContent);
 		pressedId = btn.getAttribute('data-id');
 		btn.classList.toggle('active');
-		console.log(`* Size selected: ${sizeSelected} * ID of product: ${pressedId}`);
 	}
 
 	// AGREGA EVENTO A TODOS LOS BOTONES ADD TO CART Y SIZE (Dentro de los dropdown, cualquier botón de talles), Usando delegation y propagation
 	function eventsToButtons() {
 		const productsCatalog = document.getElementById('productsCatalog');
-		// console.log(productsCatalog);
-
 		productsCatalog.addEventListener('click', (e) => {
 			e.preventDefault();
+			const operation = 'sub';
 			if (e.target && e.target.getAttribute('data-btn')) {
 				clickSizeBtn(e.target);
 			} else if (e.target && e.target.classList.contains('cart')) {
 				if (sizeSelected === undefined || pressedId != e.target.getAttribute('data-id')) {
-					console.log('Seleccione un talle');
+					new bootstrap.Toast(document.querySelector('#selectSizeToast')).show();
 				} else {
-					fixStock(pressedId, sizeSelected);
+					fixStock(pressedId, sizeSelected, operation);
 				}
 			}
 		});
@@ -235,9 +222,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	//Arregla el stock luego de agregado el producto al carrito, resta el stock del talle
-	function fixStock(id, sizeSelected) {
+	function fixStock(id, sizeSelected, operation) {
 		findProductAndSize(id, sizeSelected);
-		if (findedSize.stock > 0) {
+		console.log('ID = ' + id);
+		console.log('sizeSelected = ' + sizeSelected);
+		console.log('operation = ' + operation);
+		console.log('STOCK = ' + findedSize.stock);
+		if (findedSize.stock >= 1 && operation === 'sub') {
 			findedSize.stock = findedSize.stock - 1;
 			const removeActive = document.querySelector('.dropdown-menu .active');
 			//Si el stock es cero lo deja disabled
@@ -251,9 +242,20 @@ document.addEventListener('DOMContentLoaded', () => {
 			addToCart(id, sizeSelected);
 
 			//Despliego el Toast de bootstrap que pregunta si se sigue comprando
-			new bootstrap.Toast(document.querySelector('#basicToast')).show();
+			new bootstrap.Toast(document.querySelector('#addToast')).show();
+		} else if (operation === 'add') {
+			if (findedSize.stock === 0) {
+				findedSize.stock = 1;
+				// if (findedSize.stock > 0) {
+				// 	const addActive = $('#elementId').attr("data-id");
+				// 	addActive.classList.add('btn-outline-primary');
+				// 	addActive.classList.remove('btn-outline-secondary');
+				// 	addActive.disabled = false;
+				// }
+			}
+			findedSize.stock = findedSize.stock + 1;
 		} else {
-			console.log(`No stock of size: ${findedSize.size}`);
+			new bootstrap.Toast(document.querySelector('#noStockToast')).show();
 		}
 	}
 
@@ -261,19 +263,24 @@ document.addEventListener('DOMContentLoaded', () => {
 	const cartProducts = [];
 	function productsQuantityInCart() {
 		const cartIconNum1 = document.querySelector('.fa-shopping-cart .badge1');
-		console.log(cartIconNum1);
 		cartIconNum1.textContent = cartProducts.length;
 		const cartIconNum2 = document.querySelector('.fa-shopping-cart .badge2');
-		console.log(cartIconNum2);
 		cartIconNum2.textContent = cartProducts.length;
 	}
 
 	//elimino del array carrito
 	function cartArrayRemove() {
 		const forIndex = cartProducts.find((el) => el.id);
+		const originalId = forIndex.originalId;
+		const originalSize = forIndex.size;
+		console.log('EL ORIGINAL ID ES = ' + originalId);
 		const index = cartProducts.indexOf(forIndex);
 		cartProducts.splice(index, 1);
 		productsQuantityInCart();
+		console.log(cartProducts);
+		const operation = 'add';
+		fixStock(originalId, originalSize, operation);
+		// findedSize.stock = findedSize.stock - 1;
 	}
 
 	//Elimino del sidebar de carrito
@@ -342,8 +349,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	//ORDENAR POR ID (RECOMENDADOS)
 	const sortBy = document.getElementById('dropdownMenuButtonSort');
 	function sortRecomended() {
-		// filteredProducts = products;
-		// console.log('ORDENADO POR RECOMENDADOS ');
 		filteredProducts.sort((a, b) => a.id - b.id);
 		fetchDataProducts(filteredProducts);
 		sortBy.textContent = 'Sort By: Recomended';
@@ -351,7 +356,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	//ORDENAR POR PRECIO DESCENDENTE
 	function sortDescending() {
-		// console.log('PRECIO MÁS ALTO PRIMERO AJAX');
 		filteredProducts.sort((a, b) => b.price - a.price);
 		fetchDataProducts(filteredProducts);
 		sortBy.textContent = 'Sort By: High to low';
@@ -359,7 +363,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	//ORDENAR POR PRECIO ASCENDENTE
 	function sortAscending() {
-		// console.log('PRECIO MÁS BAJO PRIMERO');
 		filteredProducts.sort((a, b) => a.price - b.price);
 		fetchDataProducts(filteredProducts);
 		sortBy.textContent = 'Sort By: Low to high';
@@ -375,6 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	function filterArray() {
 		filteredProducts = [];
 		newArray = [];
+
 		// SI ALGÚN CHECKBOX DE FILTER BY SIZE ESTÁ ACTIVO
 		if (checkeSizedArray.length > 0) {
 			checkeSizedArray.forEach((el) => {
@@ -390,19 +394,19 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 
 		if (checkedBrandArray.length > 0) {
-			console.log(checkedBrandArray.length);
 			newArray2 = [];
 			checkedBrandArray.forEach((el) => {
 				filteredProducts.push.apply(
 					newArray2,
 					filteredProducts.filter((a) => a.brand === el)
 				);
-				console.log('element = ' + el);
 			});
 			filteredProducts = [...new Set(newArray2)];
 		}
+
 		//filter by price range
 		filteredProducts = filteredProducts.filter((a) => a.price > lowRange && a.price < highRange);
+
 		//Sort by after filter applyed
 		if (sortBy.textContent == 'Sort By: Recomended' && filteredProducts.length > 0) {
 			sortRecomended();
@@ -420,14 +424,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		} else {
 			$('#filtersData').slideUp();
 		}
-		//NUMBER OF ARTICLES TO SHOW
-		// $('#filterArticles').text(Object.keys(filteredProducts).length + ' articles');
 	}
 
-	//****END FILTRADO****
 	// FILTERS
 	const filters = document.getElementById('sidebarFilter');
-
 	filters.addEventListener('click', (e) => {
 		if (e.target.checked && e.target.getAttribute('data-value')) {
 			//Add to checkeSizedArray
@@ -487,31 +487,26 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 
+	//FilterData functions
 	const filtersData = document.getElementById('filtersData');
 	filtersData.addEventListener('click', (e) => {
 		if (e.target && e.target.getAttribute('data-value')) {
-			console.log('REMOVE');
 			e.target.remove();
-			console.log('#' + e.target.getAttribute('data-value').toLowerCase() + 'Filter');
-			// $('input:checked').removeAttr('checked');
 			$('#' + e.target.getAttribute('data-value').toLowerCase() + 'Filter').prop('checked', false);
-
 			let checkboxClicked = e.target.getAttribute('data-value');
 			let index = checkeSizedArray.indexOf(checkboxClicked);
+
 			//Remove from checkeSizedArray
 			if (index !== -1) {
 				checkeSizedArray.splice(index, 1);
 			}
 			filterArray();
 		} else if (e.target && e.target.getAttribute('data-brand')) {
-			console.log('REMOVE');
 			e.target.remove();
-			console.log('#' + e.target.getAttribute('data-brand').toLowerCase() + 'Filter');
-			// $('input:checked').removeAttr('checked');
 			$('#' + e.target.getAttribute('data-brand').toLowerCase() + 'Filter').prop('checked', false);
-
 			let brandCheckboxClicked = e.target.getAttribute('data-brand');
 			let index = checkedBrandArray.indexOf(brandCheckboxClicked);
+
 			//Remove from checkedBrandArray
 			if (index !== -1) {
 				checkedBrandArray.splice(index, 1);

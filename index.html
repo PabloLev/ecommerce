@@ -7,8 +7,6 @@
 		<title>Ecommerce - tienda de calzados - Levin</title>
 		<meta name="description" content="We are dedicated to ecommerce" />
 		<meta name="keywords" content="shoes, trainners, sports, life, style, promo, discount" />
-		<!-- BOOTSTRAP 5 -->
-		<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
 		<link
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
@@ -53,7 +51,7 @@
 						</form>
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item">
-								<a class="nav-link active text-uppercase transition" aria-current="page" href="#home">Home</a>
+								<a class="nav-link active text-uppercase transition" aria-current="page" href="./index.html">Home</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link text-uppercase transition" href="#all">All</a>
@@ -91,7 +89,7 @@
 		<!-- END HEADER -->
 		<!-- TOAST AGREGADO AL CARRITO -->
 		<div class="toast-container top-0 start-0 position-fixed min-vh-100 min-vw-100 zindex-tooltip-hi">
-			<div id="basicToast" class="toast" data-bs-autohide="false" data-bs-delay="3000">
+			<div id="addToast" class="toast" data-bs-autohide="false" data-bs-delay="3000">
 				<div
 					class="position-fixed top-50 start-50 translate-middle zindex-tooltip col-9 col-lg-6 col-xl-4 col-xxl-3 bg-white rounded row text-center overflow-hidden"
 					role="alert"
@@ -110,6 +108,63 @@
 
 						<div class="col-12 col-md-6">
 							<button id="checkOut" type="button" class="btn btn-primary shadow text-uppercase m-auto mt-2 mb-2 w-100" data-bs-dismiss="toast">Check out</button>
+						</div>
+					</div>
+				</div>
+				<div class="bg-dark min-vh-100 min-vw-100 fixed-top m-0 transition opacity-at-25 overflow-hidden"></div>
+			</div>
+			<div id="noStockToast" class="toast" data-bs-autohide="false" data-bs-delay="3000">
+				<div
+					class="position-fixed top-50 start-50 translate-middle zindex-tooltip col-9 col-lg-6 col-xl-4 col-xxl-3 bg-white rounded row text-center overflow-hidden"
+					role="alert"
+					aria-live="assertive"
+					aria-atomic="true"
+				>
+					<div class="toast-header bg-danger text-light d-flex justify-content-center w-100">
+						<h5 class="my-0 text-uppercase text-center p-3">Out of Stock</h5>
+					</div>
+
+					<div class="row p-3 w-100 m-auto">
+						<div class="col-12">
+							<button type="button" class="btn btn-primary shadow text-uppercase m-auto mt-2 mb-2 w-100" data-bs-dismiss="toast">To Shop</button>
+						</div>
+					</div>
+				</div>
+				<div class="bg-dark min-vh-100 min-vw-100 fixed-top m-0 transition opacity-at-25 overflow-hidden"></div>
+			</div>
+			<div id="selectSizeToast" class="toast" data-bs-autohide="false" data-bs-delay="3000">
+				<div
+					class="position-fixed top-50 start-50 translate-middle zindex-tooltip col-9 col-lg-6 col-xl-4 col-xxl-3 bg-white rounded row text-center overflow-hidden"
+					role="alert"
+					aria-live="assertive"
+					aria-atomic="true"
+				>
+					<div class="toast-header bg-secondary text-light d-flex justify-content-center w-100">
+						<h5 class="my-0 text-uppercase text-center p-3">Select Size first</h5>
+					</div>
+
+					<div class="row p-3 w-100 m-auto">
+						<div class="col-12">
+							<button type="button" class="btn btn-primary shadow text-uppercase m-auto mt-2 mb-2 w-100" data-bs-dismiss="toast">To Shop</button>
+						</div>
+					</div>
+				</div>
+				<div class="bg-dark min-vh-100 min-vw-100 fixed-top m-0 transition opacity-at-25 overflow-hidden"></div>
+			</div>
+			<div id="buyToast" class="toast" data-bs-autohide="false" data-bs-delay="3000">
+				<div
+					class="position-fixed top-50 start-50 translate-middle zindex-tooltip col-9 col-lg-6 col-xl-4 col-xxl-3 bg-white rounded row text-center overflow-hidden"
+					role="alert"
+					aria-live="assertive"
+					aria-atomic="true"
+				>
+					<div class="toast-header bg-success text-light d-flex justify-content-center w-100">
+						<h5 class="my-0 text-uppercase text-center p-3">Thanks for buying in BIG STORE</h5>
+					</div>
+
+					<div class="row p-3 w-100 m-auto">
+						<div class="col-12">
+							<button type="button" class="btn btn-primary shadow text-uppercase m-auto mt-2 mb-2 w-100" data-bs-dismiss="toast">To Shop</button>
 						</div>
 					</div>
 				</div>
@@ -140,10 +195,6 @@
 							<label class="custom-control-label" for="filter-size-1">Topper</label>
 						</div>
 					</div>
-					<!-- <ul class="p-lists ps-0">
-						<li class="d-flex justify-content-between mt-2 pointer" id="adidasFilter">Adidas</li>
-						<li class="d-flex justify-content-between mt-2 pointer" id="topperFilter">Topper</li>
-					</ul> -->
 					<div class="divider mt-2 mb-4 border-bottom border-secondary"></div>
 					<h6 class="text-uppercase mb-3 font-weight-bold">Filter by Size</h6>
 
@@ -216,7 +267,6 @@
 					</div>
 					<div class="divider mt-2 mb-4 border-bottom border-secondary"></div>
 					<input type="submit" class="btn btn-primary mt-2 w-100 text-uppercase" id="applyFilters" value="VIEW PRODUCTS" />
-					<!-- <a href="#" class="btn btn-primary mt-5">Apply Filters</a> -->
 				</div>
 			</div>
 		</div>
@@ -234,7 +284,7 @@
 					<div id="productsInCart" class="col-12">
 						<h6 class="text-black text-center">Please select a product</h6>
 					</div>
-					<button type="button" class="align-middle btn btn-primary py-2 mt-4">Finalizar Compra</button>
+					<button id="finish" type="button" class="align-middle btn btn-primary py-2 mt-4">Finalizar Compra</button>
 				</div>
 			</div>
 		</div>
@@ -529,10 +579,6 @@
 								<button id="signInBtn" type="button" class="btn btn-primary float-end">Submit</button>
 							</div>
 							<div class="modal-footer d-block ps-0">
-								<!-- <div class="mb-3 ms-0">
-                                <button type="submit" class="btn btn-primary">Log in with <i class="fab fa-facebook-f"></i></button>
-                                <button type="submit" class="btn btn-danger">Log in with <i class="fab fa-google-plus-g"></i></button>
-                            </div> -->
 								<p class="">
 									Not yet account
 									<a href="#" data-bs-target="#modalForm2" data-bs-toggle="modal" data-bs-dismiss="modal">Sign Up</a>
@@ -573,17 +619,7 @@
 								<input id="passwordConfirm" type="password" class="form-control" name="passwordConfirm" placeholder="Confirm Password" required />
 							</div>
 							<button id="registerSubmit" type="submit" class="btn btn-primary float-end">Submit</button>
-							<div class="mb-4 form-check">
-								<!-- <input type="checkbox" class="form-check-input" id="rememberMe" />
-                            <label class="form-check-label" for="rememberMe">Remember me</label> -->
-							</div>
 							<div class="modal-footer d-block ps-0">
-								<div class="mb-3 ms-0">
-									<!-- <p class="">Register with other methods</a></p>
-                                <button type="submit" class="btn btn-primary">Register with <i class="fab fa-facebook-f"></i></button>
-                                <button type="submit" class="btn btn-danger">Register with <i class="fab fa-google-plus-g"></i></button> -->
-								</div>
-
 								<p class="">
 									Have an account?
 									<a href="#" data-bs-target="#modalForm1" data-bs-toggle="modal" data-bs-dismiss="modal">Sign In here</a>
@@ -606,27 +642,6 @@
 			</div>
 			<div class="toast-body">Hello, world! This is a toast message.</div>
 		</div>
-		<!-- TEMPLATE -->
-		<!-- <template id="templateProduct">
-        <article class="card col-6 col-md-4 col-lg-3 text-center border-0 p-3">
-            <div class="img-wrapper position-relative p-1 d-flex justify-content-end" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="bottom" data-bs-content="More info">
-                
-                <img src="" class="img-a card-img-top" alt="...">
-                <img src="" class="img-b card-img-top position-absolute p-1" alt="...">
-            </div>
-            <div class="card-body">
-                <img src="" class="img-brand-card" alt="...">
-                <p class="card-title text-uppercase fw-bold"></p>
-                <span class="price card-text fs-5 text-dark"></span>
-                
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle mb-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">Chose Size</button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton"></ul>
-                </div>
-                <button type="button" class="cart btn container-fluid btn-primary py-2">Add to Cart<i class="fas fa-shopping-cart ms-3"></i></button>
-            </div>
-        </article>
-    </template> -->
 
 		<!-- SCRIPTS -->
 		<!-- BOOTSTRAP 5 JS -->
@@ -647,9 +662,6 @@
 
 		<!-- MAIN JS -->
 		<script src="js/allmain.js"></script>
-
-		<!-- BOOTSTRAP -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script> -->
 
 		<!-- INIT JS -->
 		<script src="js/init.js"></script>
