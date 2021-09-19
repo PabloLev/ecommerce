@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	//NUMERO DEL ICONO CARRITO
-	const cartProducts = [];
+	let cartProducts = [];
 	function productsQuantityInCart() {
 		const cartIconNum1 = document.querySelector('.fa-shopping-cart .badge1');
 		cartIconNum1.textContent = cartProducts.length;
@@ -365,6 +365,20 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 		trash();
 	}
+
+	function finishBuy() {
+		new bootstrap.Toast(document.querySelector('#buyToast')).show();
+	}
+
+	//FINALIZAR COMPRA
+	const finishBtn = document.getElementById('finish');
+	finishBtn.addEventListener('click', (e) => {
+		finishBuy();
+		cartProducts = [];
+		productsQuantityInCart();
+		const productInCart = document.getElementById('productsInCart');
+		emptyFromDom(productInCart);
+	});
 
 	//****FILTRADO (SORT BY:)****
 	let filteredProducts = products;
