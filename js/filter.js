@@ -5,12 +5,13 @@ export let filteredProducts = [];
 let newArray = [];
 let newArray2 = [];
 const sortBy = document.getElementById('dropdownMenuButtonSort');
+
+//Soluciona problema de const al exportar
 export function asignFilteredProduct() {
 	filteredProducts = products;
 }
 //ORDENAR POR ID (RECOMENDADOS)
 export function sortRecomended() {
-	console.log(filteredProducts);
 	filteredProducts.sort((a, b) => a.id - b.id);
 	fetchDataProducts(filteredProducts);
 	sortBy.textContent = 'Sort By: Recomended';
@@ -18,16 +19,13 @@ export function sortRecomended() {
 
 //ORDENAR POR PRECIO ASCENDENTE
 export function sortAscending() {
-	console.log(filteredProducts);
 	filteredProducts.sort((a, b) => a.price - b.price);
 	fetchDataProducts(filteredProducts);
 	sortBy.textContent = 'Sort By: Low to high';
-	console.log(filteredProducts);
 }
 
 //ORDENAR POR PRECIO DESCENDENTE
 export function sortDescending() {
-	console.log(filteredProducts);
 	filteredProducts.sort((a, b) => b.price - a.price);
 	fetchDataProducts(filteredProducts);
 	sortBy.textContent = 'Sort By: High to low';
@@ -43,7 +41,7 @@ export function toggleSidebars(sidebar, overlay) {
 
 //Funcion de Filtros
 export function filterArray() {
-	// filteredProducts = [];
+	filteredProducts = [];
 	newArray = [];
 
 	// SI ALGÚN CHECKBOX DE FILTER BY SIZE ESTÁ ACTIVO

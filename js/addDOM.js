@@ -4,6 +4,7 @@ import { eventsToButtons } from './addEvents.js';
 import { asignFilteredProduct } from './filter.js';
 
 let increment = -1;
+let noLoad = 0;
 //Cargo el home
 export function loadDOMHome() {
 	$('#productsCatalog').empty();
@@ -120,10 +121,10 @@ export function loadDOMJquery(products) {
 //CREO "BASE DE DATOS con FETCH"
 export const fetchDataProducts = async (products) => {
 	try {
-		if (products.length === 0) {
-			console.log('load JSON');
+		if (products.length === 0 && noLoad === 0) {
 			//Cargo el JSON
 			const res = await fetch('./assets/products.json');
+			noLoad = 1;
 			const response = await res.json();
 			//Pueblo el array products
 			for (let item of response) {
@@ -132,7 +133,6 @@ export const fetchDataProducts = async (products) => {
 			eventsToButtons();
 			asignFilteredProduct();
 		} else {
-			console.log('JQUERY');
 			$('#productsCatalog').fadeOut(150, function () {
 				$(this).empty().fadeIn(150, loadDOMJquery(products));
 			});
