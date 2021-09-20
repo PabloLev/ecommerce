@@ -290,6 +290,24 @@ document.addEventListener('DOMContentLoaded', () => {
 		cartIconNum2.textContent = cartProducts.length;
 	}
 
+	//Calculo precio carrito
+	function payment() {
+		let totalPrice = 0;
+		console.log(cartProducts.price);
+		for (const index in cartProducts) {
+			const product = cartProducts[index];
+			totalPrice = product.price + totalPrice;
+			console.log(totalPrice);
+		}
+		const totalPriceContainer = document.getElementById('totalPrice');
+		totalPriceContainer.innerHTML = `
+			<h5 class="m-2">Total = $${totalPrice}</h5>
+		`;
+		if (cartProducts.length === 0) {
+			emptyFromDom(totalPriceContainer);
+		}
+	}
+
 	//elimino del array carrito
 	function cartArrayRemove() {
 		const forIndex = cartProducts.find((el) => el.id);
@@ -303,6 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const operation = 'add';
 		fixStock(originalId, originalSize, operation);
 		// findedSize.stock = findedSize.stock - 1;
+		payment();
 	}
 
 	//Elimino del sidebar de carrito
@@ -318,6 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	//Esta funcion agrega los productos al carrito
 	let productId = 0;
+
 	function addToCart(id, sizeSelected) {
 		//Filtro products y creo nuevo array findedProduct
 		const findedProduct = products.find((el) => el.id == id);
@@ -345,6 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		emptyFromDom(productInCart);
 
 		productsQuantityInCart();
+
 		for (const index in cartProducts) {
 			const product = cartProducts[index];
 			const createDiv = document.createElement('div');
@@ -360,9 +381,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="text-dark"><strong>$${product.price}</strong></span>
                         </div>
                         <i data-cartid="${product.id}" class="trash fa fa-trash mb-1 text-dark pointer"></i>
+						
                     </div>`;
 			productInCart.appendChild(createDiv);
 		}
+		payment();
 		trash();
 	}
 
@@ -378,6 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		productsQuantityInCart();
 		const productInCart = document.getElementById('productsInCart');
 		emptyFromDom(productInCart);
+		payment();
 	});
 
 	//****FILTRADO (SORT BY:)****
