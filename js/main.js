@@ -1,6 +1,7 @@
 import { emptyFromDom } from './generalFunctions.js';
 import { loadDOMHome, fetchDataProducts } from './addDOM.js';
 import { sortRecomended, sortDescending, sortAscending, filterArray, toggleSidebars } from './filter.js';
+import { finishBuy, productsQuantityInCart, payment, enableFinishBtn } from './cartFunctions.js';
 
 //VARIABLES
 export let products = [];

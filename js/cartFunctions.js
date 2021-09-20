@@ -3,7 +3,7 @@ import { emptyFromDom } from './generalFunctions.js';
 import { fixStock } from './generalFunctions.js';
 //NUMERO DEL ICONO CARRITO
 
-function productsQuantityInCart() {
+export function productsQuantityInCart() {
 	const cartIconNum1 = document.querySelector('.fa-shopping-cart .badge1');
 	cartIconNum1.textContent = cartProducts.length;
 	const cartIconNum2 = document.querySelector('.fa-shopping-cart .badge2');
@@ -11,7 +11,7 @@ function productsQuantityInCart() {
 }
 
 //Calculo precio carrito
-function payment() {
+export function payment() {
 	let totalPrice = 0;
 	for (const index in cartProducts) {
 		const product = cartProducts[index];
@@ -27,7 +27,7 @@ function payment() {
 }
 
 //ENABLE DISABLE FINALIZAR COMPRA
-function enableFinishBtn() {
+export function enableFinishBtn() {
 	const finishBtn = document.getElementById('finish');
 	if (cartProducts.length === 0) {
 		finishBtn.disabled = true;
@@ -63,7 +63,7 @@ function cartArrayRemove() {
 }
 
 //FINALIZAR COMPRA
-function finishBuy() {
+export function finishBuy() {
 	new bootstrap.Toast(document.querySelector('#buyToast')).show();
 	enableFinishBtn();
 }
