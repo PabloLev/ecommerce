@@ -1,11 +1,13 @@
 import { products, checkeSizedArray, checkedBrandArray, lowRange, highRange } from './main.js';
 import { fetchDataProducts } from './addDOM.js';
 
-let filteredProducts = [];
+export let filteredProducts = [];
 let newArray = [];
 let newArray2 = [];
 const sortBy = document.getElementById('dropdownMenuButtonSort');
-
+export function asignFilteredProduct() {
+	filteredProducts = products;
+}
 //ORDENAR POR ID (RECOMENDADOS)
 export function sortRecomended() {
 	console.log(filteredProducts);
@@ -20,6 +22,7 @@ export function sortAscending() {
 	filteredProducts.sort((a, b) => a.price - b.price);
 	fetchDataProducts(filteredProducts);
 	sortBy.textContent = 'Sort By: Low to high';
+	console.log(filteredProducts);
 }
 
 //ORDENAR POR PRECIO DESCENDENTE
@@ -28,6 +31,14 @@ export function sortDescending() {
 	filteredProducts.sort((a, b) => b.price - a.price);
 	fetchDataProducts(filteredProducts);
 	sortBy.textContent = 'Sort By: High to low';
+}
+
+//Function Toggle clases del sidebar para mostrarlo. Se eliminan las clases y aparecen y se cancela el scroll.
+export function toggleSidebars(sidebar, overlay) {
+	const sidebarInDOM = document.getElementById(sidebar);
+	sidebarInDOM.classList.toggle('sidebar-off');
+	overlay.classList.toggle('overlay-off');
+	document.body.classList.toggle('no-scroll');
 }
 
 //Funcion de Filtros

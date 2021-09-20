@@ -1,7 +1,9 @@
-let increment = -1;
 import { Product } from './Product.js';
 import { genderSelected } from './main.js';
 import { eventsToButtons } from './addEvents.js';
+import { asignFilteredProduct } from './filter.js';
+
+let increment = -1;
 //Cargo el home
 export function loadDOMHome() {
 	$('#productsCatalog').empty();
@@ -119,6 +121,7 @@ export function loadDOMJquery(products) {
 export const fetchDataProducts = async (products) => {
 	try {
 		if (products.length === 0) {
+			console.log('load JSON');
 			//Cargo el JSON
 			const res = await fetch('./assets/products.json');
 			const response = await res.json();
@@ -127,7 +130,9 @@ export const fetchDataProducts = async (products) => {
 				products.push(new Product(item.id, item.category, item.gender, item.brand, item.model, item.color, item.price, item.sizeStock));
 			}
 			eventsToButtons();
+			asignFilteredProduct();
 		} else {
+			console.log('JQUERY');
 			$('#productsCatalog').fadeOut(150, function () {
 				$(this).empty().fadeIn(150, loadDOMJquery(products));
 			});

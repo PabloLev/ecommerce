@@ -1,6 +1,6 @@
 import { emptyFromDom } from './generalFunctions.js';
 import { loadDOMHome, fetchDataProducts } from './addDOM.js';
-import { sortRecomended, sortDescending, sortAscending, filterArray } from './filter.js';
+import { sortRecomended, sortDescending, sortAscending, filterArray, toggleSidebars } from './filter.js';
 
 //VARIABLES
 export let products = [];
@@ -166,14 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			filterArray();
 		}
 	});
-
-	//Function Toggle clases del sidebar para mostrarlo. Se eliminan las clases y aparecen y se cancela el scroll.
-	function toggleSidebars(sidebar, overlay) {
-		const sidebarInDOM = document.getElementById(sidebar);
-		sidebarInDOM.classList.toggle('sidebar-off');
-		overlay.classList.toggle('overlay-off');
-		document.body.classList.toggle('no-scroll');
-	}
 
 	//SORT
 
