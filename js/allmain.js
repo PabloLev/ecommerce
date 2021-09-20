@@ -246,10 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	//Arregla el stock luego de agregado el producto al carrito, resta el stock del talle
 	function fixStock(id, sizeSelected, operation) {
 		findProductAndSize(id, sizeSelected);
-		console.log('ID = ' + id);
-		console.log('sizeSelected = ' + sizeSelected);
-		console.log('operation = ' + operation);
-		console.log('STOCK = ' + findedSize.stock);
 		if (findedSize.stock >= 1 && operation === 'sub') {
 			findedSize.stock = findedSize.stock - 1;
 			const removeActive = document.querySelector('.dropdown-menu .active');
@@ -294,11 +290,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	//Calculo precio carrito
 	function payment() {
 		let totalPrice = 0;
-		console.log(cartProducts.price);
 		for (const index in cartProducts) {
 			const product = cartProducts[index];
 			totalPrice = product.price + totalPrice;
-			console.log(totalPrice);
 		}
 		const totalPriceContainer = document.getElementById('totalPrice');
 		totalPriceContainer.innerHTML = `
@@ -314,11 +308,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		const forIndex = cartProducts.find((el) => el.id);
 		const originalId = forIndex.originalId;
 		const originalSize = forIndex.size;
-		console.log('EL ORIGINAL ID ES = ' + originalId);
 		const index = cartProducts.indexOf(forIndex);
 		cartProducts.splice(index, 1);
 		productsQuantityInCart();
-		console.log(cartProducts);
 		const operation = 'add';
 		fixStock(originalId, originalSize, operation);
 		// findedSize.stock = findedSize.stock - 1;
@@ -530,7 +522,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			//Add to checkedBrandArray
 			let brandVal = e.target.getAttribute('data-brand');
 			checkedBrandArray.push(brandVal);
-			console.log(checkedBrandArray);
 			filterArray();
 			$('#filtersData').append(
 				`<span data-brand="${brandVal}" class="d-inline-block m-1 mt-3 border border-secondary pe-2 ps-2 pointer text-gray fw-light rounded">${brandVal} X</span>`
