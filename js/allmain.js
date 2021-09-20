@@ -283,6 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	//NUMERO DEL ICONO CARRITO
 	let cartProducts = [];
+
 	function productsQuantityInCart() {
 		const cartIconNum1 = document.querySelector('.fa-shopping-cart .badge1');
 		cartIconNum1.textContent = cartProducts.length;
@@ -322,9 +323,20 @@ document.addEventListener('DOMContentLoaded', () => {
 		fixStock(originalId, originalSize, operation);
 		// findedSize.stock = findedSize.stock - 1;
 		payment();
+		enableFinishBtn();
 	}
 
-	//Elimino del sidebar de carrito
+	//ENABLE DISABLE FINALIZAR COMPRA
+	function enableFinishBtn() {
+		const finishBtn = document.getElementById('finish');
+		if (cartProducts.length === 0) {
+			finishBtn.disabled = true;
+		} else {
+			finishBtn.disabled = false;
+		}
+	}
+
+	//EVENTO A ICONO TRASH
 	function trash() {
 		const trash = document.querySelectorAll('.trash');
 		trash.forEach((el) =>
@@ -386,11 +398,13 @@ document.addEventListener('DOMContentLoaded', () => {
 			productInCart.appendChild(createDiv);
 		}
 		payment();
+		enableFinishBtn();
 		trash();
 	}
 
 	function finishBuy() {
 		new bootstrap.Toast(document.querySelector('#buyToast')).show();
+		enableFinishBtn();
 	}
 
 	//FINALIZAR COMPRA
@@ -402,6 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const productInCart = document.getElementById('productsInCart');
 		emptyFromDom(productInCart);
 		payment();
+		enableFinishBtn();
 	});
 
 	//****FILTRADO (SORT BY:)****
